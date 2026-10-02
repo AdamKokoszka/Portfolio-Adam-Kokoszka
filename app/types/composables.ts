@@ -27,3 +27,10 @@ export interface MobileMenuOptions {
   closeAt: string
   onEscape?: () => void
 }
+
+export type CopyStatus = 'idle' | 'copied' | 'error'
+
+export interface CopyToClipboardOptions {
+  copiedDuration?: number
+  errorDuration?: number
+}
