@@ -250,6 +250,7 @@ const toggleExpanded = () =>
               <Icon
                 :name="tech.icon"
                 class="size-11.5 md:size-14"
+                :class="tech.color"
                 aria-hidden="true" />
               {{ tech.name }}
               <span class="sr-only">{{ t('common.newTab') }}</span>
