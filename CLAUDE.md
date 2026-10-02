@@ -46,22 +46,26 @@ npm run check         # lint + format:check + typecheck (run before every commit
 
 ```
 app/
-  app.vue              # root: <html lang>, hreflang, <NuxtPage />
-  pages/               # routes (index.vue is the whole one-page site)
+  app.vue              # root: <html lang>, hreflang, <NuxtLayout> + <NuxtPage />
+  layouts/default.vue  # TheHeader + page + TheFooter
+  pages/index.vue      # the whole one-page site: Section* components in order
   components/
-    base/              # generic, reusable UI primitives  → BaseButton, BaseEyebrow
-    common/            # shared app-specific widgets      → ThemeToggle, LanguageSwitcher
+    base/              # generic, reusable UI primitives  → BaseButton, BaseCard, BaseEyebrow
+    common/            # shared app-specific widgets      → ThemeToggle, CopyButton, SocialLinks
     layout/            # one-per-page chrome              → TheHeader, TheFooter
-    sections/          # page sections                    → SectionHero, SectionAbout
-  composables/         # useX() logic                     → useTheme, useScrollSpy
+    sections/          # page sections + their children    → SectionHero, SectionHeroEditor
+  composables/         # useX() logic                     → useScrollSpy, useLayoutTransition
+  utils/               # pure helpers (auto-imported)     → sectionNumber, formatPeriod
+  plugins/             # Nuxt plugins                     → reveal (v-reveal directive)
   data/                # typed static data (no copy!)     → experience.ts, technologies.ts
-  types/               # ALL TS types/interfaces, one file per area (base, layout, sections,
-                       #   navigation, composables) — never declared inside components,
-                       #   composables or data files; component types named `<Component>Props/Emits`
-  assets/css/main.css  # Tailwind import + design tokens (@theme), themes
-  assets/images/       # images processed by the build
+  types/               # ALL TS types/interfaces, one file per area (base, common, layout,
+                       #   sections, navigation, composables, experience, technologies, systems)
+                       #   — never declared inside components, composables or data files;
+                       #   component types named `<Component>Props/Emits`
+  assets/css/main.css  # Tailwind import, design tokens (@theme), themes, custom utilities
+  assets/icons/        # local SVG icon collection (`ic:` prefix)
 i18n/locales/          # pl.json, en.json — ALL user-facing text
-public/                # files served as-is (favicon, og image, robots.txt)
+public/images/         # raster images served through @nuxt/image (portrait, logos, systems)
 ```
 
 Create folders only when they get their first file.
@@ -119,7 +123,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 
 ### Naming
 
-- Composables: `useCamelCase`, file `app/composables/useCamelCase.ts`.
+- Composables: `useCamelCase`, file `app/composables/useCamelCase.ts`. Shared constants (e.g. `DESKTOP_MEDIA_QUERY`) live in `app/utils/`.
 - Types/interfaces: `PascalCase`; no `I` prefix. Constants: `SCREAMING_SNAKE_CASE` only for
   true module-level constants.
 - Variables/functions: `camelCase`; booleans read as questions (`isOpen`, `hasError`).
@@ -144,13 +148,17 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   (`--c-*`) swapped by `.dark` / `.light` on `<html>` (@nuxtjs/color-mode, dark by default)
   and by `.theme-inverted` (inverted section). Use the **semantic utilities**, never hex values
   and normally no `dark:` / `light:` variants:
-  - surfaces: `bg-base`, `bg-alt`, `bg-surface`, `bg-surface-raised`, `bg-sunken`, `bg-hero`
+  - surfaces: `bg-base`, `bg-alt`, `bg-surface`, `bg-sunken`, `bg-hero`, `panel-surface`
   - text: `text-fg`, `text-fg-muted`, `text-fg-soft`; borders: `border-line`
   - accent: `bg-accent`, `text-accent-fg`, `text-on-accent`, `bg-accent-soft`, `border-accent-line`
   - warm accent: `text-warm`, `text-warm-fg`, `bg-warm-soft`
-  - fixed dark "Systems" palette: `bg-ink`, `bg-ink-surface`, `text-ink-*`, `bg-peach`, …
+  - fixed dark "Systems" palette: `.theme-ink` + `bg-ink`, `bg-ink-surface`, `text-ink-*`, `bg-peach`
+  - typography steps between Tailwind defaults: `text-micro` (11px), `text-caption` (13px),
+    `text-ui` (15px); other one-off sizes may stay arbitrary (`text-[2.375rem]`)
+  - shadows: `shadow-card`, `shadow-card-hover`, `shadow-panel`, `shadow-disc`, `shadow-editor`,
+    `shadow-logo`, `shadow-badge`, glows `shadow-glow-accent(-sm)`, `shadow-glow-peach(-sm)`
   - helpers: `border-gradient`, `border-gradient-strong` (fill follows `--card-bg`, default
-    surface), `bg-dots`, `bg-grid`, `shadow-card`, `container` (page width + gutters)
+    surface), `bg-dots`, `bg-glow`, `beam-border`, `container` (page width + gutters)
   - fonts: `font-sans` (Manrope), `font-mono` (JetBrains Mono), `font-hand` (Caveat);
     easing: `ease-smooth`, `ease-rise`
 - Breakpoints follow the design: base = phone, `md` ≥ 760px (tablet), `lg` ≥ 1100px (desktop).
