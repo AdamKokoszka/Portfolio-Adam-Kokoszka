@@ -49,16 +49,16 @@ onKeyStroke('Escape', () => {
       :class="headerClass">
       <a
         href="#top"
-        class="flex flex-col leading-tight text-fg"
-        :aria-label="t('header.brandLabel')">
-        <span class="text-[1.1875rem] font-bold tracking-[-0.015em] md:text-[1.3125rem]">
+        class="flex flex-col leading-tight text-fg">
+        <span class="block text-[1.1875rem] font-bold tracking-[-0.015em] md:text-[1.3125rem]">
           {{ t('brand.name') }}
         </span>
         <span
           v-if="!isScrolled"
-          class="mt-0.5 text-xs font-medium text-fg-soft md:text-[0.8125rem]">
+          class="mt-0.5 block text-xs font-medium text-fg-soft md:text-[0.8125rem]">
           {{ t('brand.owner') }}
         </span>
+        <span class="sr-only">{{ t('header.backToTop') }}</span>
       </a>
 
       <nav
