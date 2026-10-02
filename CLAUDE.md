@@ -105,6 +105,18 @@ Create folders only when they get their first file.
   genuinely non-obvious _why_ (e.g. a hosting quirk) — never to restate what the code does, and
   no JSDoc on component props.
 
+### Page sections
+
+Every section follows the same pattern (see `SectionAbout.vue`):
+
+- `<section :id>` with the id from `SECTION_IDS` (`app/data/navigation.ts`), `aria-labelledby`
+  pointing at its `<h2>`, `relative overflow-hidden`, its own background and `py-18 md:py-28`.
+- Number from `sectionNumber('<id>')` (auto-imported util) — used by `<BaseEyebrow>` and
+  `<BaseGhostNumber>` so numbering always follows the section order.
+- Heading block: `<BaseEyebrow :number>` + `<h2>`; nav label `t('nav.<id>')` is the eyebrow text.
+- Content wrapper gets `v-reveal` (fade-up on first scroll into view; skipped when already in view
+  or with reduced motion).
+
 ### Naming
 
 - Composables: `useCamelCase`, file `app/composables/useCamelCase.ts`.
