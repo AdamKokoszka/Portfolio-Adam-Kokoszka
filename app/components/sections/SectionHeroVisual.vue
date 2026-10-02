@@ -26,9 +26,9 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
           stroke-width="1.2" />
       </svg>
       <span
-        class="absolute top-0 left-0 -mt-1.25 -ml-1.25 size-2.5 animate-orbit rounded-full bg-accent shadow-[0_0_0_4px_rgb(97_150_255/0.18),0_0_18px_4px_rgb(97_150_255/0.55)] [offset-path:var(--orbit-inner)] [offset-rotate:0deg]" />
+        class="absolute top-0 left-0 -mt-1.25 -ml-1.25 size-2.5 animate-orbit rounded-full bg-accent shadow-glow-accent [offset-path:var(--orbit-inner)] [offset-rotate:0deg]" />
       <span
-        class="absolute top-0 left-0 -mt-0.75 -ml-0.75 size-1.5 animate-orbit rounded-full bg-accent-fg shadow-[0_0_12px_3px_rgb(97_150_255/0.5)] [animation-delay:-16s] [offset-path:var(--orbit-inner)] [offset-rotate:0deg]" />
+        class="absolute top-0 left-0 -mt-0.75 -ml-0.75 size-1.5 animate-orbit rounded-full bg-accent-fg shadow-glow-accent-sm [animation-delay:-16s] [offset-path:var(--orbit-inner)] [offset-rotate:0deg]" />
     </div>
 
     <div
@@ -48,7 +48,7 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
           stroke-dasharray="3 7" />
       </svg>
       <span
-        class="absolute top-0 left-0 -mt-1 -ml-1 size-2 animate-orbit rounded-full bg-peach shadow-[0_0_0_4px_rgb(255_170_114/0.18),0_0_18px_4px_rgb(255_170_114/0.5)] [animation-direction:reverse] [animation-duration:44s] [offset-path:var(--orbit-outer)] [offset-rotate:0deg]" />
+        class="absolute top-0 left-0 -mt-1 -ml-1 size-2 animate-orbit rounded-full bg-peach shadow-glow-peach [animation-direction:reverse] [animation-duration:44s] [offset-path:var(--orbit-outer)] [offset-rotate:0deg]" />
     </div>
 
     <div

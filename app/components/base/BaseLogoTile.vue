@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { LogoFit } from '~/types/experience'
-import type { BaseLogoTileProps } from '~/types/base'
+import type { BaseLogoTileProps, LogoFit } from '~/types/base'
 
 const props = withDefaults(defineProps<BaseLogoTileProps>(), {
   fit: 'padded',
@@ -16,7 +15,7 @@ const isVector = computed(() => props.src.endsWith('.svg'))
 
 <template>
   <div
-    class="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-[0.875rem] border border-line bg-white shadow-[0_8px_18px_-12px_rgb(0_0_0/0.55)] md:size-18 md:rounded-2xl"
+    class="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-[0.875rem] border border-line bg-white shadow-logo md:size-18 md:rounded-2xl"
     :class="FIT_CLASSES[fit]">
     <img
       v-if="isVector"

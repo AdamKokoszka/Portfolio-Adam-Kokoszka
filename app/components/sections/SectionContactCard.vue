@@ -21,7 +21,7 @@ const mailto = `mailto:${CONTACT_EMAIL}`
       </span>
 
       <div class="contents md:block md:min-w-0 md:flex-1">
-        <p class="col-start-2 row-start-1 text-[0.8125rem] font-semibold text-fg-soft">
+        <p class="col-start-2 row-start-1 text-caption font-semibold text-fg-soft">
           {{ t('contact.emailLabel') }}
         </p>
         <div class="contents md:flex md:flex-wrap md:items-center md:gap-1">

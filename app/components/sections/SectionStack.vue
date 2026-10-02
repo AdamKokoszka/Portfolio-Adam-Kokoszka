@@ -24,6 +24,7 @@ const viewport = useTemplateRef('viewport')
 
 const isExpanded = ref(false)
 const layout = computed(() => LAYOUTS[isExpanded.value ? 'grid' : 'carousel'])
+const toggleLabel = computed(() => (isExpanded.value ? t('stack.collapse') : t('stack.showAll')))
 
 const {
   activeFilter,
@@ -124,7 +125,7 @@ const toggleExpanded = () =>
               :href="tech.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-[0.9375rem]">
+              class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-ui">
               <Icon
                 :name="tech.icon"
                 class="size-11.5 md:size-14"
@@ -144,7 +145,7 @@ const toggleExpanded = () =>
           aria-controls="stack-list"
           :aria-expanded="isExpanded"
           @click="toggleExpanded">
-          {{ isExpanded ? t('stack.collapse') : t('stack.showAll') }}
+          {{ toggleLabel }}
           <Icon
             v-if="isExpanded"
             name="ic:chevron-up"

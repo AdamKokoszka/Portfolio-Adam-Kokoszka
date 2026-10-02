@@ -18,7 +18,7 @@ const label = computed(() => `${props.number} / `)
 <template>
   <component
     :is="as"
-    class="mb-3 text-xs font-bold tracking-[0.16em] uppercase md:mb-4 md:text-[0.8125rem]"
+    class="mb-3 text-xs font-bold tracking-[0.16em] uppercase md:mb-4 md:text-caption"
     :class="TONE_CLASSES[tone]">
     <span v-text="label" />
     <slot />
