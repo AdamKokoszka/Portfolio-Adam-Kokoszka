@@ -65,7 +65,9 @@ app/
   assets/css/main.css  # Tailwind import, design tokens (@theme), themes, custom utilities
   assets/icons/        # local SVG icon collection (`ic:` prefix)
 i18n/locales/          # pl.json, en.json — ALL user-facing text
+public/                # favicon set, site.webmanifest, og-image.jpg
 public/images/         # raster images served through @nuxt/image (portrait, logos, systems)
+design/                # sources of generated assets (og-image.html)
 ```
 
 Create folders only when they get their first file.
@@ -181,6 +183,22 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Source images go through TinyPNG / similar before being committed (keep repo history small).
 - Above-the-fold images: `loading="eager"` + `fetchpriority="high"` + `sizes`; everything else
   `loading="lazy"`.
+
+### SEO
+
+- Page meta lives in `usePageSeo()` (`app/composables/usePageSeo.ts`): title, description,
+  Open Graph, Twitter card and JSON-LD (`Person` + `WebSite`). Static facts are in
+  `app/data/seo.ts`; all copy comes from i18n (`meta.*`). Absolute URLs are built from
+  `useSiteConfig().url` (`site.url` in `nuxt.config`, i.e. `https://incocode.com`).
+- `<html lang>`, canonical and hreflang links come from `useLocaleHead()` in `layouts/default.vue`,
+  so they also apply to `error.vue` (custom 404 / error page, `noindex`).
+- Icons and manifest are global in `nuxt.config` `app.head`: `favicon.svg` (source of truth),
+  `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `site.webmanifest`.
+- `public/og-image.jpg` (1200×630) is rendered from `design/og-image/og-image.html`:
+  `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1200,630 --screenshot=og.png design/og-image/og-image.html`,
+  then converted to JPEG (~130 KB).
+- Large images use `<NuxtPicture format="avif,webp">`; give every `<img>` explicit `width` and
+  `height` (Lighthouse "unsized images").
 
 ### Accessibility
 
