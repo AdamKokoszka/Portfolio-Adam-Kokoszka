@@ -13,6 +13,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
+    '@nuxtjs/color-mode',
+    '@nuxt/icon',
   ],
 
   devtools: { enabled: true },
@@ -62,6 +64,22 @@ export default defineNuxtConfig({
       { name: 'JetBrains Mono', provider: 'google', weights: [400, 500] },
       { name: 'Caveat', provider: 'google', weights: [500, 600] },
     ],
+  },
+
+  colorMode: {
+    // Dark is the design default; a visitor's choice is remembered in localStorage.
+    preference: 'dark',
+    fallback: 'dark',
+    classSuffix: '',
+    storageKey: 'theme',
+  },
+
+  icon: {
+    mode: 'svg',
+    // Icons from the design live in app/assets/icons and are bundled — no runtime fetches.
+    customCollections: [{ prefix: 'ic', dir: './app/assets/icons' }],
+    provider: 'none',
+    clientBundle: { scan: true },
   },
 
   image: {
