@@ -43,7 +43,7 @@ export const TECHNOLOGIES: readonly Technology[] = [
     id: 'claude',
     name: 'Claude / Claude Code',
     icon: 'logos:claude-icon',
-    url: 'https://claude.ai',
+    url: 'https://claude.com/product/claude-code',
     category: 'ai',
   },
   {
@@ -82,7 +82,7 @@ export const TECHNOLOGIES: readonly Technology[] = [
     name: 'Axios',
     icon: 'simple-icons:axios',
     color: 'text-[#5a29e4]',
-    url: 'https://axios-http.com',
+    url: 'https://axios.rest',
     category: 'frontend',
   },
   {
