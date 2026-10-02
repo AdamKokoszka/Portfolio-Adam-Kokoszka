@@ -11,7 +11,7 @@ const VARIANTS = {
     image: 'object-[62%_50%] md:object-[60%_50%]',
     sizes: 'xs:100vw sm:100vw md:100vw lg:1160px',
     shade:
-      'bg-[linear-gradient(180deg,rgb(13_15_18/0)_25%,rgb(13_15_18/0.78)_58%,rgb(13_15_18/0.97)_100%)] md:bg-[linear-gradient(90deg,rgb(13_15_18/0.96)_0%,rgb(13_15_18/0.86)_30%,rgb(13_15_18/0.2)_62%,rgb(13_15_18/0)_80%)]',
+      'bg-linear-to-b from-ink-shade/0 from-25% via-ink-shade/78 via-58% to-ink-shade/97 md:bg-linear-to-r md:from-ink-shade/96 md:from-0% md:via-ink-shade/86 md:via-30% md:to-ink-shade/0 md:to-80%',
     body: 'inset-x-5.5 bottom-6 md:inset-y-0 md:right-auto md:left-13 md:flex md:w-105 md:flex-col md:justify-center',
     title: 'text-2xl md:text-[2.125rem]',
     description: 'text-[0.9375rem] md:text-[1.0625rem]',
@@ -20,8 +20,7 @@ const VARIANTS = {
     root: 'h-75 md:h-100',
     image: 'object-center',
     sizes: 'xs:100vw sm:100vw md:50vw lg:570px',
-    shade:
-      'bg-[linear-gradient(180deg,rgb(13_15_18/0)_35%,rgb(13_15_18/0.72)_68%,rgb(13_15_18/0.96)_100%)]',
+    shade: 'bg-linear-to-b from-ink-shade/0 from-35% via-ink-shade/72 via-68% to-ink-shade/96',
     body: 'inset-x-5 bottom-5.5 md:inset-x-8 md:bottom-7.5',
     title: 'text-[1.3125rem] md:text-[1.5625rem]',
     description: 'text-[0.9375rem] md:text-base',
@@ -55,7 +54,7 @@ const styles = computed(() => VARIANTS[props.variant])
       :class="styles.body">
       <span
         v-if="system.isCurrent"
-        class="mb-3.5 inline-flex items-center gap-2 self-start rounded-full bg-peach px-3 py-1.25 text-[0.6875rem] font-bold tracking-[0.12em] text-on-peach uppercase shadow-[0_10px_26px_-12px_rgb(255_170_114/0.7)] md:mb-5.5 md:px-3.5 md:py-1.5 md:text-xs">
+        class="mb-3.5 inline-flex items-center gap-2 self-start rounded-full bg-peach px-3 py-1.25 text-[0.6875rem] font-bold tracking-[0.12em] text-on-peach uppercase shadow-[0_10px_26px_-12px_var(--tw-shadow-color)] shadow-peach/70 md:mb-5.5 md:px-3.5 md:py-1.5 md:text-xs">
         <i
           class="block size-1.5 rounded-full bg-current"
           aria-hidden="true" />

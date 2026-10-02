@@ -9,13 +9,13 @@ const number = sectionNumber('systems')
 <template>
   <section
     id="systems"
-    class="relative overflow-hidden bg-ink pt-18 pb-21 text-ink-fg [color-scheme:dark] [--c-line:rgb(255_255_255/0.09)] md:pt-30 md:pb-32"
+    class="theme-ink relative overflow-hidden bg-ink pt-18 pb-21 md:pt-30 md:pb-32"
     aria-labelledby="systems-title">
     <div
-      class="pointer-events-none absolute -bottom-65 left-1/2 h-130 w-300 -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(255_170_114/0.16),transparent)]"
+      class="pointer-events-none absolute -bottom-65 left-1/2 h-130 w-300 -translate-x-1/2 rounded-full bg-peach-glow"
       aria-hidden="true" />
     <div
-      class="pointer-events-none absolute top-14 left-[3%] size-24 bg-dots [mask-image:linear-gradient(135deg,#000_30%,transparent_90%)] [--c-dot:rgb(255_185_138/0.28)] md:size-40"
+      class="pointer-events-none absolute top-14 left-[3%] size-24 bg-dots [mask-image:linear-gradient(135deg,#000_30%,transparent_90%)] md:size-40"
       aria-hidden="true" />
     <BaseGhostNumber :number="number" />
     <BaseWaves
