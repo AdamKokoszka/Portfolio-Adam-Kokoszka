@@ -161,6 +161,15 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   `aria-hidden="true"`.
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 
+### Images
+
+- Raster images live in `public/images/` and are rendered with `<NuxtImg>`. Locally they go through
+  IPX; on Netlify through the Netlify Image CDN, which supports only `fit: cover | contain | fill`
+  (no `inside` / `outside`) — prefer sizing by `width` only. SVGs are rendered with plain `<img>`.
+- After adding or changing images, verify the generated URLs return 200 on the deploy preview.
+- Above-the-fold images: `loading="eager"` + `fetchpriority="high"` + `sizes`; everything else
+  `loading="lazy"`.
+
 ### Accessibility
 
 - Semantic HTML (`<button>`, `<a href>`, landmarks, headings in order), visible focus states,
