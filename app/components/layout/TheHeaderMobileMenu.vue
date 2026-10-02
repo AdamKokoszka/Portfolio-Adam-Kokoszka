@@ -8,7 +8,7 @@ defineEmits<TheHeaderMobileMenuEmits>()
 
 const { t } = useI18n()
 
-const items = SECTION_IDS.map((id, index) => ({ id, number: String(index + 1).padStart(2, '0') }))
+const items = SECTION_IDS.map((id) => ({ id, number: sectionNumber(id) }))
 
 const panelClass = computed(() =>
   props.isScrolled ? 'top-[calc(100%+0.5rem)] md:top-[calc(100%+0.75rem)]' : 'top-full',
