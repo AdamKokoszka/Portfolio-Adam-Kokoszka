@@ -5,5 +5,9 @@
   },
   "home": {
     "placeholder": "Portfolio w budowie."
+  },
+  "theme": {
+    "toLight": "Włącz jasny motyw",
+    "toDark": "Włącz ciemny motyw"
   }
 }

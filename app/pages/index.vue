@@ -8,7 +8,10 @@ useSeoMeta({
 </script>
 
 <template>
-  <main>
-    <p>{{ t('home.placeholder') }}</p>
+  <main class="min-h-dvh bg-hero">
+    <div class="container flex flex-col items-start gap-6 py-24">
+      <ThemeToggle />
+      <p class="text-fg-muted">{{ t('home.placeholder') }}</p>
+    </div>
   </main>
 </template>
