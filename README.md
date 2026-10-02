@@ -34,6 +34,26 @@ The dev server runs at http://localhost:3000.
 | `npm run typecheck`    | Type-check with vue-tsc                   |
 | `npm run check`        | Lint + format check + type-check          |
 
+## Quality gates
+
+- **CI** (GitHub Actions): lint, format check, type-check, static build.
+- **Lighthouse CI**: audits `/` and `/en` on every PR — accessibility and SEO must score ≥ 95,
+  performance and best practices warn below 90. Reports are uploaded as a workflow artifact.
+- **SEO**: sitemap (`/sitemap_index.xml`), `robots.txt`, `hreflang` and canonical links are
+  generated at build time.
+
+## Editor setup
+
+**WebStorm** (Settings → Languages & Frameworks):
+
+- _Node.js_ → interpreter from `.nvmrc` (`~/.nvm/versions/node/v24.x`), package manager `npm`
+- _JavaScript → Code Quality Tools → ESLint_ → **Automatic ESLint configuration**, ✓ _Run eslint --fix on save_
+- _JavaScript → Prettier_ → **Automatic Prettier configuration**, ✓ _Run on save_
+- _Style Sheets → Tailwind CSS_ is detected automatically
+- `.editorconfig` is picked up out of the box
+
+**VS Code**: recommended extensions and settings are in [`.vscode/`](./.vscode).
+
 ## Contributing
 
 - One branch per task (`feat/…`, `fix/…`, `chore/…`), merged to `main` via pull request.
