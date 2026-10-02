@@ -22,7 +22,7 @@ const borderClass = computed(() => (props.isStrong ? 'border-gradient-strong' : 
     <span
       class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-600 ease-smooth bg-spotlight pointer-fine:group-hover/card:opacity-100"
       aria-hidden="true" />
-    <div class="relative">
+    <div class="relative h-full">
       <slot />
     </div>
   </component>
