@@ -1,5 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 
+const SITE_URL = 'https://incocode.com'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -15,10 +17,15 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  components: [
+    // Component name = file name, regardless of folder (no `BaseBase…` / `CommonX` prefixes).
+    { path: '~/components', pathPrefix: false },
+  ],
+
   css: ['~/assets/css/main.css'],
 
   site: {
-    url: 'https://incocode.com',
+    url: SITE_URL,
     name: 'IncoCode — Adam Kokoszka',
   },
 
@@ -70,7 +77,7 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    baseUrl: 'https://incocode.com',
+    baseUrl: SITE_URL,
     defaultLocale: 'pl',
     strategy: 'prefix_except_default',
     detectBrowserLanguage: false,

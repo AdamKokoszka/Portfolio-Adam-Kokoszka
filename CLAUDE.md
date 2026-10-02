@@ -47,7 +47,8 @@ app/
   app.vue              # root: <html lang>, hreflang, <NuxtPage />
   pages/               # routes (index.vue is the whole one-page site)
   components/
-    base/              # generic, reusable UI primitives  → BaseButton, BaseIcon
+    base/              # generic, reusable UI primitives  → BaseButton, BaseEyebrow
+    common/            # shared app-specific widgets      → ThemeToggle, LanguageSwitcher
     layout/            # one-per-page chrome              → TheHeader, TheFooter
     sections/          # page sections                    → SectionHero, SectionAbout
   composables/         # useX() logic                     → useTheme, useScrollSpy
@@ -70,8 +71,8 @@ Create folders only when they get their first file.
 - Prefixes: `Base*` for generic primitives, `The*` for single-instance layout parts,
   `Section*` for page sections. Child components are named after their parent
   (`SectionExperience` → `SectionExperienceCard`).
-- Nuxt auto-imports components by path: `components/base/BaseButton.vue` is used as `<BaseButton>`
-  (folder prefix is deduplicated). Keep file name = component name.
+- Components are auto-imported **by file name only** (`pathPrefix: false`):
+  `components/common/ThemeToggle.vue` → `<ThemeToggle>`. File names must therefore be unique.
 - Props/emits: type-based (`defineProps<{ … }>()`, `defineEmits<{ … }>()`), props in camelCase,
   events in camelCase. Use `withDefaults` / destructuring defaults, never `required` + default.
 - Keep components small and presentational; move logic to composables.
