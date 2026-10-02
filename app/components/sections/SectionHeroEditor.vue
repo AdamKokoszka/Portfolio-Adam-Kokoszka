@@ -9,17 +9,9 @@ defineEmits<SectionHeroEditorEmits>()
 const { t } = useI18n()
 
 const editor = useTemplateRef('editor')
-const isVisible = useElementVisibility(editor)
-const documentVisibility = useDocumentVisibility()
-const reducedMotion = usePreferredReducedMotion()
+const canAnimate = useCanAnimate(editor)
 
-const isActive = computed(
-  () =>
-    !props.isPaused &&
-    isVisible.value &&
-    documentVisibility.value === 'visible' &&
-    reducedMotion.value !== 'reduce',
-)
+const isActive = computed(() => !props.isPaused && canAnimate.value)
 
 const { text: focusText, isTyping } = useTypewriter(FOCUS_WORDS, isActive)
 
