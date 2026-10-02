@@ -59,5 +59,44 @@
     "title": "Od pierwszej strony do złożonych aplikacji.",
     "paragraph1": "Jestem Senior Frontend Developerem specjalizującym się w Vue.js. Mam doświadczenie w rozwijaniu systemów dla hotelarstwa i branży ubezpieczeniowej. Dbam o czytelny kod, wygodne interfejsy i rozwiązania, które można sprawnie utrzymywać i rozwijać.",
     "paragraph2": "Pierwsze strony w HTML tworzyłem jeszcze w gimnazjum. Z czasem zainteresowanie przerodziło się w zawód, a proste strony ustąpiły miejsca rozbudowanym aplikacjom. Nadal chętnie poznaję nowe technologie i szukam lepszych sposobów rozwiązywania problemów. W codziennej pracy wykorzystuję również AI do tworzenia i rozwijania aplikacji."
+  },
+  "experience": {
+    "eyebrow": "Doświadczenie i edukacja",
+    "work": "Doświadczenie",
+    "education": "Edukacja",
+    "present": "obecnie",
+    "companies": {
+      "antologic": {
+        "name": "Antologic",
+        "location": "Praca zdalna",
+        "roles": {
+          "senior": "Senior Frontend Developer (Vue.js)",
+          "regular": "Frontend Developer (Vue.js)",
+          "junior": "Junior Frontend Developer (Vue.js)"
+        }
+      },
+      "i4s": {
+        "name": "I4S Innovation Solutions",
+        "roles": {
+          "frontend": "Frontend Developer"
+        }
+      },
+      "emediator": {
+        "name": "eMediator.pl sp. z o.o.",
+        "roles": {
+          "frontend": "Programista Frontend"
+        }
+      }
+    },
+    "schools": {
+      "wsti": {
+        "name": "Wyższa Szkoła Technologii Informatycznych w Katowicach",
+        "degree": "Informatyka, studia inżynierskie"
+      },
+      "zsl": {
+        "name": "Zespół Szkół Łączności w Gliwicach",
+        "degree": "Technikum, kierunek informatyka"
+      }
+    }
   }
 }

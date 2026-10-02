@@ -59,5 +59,44 @@
     "title": "From first web pages to complex applications.",
     "paragraph1": "I'm a Senior Frontend Developer specialising in Vue.js, with experience building systems for the hospitality and insurance industries. I care about readable code, comfortable interfaces and solutions that are easy to maintain and grow.",
     "paragraph2": "I built my first HTML pages back in middle school. Over time that interest turned into a profession, and simple pages gave way to complex applications. I still enjoy learning new technologies and looking for better ways to solve problems. In my day-to-day work I also use AI to build and develop applications."
+  },
+  "experience": {
+    "eyebrow": "Experience and education",
+    "work": "Experience",
+    "education": "Education",
+    "present": "present",
+    "companies": {
+      "antologic": {
+        "name": "Antologic",
+        "location": "Remote",
+        "roles": {
+          "senior": "Senior Frontend Developer (Vue.js)",
+          "regular": "Frontend Developer (Vue.js)",
+          "junior": "Junior Frontend Developer (Vue.js)"
+        }
+      },
+      "i4s": {
+        "name": "I4S Innovation Solutions",
+        "roles": {
+          "frontend": "Frontend Developer"
+        }
+      },
+      "emediator": {
+        "name": "eMediator.pl sp. z o.o.",
+        "roles": {
+          "frontend": "Frontend Developer"
+        }
+      }
+    },
+    "schools": {
+      "wsti": {
+        "name": "University of Information Technology in Katowice",
+        "degree": "Computer Science, Engineer's degree"
+      },
+      "zsl": {
+        "name": "Zespół Szkół Łączności in Gliwice",
+        "degree": "Technical secondary school, IT"
+      }
+    }
   }
 }

@@ -1,0 +1,28 @@
+export type LogoFit = 'tight' | 'padded'
+
+export interface ExperienceRole {
+  id: string
+  from: string
+  to: string | null
+}
+
+export interface ExperienceItem {
+  id: string
+  logo: string
+  logoFit: LogoFit
+  isFeatured?: boolean
+  roles: readonly ExperienceRole[]
+}
+
+export interface EducationItem {
+  id: string
+  logo: string
+  logoFit: LogoFit
+  from: string
+  to: string
+}
+
+export interface SectionExperienceTimelineProps {
+  companyId: string
+  roles: readonly ExperienceRole[]
+}
