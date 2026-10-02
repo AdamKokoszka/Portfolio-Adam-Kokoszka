@@ -110,6 +110,7 @@
     "filters": {
       "all": "Wszystkie",
       "frontend": "Frontend",
+      "backend": "Backend",
       "tools": "Narzędzia",
       "ai": "AI"
     }

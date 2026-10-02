@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { promiseTimeout } from '@vueuse/core'
-import { TECHNOLOGIES } from '~/data/technologies'
+import { TECH_CATEGORIES, TECHNOLOGIES } from '~/data/technologies'
 import type { TechFilter } from '~/types/technologies'
 
 const { t } = useI18n()
@@ -19,12 +19,13 @@ const visibleTechnologies = computed(() =>
     : TECHNOLOGIES.filter((tech) => tech.category === activeFilter.value),
 )
 
-const COUNTS = {
-  all: TECHNOLOGIES.length,
-  frontend: TECHNOLOGIES.filter((tech) => tech.category === 'frontend').length,
-  tools: TECHNOLOGIES.filter((tech) => tech.category === 'tools').length,
-  ai: TECHNOLOGIES.filter((tech) => tech.category === 'ai').length,
-} satisfies Record<TechFilter, number>
+const COUNTS = Object.fromEntries([
+  ['all', TECHNOLOGIES.length],
+  ...TECH_CATEGORIES.map((category) => [
+    category,
+    TECHNOLOGIES.filter((tech) => tech.category === category).length,
+  ]),
+]) as Record<TechFilter, number>
 
 const trackClass = computed(() =>
   isExpanded.value

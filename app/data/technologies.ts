@@ -1,6 +1,6 @@
 import type { Technology } from '~/types/technologies'
 
-export const TECH_CATEGORIES = ['frontend', 'tools', 'ai'] as const
+export const TECH_CATEGORIES = ['frontend', 'backend', 'tools', 'ai'] as const
 
 export const TECHNOLOGIES: readonly Technology[] = [
   { id: 'vue', name: 'Vue.js', icon: 'logos:vue', url: 'https://vuejs.org', category: 'frontend' },
@@ -53,8 +53,79 @@ export const TECHNOLOGIES: readonly Technology[] = [
     url: 'https://axios-http.com',
     category: 'frontend',
   },
+  {
+    id: 'nuxt',
+    name: 'Nuxt',
+    icon: 'logos:nuxt-icon',
+    url: 'https://nuxt.com',
+    category: 'frontend',
+  },
+  {
+    id: 'vee-validate',
+    name: 'VeeValidate',
+    icon: 'ic:form-check',
+    url: 'https://vee-validate.logaretm.com',
+    category: 'frontend',
+  },
+  { id: 'zod', name: 'Zod', icon: 'logos:zod', url: 'https://zod.dev', category: 'frontend' },
+  {
+    id: 'echarts',
+    name: 'ECharts',
+    icon: 'simple-icons:apacheecharts',
+    url: 'https://echarts.apache.org',
+    category: 'frontend',
+  },
+  {
+    id: 'nodejs',
+    name: 'Node.js',
+    icon: 'logos:nodejs-icon',
+    url: 'https://nodejs.org',
+    category: 'backend',
+  },
+  {
+    id: 'express',
+    name: 'Express',
+    icon: 'simple-icons:express',
+    url: 'https://expressjs.com',
+    category: 'backend',
+  },
+  {
+    id: 'mongodb',
+    name: 'MongoDB',
+    icon: 'logos:mongodb-icon',
+    url: 'https://www.mongodb.com',
+    category: 'backend',
+  },
   { id: 'vite', name: 'Vite', icon: 'logos:vitejs', url: 'https://vite.dev', category: 'tools' },
   { id: 'git', name: 'Git', icon: 'logos:git-icon', url: 'https://git-scm.com', category: 'tools' },
+  {
+    id: 'eslint',
+    name: 'ESLint',
+    icon: 'logos:eslint',
+    url: 'https://eslint.org',
+    category: 'tools',
+  },
+  {
+    id: 'prettier',
+    name: 'Prettier',
+    icon: 'logos:prettier',
+    url: 'https://prettier.io',
+    category: 'tools',
+  },
+  {
+    id: 'docker',
+    name: 'Docker',
+    icon: 'logos:docker-icon',
+    url: 'https://www.docker.com',
+    category: 'tools',
+  },
+  {
+    id: 'gitlab-ci',
+    name: 'GitLab CI',
+    icon: 'logos:gitlab-icon',
+    url: 'https://docs.gitlab.com/ci/',
+    category: 'tools',
+  },
   {
     id: 'claude',
     name: 'Claude / Claude Code',
