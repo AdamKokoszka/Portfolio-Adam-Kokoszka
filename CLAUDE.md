@@ -166,7 +166,11 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Raster images live in `public/images/` and are rendered with `<NuxtImg>`. Locally they go through
   IPX; on Netlify through the Netlify Image CDN, which supports only `fit: cover | contain | fill`
   (no `inside` / `outside`) — prefer sizing by `width` only. SVGs are rendered with plain `<img>`.
+- `sizes` always uses screen prefixes, including the base one (`xs:100vw sm:100vw md:50vw lg:570px`);
+  an unprefixed `vw` value produces 1px / 2px srcset candidates. `image.screens` in `nuxt.config`
+  must keep the full list (xs–xxl), only md / lg are tuned to the design breakpoints.
 - After adding or changing images, verify the generated URLs return 200 on the deploy preview.
+- Source images go through TinyPNG / similar before being committed (keep repo history small).
 - Above-the-fold images: `loading="eager"` + `fetchpriority="high"` + `sizes`; everything else
   `loading="lazy"`.
 

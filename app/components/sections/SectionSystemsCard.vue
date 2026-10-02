@@ -9,7 +9,7 @@ const VARIANTS = {
   featured: {
     root: 'h-105 md:h-110',
     image: 'object-[62%_50%] md:object-[60%_50%]',
-    sizes: '100vw lg:1160px',
+    sizes: 'xs:100vw sm:100vw md:100vw lg:1160px',
     shade:
       'bg-[linear-gradient(180deg,rgb(13_15_18/0)_25%,rgb(13_15_18/0.78)_58%,rgb(13_15_18/0.97)_100%)] md:bg-[linear-gradient(90deg,rgb(13_15_18/0.96)_0%,rgb(13_15_18/0.86)_30%,rgb(13_15_18/0.2)_62%,rgb(13_15_18/0)_80%)]',
     body: 'inset-x-5.5 bottom-6 md:inset-y-0 md:right-auto md:left-13 md:flex md:w-105 md:flex-col md:justify-center',
@@ -19,7 +19,7 @@ const VARIANTS = {
   compact: {
     root: 'h-75 md:h-100',
     image: 'object-center',
-    sizes: '100vw md:50vw lg:570px',
+    sizes: 'xs:100vw sm:100vw md:50vw lg:570px',
     shade:
       'bg-[linear-gradient(180deg,rgb(13_15_18/0)_35%,rgb(13_15_18/0.72)_68%,rgb(13_15_18/0.96)_100%)]',
     body: 'inset-x-5 bottom-5.5 md:inset-x-8 md:bottom-7.5',
