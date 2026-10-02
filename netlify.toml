@@ -1,0 +1,31 @@
+[build]
+  command = "npm run generate"
+  publish = ".output/public"
+
+# Node version is read from .nvmrc.
+
+[[headers]]
+  for = "/_nuxt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Polish lives at the root — real 301s instead of the prerendered meta-refresh pages.
+[[redirects]]
+  from = "/pl"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pl/*"
+  to = "/"
+  status = 301
+  force = true
