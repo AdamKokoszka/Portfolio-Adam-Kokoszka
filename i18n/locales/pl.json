@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Adam Kokoszka - Senior Frontend Developer",
-    "description": "Adam Kokoszka - Senior Frontend Developer specjalizujący się w Vue.js. Tworzę przemyślane interfejsy aplikacji webowych."
+    "description": "Adam Kokoszka - Senior Frontend Developer specjalizujący się w Vue.js. Tworzę przemyślane interfejsy aplikacji webowych.",
+    "ogImageAlt": "Adam Kokoszka - Senior Frontend Developer, IncoCode"
   },
   "theme": {
     "toLight": "Włącz jasny motyw",
@@ -150,5 +151,12 @@
   "copy": {
     "copied": "Skopiowano",
     "failed": "Nie udało się skopiować"
+  },
+  "error": {
+    "notFoundTitle": "Nie znaleziono strony",
+    "notFoundDescription": "Strona, której szukasz, nie istnieje albo została przeniesiona.",
+    "title": "Coś poszło nie tak",
+    "description": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie za chwilę.",
+    "backHome": "Wróć na stronę główną"
   }
 }

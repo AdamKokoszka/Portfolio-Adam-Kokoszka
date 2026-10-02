@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&family=JetBrains+Mono:wght@400&display=block" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{font-family:Manrope,sans-serif;color:#f4f6f8;background:linear-gradient(165deg,#222a32 0%,#28313b 55%,#2b3540 100%);position:relative}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(157,200,238,.22) 1.3px,transparent 1.6px);background-size:20px 20px;-webkit-mask-image:radial-gradient(ellipse 55% 75% at 78% 50%,#000 15%,transparent 72%)}
+.glow{position:absolute;width:760px;height:760px;right:-160px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(97,150,255,.2),transparent 64%)}
+.brace{position:absolute;right:20px;top:20px;font-family:'JetBrains Mono';font-size:520px;line-height:1;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1px rgba(157,200,238,.11)}
+.text{position:absolute;left:84px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;width:600px}
+.pill{align-self:flex-start;display:flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;border:1px solid rgba(157,200,238,.14);background:rgba(97,150,255,.12);color:#8ab4ff;font-size:15px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.pill i{width:9px;height:9px;border-radius:50%;background:#6196ff;display:block}
+h1{margin-top:22px;font-size:92px;line-height:.98;letter-spacing:-.045em;font-weight:600}
+h1 .n1{display:block;font-weight:300;opacity:.82}
+h1 .n2{font-weight:700}
+h1 .dot{display:inline-block;width:.16em;height:.16em;margin-left:.06em;border-radius:.04em;background:#6196ff}
+.role{margin-top:26px;font-size:30px;font-weight:500;opacity:.92}
+.role mark{color:inherit;background:linear-gradient(transparent 58%,rgba(97,150,255,.38) 58%,rgba(97,150,255,.38) 92%,transparent 92%);padding:0 .08em}
+.stack{margin-top:18px;font-size:20px;color:#bbc5cf}
+.url{position:absolute;left:84px;bottom:52px;font-size:20px;font-weight:600;color:#8ab4ff;letter-spacing:.02em}
+.visual{position:absolute;right:70px;top:50%;width:440px;height:550px;transform:translateY(-46%)}
+.disc{position:absolute;left:8px;top:84px;width:424px;height:424px;border-radius:50%;background:radial-gradient(120% 90% at 30% 18%,#7fa6ff 0%,#4f7fe3 34%,#2f528f 68%,#263548 100%);box-shadow:0 50px 100px -40px rgba(40,90,200,.5)}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(157,200,238,.16);inset:-30px}
+.ring2{inset:-58px;border-style:dashed;border-color:rgba(157,200,238,.11)}
+.portrait{position:absolute;left:-9px;top:-21px;width:459px;height:574px;object-fit:cover;object-position:top;-webkit-mask-image:radial-gradient(circle 212px at 229.5px 307px,#000 99.6%,transparent 100%),linear-gradient(#000,#000);-webkit-mask-size:100% 100%,100% 307px;-webkit-mask-repeat:no-repeat}
+</style></head>
+<body>
+<div class="glow"></div><div class="dots"></div><div class="brace">{ }</div>
+<div class="text">
+  <div class="pill"><i></i>IncoCode</div>
+  <h1><span class="n1">Adam</span><span class="n2">Kokoszka<i class="dot"></i></span></h1>
+  <p class="role">Senior <mark>Frontend</mark> Developer</p>
+  <p class="stack">Vue.js · TypeScript · Nuxt · Tailwind CSS</p>
+</div>
+<div class="url">incocode.com</div>
+<div class="visual"><div class="disc"><i class="ring"></i><i class="ring ring2"></i></div><img class="portrait" src="../../public/images/adam-kokoszka.webp"></div>
+</body></html>

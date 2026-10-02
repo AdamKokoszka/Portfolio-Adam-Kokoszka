@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Adam Kokoszka - Senior Frontend Developer",
-    "description": "Adam Kokoszka - Senior Frontend Developer specialising in Vue.js. I build thoughtful web application interfaces."
+    "description": "Adam Kokoszka - Senior Frontend Developer specialising in Vue.js. I build thoughtful web application interfaces.",
+    "ogImageAlt": "Adam Kokoszka - Senior Frontend Developer, IncoCode"
   },
   "theme": {
     "toLight": "Switch to light theme",
@@ -150,5 +151,12 @@
   "copy": {
     "copied": "Copied",
     "failed": "Couldn't copy"
+  },
+  "error": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved.",
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again in a moment.",
+    "backHome": "Back to the home page"
   }
 }
