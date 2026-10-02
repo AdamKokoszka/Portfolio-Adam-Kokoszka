@@ -76,7 +76,7 @@ const togglePause = () => {
         </I18nT>
 
         <div
-          class="order-2 mt-7 flex animate-enter flex-col gap-2.5 [animation-delay:340ms] md:mt-14 md:flex-row md:flex-wrap md:gap-3.5 lg:mt-9.5">
+          class="order-2 mt-7 flex animate-enter flex-col gap-2.5 [animation-delay:340ms] md:mt-24 md:flex-row md:flex-wrap md:gap-3.5 lg:mt-9.5">
           <BaseButton href="#contact">
             {{ t('hero.ctaPrimary') }}
             <Icon
@@ -97,7 +97,7 @@ const togglePause = () => {
         class="relative order-1 mx-auto mt-1 h-93 w-77.5 animate-enter [animation-delay:255ms] md:mt-14 md:h-120 md:w-100 lg:order-none lg:mx-0 lg:-mt-6 lg:mr-7 lg:h-135 lg:w-112.5 lg:justify-self-end">
         <SectionHeroVisual />
         <SectionHeroEditor
-          class="absolute -bottom-5.5 -left-1.5 z-10 md:-bottom-4.5 md:-left-10 lg:-bottom-3 lg:-left-24"
+          class="absolute -bottom-5.5 -left-1.5 z-10 md:-bottom-14 md:-left-16 lg:-bottom-8 lg:-left-10"
           :is-paused="isPaused"
           @toggle-pause="togglePause" />
       </div>

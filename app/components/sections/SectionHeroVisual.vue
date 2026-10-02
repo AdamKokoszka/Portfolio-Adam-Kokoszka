@@ -77,6 +77,6 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
       format="webp"
       loading="eager"
       fetchpriority="high"
-      class="absolute -top-1.25 -left-2.5 h-162.5 w-130 mask-portrait object-cover object-top" />
+      class="absolute -top-7.5 -left-2.5 h-162.5 w-130 mask-portrait object-cover object-top" />
   </div>
 </template>
