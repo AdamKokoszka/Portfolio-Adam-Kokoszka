@@ -5,5 +5,8 @@
   "printWidth": 100,
   "trailingComma": "all",
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./app/assets/css/main.css"
+  "tailwindStylesheet": "./app/assets/css/main.css",
+  "singleAttributePerLine": true,
+  "bracketSameLine": true,
+  "htmlWhitespaceSensitivity": "ignore"
 }
