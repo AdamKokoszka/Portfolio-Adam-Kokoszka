@@ -28,6 +28,15 @@ export default defineNuxtConfig({
     '/pl/**': { redirect: { to: '/', statusCode: 301 } },
   },
 
+  nitro: {
+    prerender: {
+      // `en.html` instead of `en/index.html`, so `/en` is served as-is (no trailing-slash redirect).
+      autoSubfolderIndex: false,
+      // Leave `/pl` to the host-level 301 instead of a prerendered meta-refresh page.
+      ignore: ['/pl'],
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
