@@ -9,6 +9,7 @@ const number = sectionNumber('stack')
 const activeFilter = ref<TechFilter>('all')
 const isExpanded = ref(false)
 const track = useTemplateRef('track')
+const viewport = useTemplateRef('viewport')
 const reducedMotion = usePreferredReducedMotion()
 
 const visibleTechnologies = computed(() =>
@@ -26,13 +27,49 @@ const COUNTS = {
 
 const trackClass = computed(() =>
   isExpanded.value
-    ? 'grid grid-cols-3 gap-3 md:grid-cols-[repeat(auto-fill,minmax(9.375rem,1fr))] md:gap-4'
+    ? 'flex flex-wrap justify-center gap-3 -m-1 p-1 md:gap-4 lg:mx-auto lg:max-w-[calc(6*9.375rem+5*1rem+0.5rem)]'
     : 'flex snap-x snap-mandatory scroll-px-1 gap-4 overflow-x-auto [scrollbar-width:none] -mt-2 -ml-1 -mr-5 pt-2 pl-1 pr-5 pb-3 md:-mr-1 md:pr-1',
 )
 
 const tileClass = computed(() =>
-  isExpanded.value ? 'h-31 md:h-41' : 'h-34 w-31 shrink-0 snap-start md:h-41 md:w-37.5',
+  isExpanded.value
+    ? 'h-31 w-[calc((100%-1.5rem)/3)] shrink-0 md:h-41 md:w-37.5'
+    : 'h-34 w-31 shrink-0 snap-start md:h-41 md:w-37.5',
 )
+
+const HEIGHT_TRANSITION_CLASSES = [
+  'overflow-hidden',
+  'transition-[height]',
+  'duration-500',
+  'ease-smooth',
+]
+
+const animateHeight = async (update: () => void) => {
+  const el = viewport.value
+  if (!el || reducedMotion.value === 'reduce') return update()
+
+  const from = el.offsetHeight
+  update()
+  await nextTick()
+  const to = el.offsetHeight
+  if (from === to) return
+
+  el.style.height = `${from}px`
+  el.classList.add(...HEIGHT_TRANSITION_CLASSES)
+  el.getBoundingClientRect()
+  el.style.height = `${to}px`
+
+  useTimeoutFn(() => {
+    el.style.height = ''
+    el.classList.remove(...HEIGHT_TRANSITION_CLASSES)
+  }, 520)
+}
+
+const setFilter = (filter: TechFilter) =>
+  animateHeight(() => {
+    activeFilter.value = filter
+    unrefElement(track)?.scrollTo({ left: 0 })
+  })
 
 const ORBITS = [
   {
@@ -58,7 +95,7 @@ const ORBIT_DOT_CLASSES = [
 ] as const
 
 const scrollTrack = (direction: 1 | -1) => {
-  const el = track.value
+  const el = unrefElement(track)
   if (!el) return
   el.scrollBy({
     left: direction * Math.max(200, el.clientWidth * 0.75),
@@ -69,11 +106,10 @@ const scrollTrack = (direction: 1 | -1) => {
 const scrollPrev = () => scrollTrack(-1)
 const scrollNext = () => scrollTrack(1)
 
-const toggleExpanded = () => {
-  isExpanded.value = !isExpanded.value
-}
-
-watch(activeFilter, () => track.value?.scrollTo({ left: 0 }))
+const toggleExpanded = () =>
+  animateHeight(() => {
+    isExpanded.value = !isExpanded.value
+  })
 </script>
 
 <template>
@@ -171,37 +207,45 @@ watch(activeFilter, () => track.value?.scrollTo({ left: 0 }))
       </div>
 
       <SectionStackFilters
-        v-model="activeFilter"
+        :model-value="activeFilter"
         class="mb-5.5 md:mb-7"
-        :counts="COUNTS" />
+        :counts="COUNTS"
+        @update:model-value="setFilter" />
 
-      <ul
-        id="stack-list"
-        ref="track"
-        tabindex="0"
-        class="m-0 list-none"
-        :class="trackClass"
-        :aria-label="t('stack.listLabel')">
-        <BaseCard
-          v-for="tech in visibleTechnologies"
-          :key="tech.id"
-          as="li"
-          class="rounded-[1.125rem]"
-          :class="tileClass">
-          <a
-            :href="tech.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-[0.9375rem]">
-            <Icon
-              :name="tech.icon"
-              class="size-11.5 md:size-14"
-              aria-hidden="true" />
-            {{ tech.name }}
-            <span class="sr-only">{{ t('common.newTab') }}</span>
-          </a>
-        </BaseCard>
-      </ul>
+      <div ref="viewport">
+        <TransitionGroup
+          id="stack-list"
+          ref="track"
+          tag="ul"
+          tabindex="0"
+          class="m-0 list-none"
+          :class="trackClass"
+          :aria-label="t('stack.listLabel')"
+          move-class="transition-transform! duration-500! ease-smooth!"
+          enter-active-class="transition-[opacity,scale]! duration-400! ease-smooth!"
+          enter-from-class="scale-95 opacity-0"
+          leave-active-class="hidden">
+          <BaseCard
+            v-for="tech in visibleTechnologies"
+            :key="tech.id"
+            as="li"
+            class="rounded-[1.125rem]"
+            :class="tileClass">
+            <a
+              :href="tech.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-[0.9375rem]">
+              <Icon
+                :name="tech.icon"
+                class="size-11.5 md:size-14"
+                aria-hidden="true" />
+              {{ tech.name }}
+              <span class="sr-only">{{ t('common.newTab') }}</span>
+            </a>
+          </BaseCard>
+        </TransitionGroup>
+      </div>
 
       <div class="mt-6.5 flex justify-center md:mt-9">
         <BaseButton
