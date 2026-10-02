@@ -30,3 +30,34 @@ jobs:
       - run: npm run typecheck
 
       - run: npm run generate
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: .output/public
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: .output/public
+
+      - run: npx --yes @lhci/cli@0.15.1 autorun
+
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-report
+          path: .lighthouseci
+          retention-days: 14
