@@ -8,6 +8,7 @@ export interface Technology {
   id: string
   name: string
   icon: string
+  url: string
   category: TechCategory
 }
 
