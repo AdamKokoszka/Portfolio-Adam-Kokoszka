@@ -3,6 +3,7 @@ import type { BaseLogoTileProps, LogoFit } from '~/types/base'
 
 const props = withDefaults(defineProps<BaseLogoTileProps>(), {
   fit: 'padded',
+  height: 72,
 })
 
 const FIT_CLASSES = {
@@ -30,6 +31,7 @@ const isVector = computed(() => props.src.endsWith('.svg'))
       :src="src"
       :alt="alt"
       width="72"
+      :height="height"
       densities="x1 x2"
       format="webp"
       loading="lazy"

@@ -16,12 +16,14 @@ export const EXPERIENCE: readonly ExperienceItem[] = [
     id: 'i4s',
     logo: '/images/logos/i4s-innovation-solutions.webp',
     logoFit: 'tight',
+    logoHeight: 39,
     roles: [{ id: 'frontend', from: '2020-02', to: '2022-03' }],
   },
   {
     id: 'emediator',
     logo: '/images/logos/emediator.webp',
     logoFit: 'tight',
+    logoHeight: 60,
     roles: [{ id: 'frontend', from: '2017-07', to: '2017-08' }],
   },
 ]
