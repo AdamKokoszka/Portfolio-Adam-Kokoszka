@@ -21,10 +21,10 @@ const switchLocalePath = useSwitchLocalePath()
         :to="switchLocalePath(item.code)"
         :hreflang="item.language"
         :lang="item.language"
-        :aria-label="item.name"
         :aria-current="item.code === locale ? 'true' : undefined"
         class="inline-flex h-11 items-center px-1.5 text-fg-soft uppercase transition-colors duration-400 ease-smooth hover:text-fg aria-[current=true]:text-accent-fg lg:h-10">
         {{ item.code }}
+        <span class="sr-only">{{ item.name }}</span>
       </NuxtLink>
     </template>
   </div>
