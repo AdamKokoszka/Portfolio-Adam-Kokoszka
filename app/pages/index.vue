@@ -3,7 +3,9 @@ import { SECTION_IDS } from '~/data/navigation'
 
 const { t } = useI18n()
 
-const PLACEHOLDER_SECTION_IDS = SECTION_IDS.filter((id) => !['about', 'experience'].includes(id))
+const PLACEHOLDER_SECTION_IDS = SECTION_IDS.filter(
+  (id) => !['about', 'experience', 'stack'].includes(id),
+)
 
 useSeoMeta({
   title: () => t('meta.title'),
@@ -16,6 +18,7 @@ useSeoMeta({
     <SectionHero />
     <SectionAbout />
     <SectionExperience />
+    <SectionStack />
     <section
       v-for="(id, index) in PLACEHOLDER_SECTION_IDS"
       :id="id"
