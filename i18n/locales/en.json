@@ -3,9 +3,6 @@
     "title": "Adam Kokoszka - Senior Frontend Developer",
     "description": "Adam Kokoszka - Senior Frontend Developer specialising in Vue.js. I build thoughtful web application interfaces."
   },
-  "home": {
-    "placeholder": "Portfolio under construction."
-  },
   "theme": {
     "toLight": "Switch to light theme",
     "toDark": "Switch to dark theme"
@@ -15,11 +12,11 @@
     "owner": "Adam Kokoszka"
   },
   "header": {
-    "brandLabel": "IncoCode Adam Kokoszka - back to top",
     "navLabel": "Main navigation",
     "mobileNavLabel": "Mobile menu",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "backToTop": "back to top"
   },
   "nav": {
     "about": "About",
@@ -30,5 +27,32 @@
   },
   "language": {
     "label": "Site language"
+  },
+  "hero": {
+    "hello": "Hi, my name is",
+    "firstName": "Adam",
+    "lastName": "Kokoszka",
+    "role": "Senior {highlight} Developer",
+    "roleHighlight": "Frontend",
+    "lead": "{strong} I combine clean code with care for the user experience.",
+    "leadStrong": "I build thoughtful web application interfaces.",
+    "ctaPrimary": "Let's talk",
+    "ctaSecondary": "My experience",
+    "note": "Keep it\nsimple…",
+    "scroll": "Scroll",
+    "photoAlt": "Adam Kokoszka - Senior Frontend Developer",
+    "editor": {
+      "file": "profile.js",
+      "label": "Code: const developer = {'{'} name: 'Adam Kokoszka', focus: 'frontend' {'}'};",
+      "pause": "Pause animation",
+      "resume": "Resume animation"
+    }
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "common": {
+    "newTab": "(opens in a new tab)"
   }
 }
