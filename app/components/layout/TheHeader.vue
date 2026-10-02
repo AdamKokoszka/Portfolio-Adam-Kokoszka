@@ -14,31 +14,15 @@ const headerClass = computed(() =>
     : 'h-16 border-b border-line md:h-21',
 )
 
-const isMenuOpen = ref(false)
 const menuButton = useTemplateRef('menuButton')
-const isDesktop = useMediaQuery('(min-width: 68.75rem)')
-const isScrollLocked = useScrollLock(import.meta.client ? document.body : null)
 
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-
-const closeMenu = () => {
-  isMenuOpen.value = false
-}
-
-watch(isMenuOpen, (open) => {
-  isScrollLocked.value = open
-})
-
-watch(isDesktop, (desktop) => {
-  if (desktop) closeMenu()
-})
-
-onKeyStroke('Escape', () => {
-  if (!isMenuOpen.value) return
-  closeMenu()
-  menuButton.value?.$el.focus()
+const {
+  isOpen: isMenuOpen,
+  toggle: toggleMenu,
+  close: closeMenu,
+} = useMobileMenu({
+  closeAt: '(min-width: 68.75rem)',
+  onEscape: () => menuButton.value?.$el.focus(),
 })
 </script>
 
