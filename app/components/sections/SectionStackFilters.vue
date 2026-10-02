@@ -14,7 +14,7 @@ const FILTERS: readonly TechFilter[] = ['all', ...TECH_CATEGORIES]
 <template>
   <div
     role="group"
-    class="-mx-5 flex [scrollbar-width:none] gap-2 overflow-x-auto px-5 md:mx-0 md:flex-wrap md:px-0"
+    class="flex flex-wrap gap-2"
     :aria-label="t('stack.filtersLabel')">
     <button
       v-for="filter in FILTERS"
