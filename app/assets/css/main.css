@@ -133,6 +133,8 @@
   --shadow-card: var(--c-shadow);
   --shadow-card-hover: 0 0 0 1px var(--c-card-ring), var(--c-shadow);
   --shadow-disc: var(--c-shadow-disc);
+  --shadow-panel: var(--c-shadow-panel);
+  --color-panel-card: var(--c-panel-card);
 }
 
 @layer base {
@@ -179,6 +181,9 @@
       rgb(58 72 88 / 0.28)
     );
     --c-gradient-border-strong: linear-gradient(135deg, #9dc8ee, #5d8cc0 45%, #3a4858);
+    --c-gradient-panel: linear-gradient(160deg, #33404d 0%, #29333e 60%, #262f39 100%);
+    --c-shadow-panel: 0 40px 80px -40px rgb(0 0 0 / 0.6);
+    --c-panel-card: #222a33;
     --c-gradient-disc: radial-gradient(
       120% 90% at 30% 18%,
       #7fa6ff 0%,
@@ -233,6 +238,9 @@
       rgb(20 32 46 / 0.08)
     );
     --c-gradient-border-strong: linear-gradient(135deg, #8db2f7, #2f6bea 42%, #c6d2e2);
+    --c-gradient-panel: linear-gradient(160deg, #ffffff, #f7f9fc);
+    --c-shadow-panel: 0 40px 80px -44px rgb(30 52 96 / 0.3);
+    --c-panel-card: #f2f5f9;
     --c-gradient-disc: radial-gradient(
       120% 90% at 30% 18%,
       #a9c6ff 0%,
@@ -498,4 +506,15 @@
 
 @utility bg-peach-glow {
   background: radial-gradient(closest-side, rgb(255 170 114 / 0.16), transparent);
+}
+
+@utility panel-surface {
+  border: 1.5px solid transparent;
+  background:
+    var(--c-gradient-panel) padding-box,
+    var(--c-gradient-border-strong) border-box;
+}
+
+@utility bg-glow {
+  background: radial-gradient(circle, var(--c-glow), transparent 66%);
 }
