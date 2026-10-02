@@ -4,11 +4,23 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
 
-  modules: ['@nuxt/eslint', '@nuxtjs/i18n'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxtjs/i18n',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+  ],
 
   devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
+
+  site: {
+    url: 'https://incocode.com',
+    name: 'IncoCode — Adam Kokoszka',
+  },
 
   routeRules: {
     // Polish lives at the root; `/pl` would duplicate it.
@@ -22,6 +34,23 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
+  },
+
+  fonts: {
+    // Downloaded at build time and self-hosted — no requests to Google at runtime.
+    defaults: {
+      subsets: ['latin', 'latin-ext'],
+    },
+    families: [
+      { name: 'Manrope', provider: 'google', weights: [300, 400, 500, 600, 700] },
+      { name: 'JetBrains Mono', provider: 'google', weights: [400, 500] },
+      { name: 'Caveat', provider: 'google', weights: [500, 600] },
+    ],
+  },
+
+  image: {
+    format: ['avif', 'webp'],
+    quality: 80,
   },
 
   eslint: {
