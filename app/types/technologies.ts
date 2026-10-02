@@ -1,8 +1,9 @@
 import type { TECH_CATEGORIES } from '~/data/technologies'
+import type { CategoryFilter } from './composables'
 
 export type TechCategory = (typeof TECH_CATEGORIES)[number]
 
-export type TechFilter = 'all' | TechCategory
+export type TechFilter = CategoryFilter<TechCategory>
 
 export interface Technology {
   id: string

@@ -42,6 +42,13 @@ export interface BaseLogoTileProps {
   fit?: LogoFit
 }
 
+export interface WaveShape {
+  width: number
+  height: number
+  lines: number
+  spread: number
+}
+
 export interface BaseWavesProps {
   width: number
   height: number
