@@ -1,13 +1,14 @@
 <script setup lang="ts">
-const {
-  variant = 'primary',
-  size = 'md',
-  href,
-} = defineProps<{
+interface Props {
   variant?: 'primary' | 'ghost'
   size?: 'md' | 'sm'
   href?: string
-}>()
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'primary',
+  size: 'md',
+})
 
 const VARIANT_CLASSES = {
   primary: 'bg-accent text-on-accent hover:bg-accent-hover',
@@ -19,7 +20,7 @@ const SIZE_CLASSES = {
   sm: 'h-11.5 px-6 text-sm',
 } as const
 
-const classes = computed(() => [VARIANT_CLASSES[variant], SIZE_CLASSES[size]])
+const classes = computed(() => [VARIANT_CLASSES[props.variant], SIZE_CLASSES[props.size]])
 </script>
 
 <template>

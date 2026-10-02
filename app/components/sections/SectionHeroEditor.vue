@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { FOCUS_WORDS } from '~/data/hero'
 
-const { isPaused } = defineProps<{
+const props = defineProps<{
   isPaused: boolean
 }>()
 
@@ -18,7 +18,7 @@ const reducedMotion = usePreferredReducedMotion()
 
 const isActive = computed(
   () =>
-    !isPaused &&
+    !props.isPaused &&
     isVisible.value &&
     documentVisibility.value === 'visible' &&
     reducedMotion.value !== 'reduce',
