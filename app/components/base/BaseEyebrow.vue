@@ -3,6 +3,7 @@ import type { BaseEyebrowProps, EyebrowTone } from '~/types/base'
 
 const props = withDefaults(defineProps<BaseEyebrowProps>(), {
   tone: 'accent',
+  as: 'p',
 })
 
 const TONE_CLASSES = {
@@ -15,10 +16,11 @@ const label = computed(() => `${props.number} / `)
 </script>
 
 <template>
-  <p
+  <component
+    :is="as"
     class="mb-3 text-xs font-bold tracking-[0.16em] uppercase md:mb-4 md:text-[0.8125rem]"
     :class="TONE_CLASSES[tone]">
     <span v-text="label" />
     <slot />
-  </p>
+  </component>
 </template>
