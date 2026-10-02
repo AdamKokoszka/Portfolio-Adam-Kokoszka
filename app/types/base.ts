@@ -14,8 +14,11 @@ export interface BaseButtonProps {
   href?: string
 }
 
+export type IconButtonSize = 'md' | 'lg'
+
 export interface BaseIconButtonProps {
   label: string
+  size?: IconButtonSize
 }
 
 export interface BaseEyebrowProps {
