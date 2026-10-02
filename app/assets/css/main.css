@@ -19,7 +19,6 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
 
 @theme {
   --breakpoint-md: 47.5rem;
@@ -32,13 +31,13 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-rise: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --radius-card: 1.125rem;
-  --radius-panel: 2rem;
+  --text-micro: 0.6875rem;
+  --text-caption: 0.8125rem;
+  --text-ui: 0.9375rem;
 
   --color-ink: #111418;
   --color-ink-surface: #1a1e23;
   --color-ink-fg: #f4f6f8;
-  --color-ink-muted: #a9b4bf;
   --color-ink-soft: #9aa5b1;
   --color-ink-text: #c3ccd5;
   --color-ink-shade: #0d0f12;
@@ -47,7 +46,6 @@
   --color-on-peach: #1c1108;
 
   --color-success: #2fa866;
-  --color-danger: #e9783a;
 
   --color-code-bg: #161c23;
   --color-code-bar: #1b2229;
@@ -59,6 +57,14 @@
   --color-code-string: #ffbe92;
   --color-code-punct: #8d99a6;
   --color-code-prop: #bfd0e0;
+
+  --shadow-glow-accent: 0 0 0 4px rgb(97 150 255 / 0.18), 0 0 18px 4px rgb(97 150 255 / 0.55);
+  --shadow-glow-accent-sm: 0 0 12px 3px rgb(97 150 255 / 0.5);
+  --shadow-glow-peach: 0 0 0 4px rgb(255 170 114 / 0.18), 0 0 18px 4px rgb(255 170 114 / 0.5);
+  --shadow-glow-peach-sm: 0 0 12px 3px rgb(255 170 114 / 0.45);
+  --shadow-editor: 0 26px 50px -22px rgb(4 8 14 / 0.7);
+  --shadow-logo: 0 8px 18px -12px rgb(0 0 0 / 0.55);
+  --shadow-badge: 0 10px 26px -12px rgb(255 170 114 / 0.7);
 
   --animate-enter: enter-up 0.62s var(--ease-smooth) both;
   --animate-rise: rise 1s var(--ease-rise) both;
@@ -109,7 +115,6 @@
   --color-base: var(--c-base);
   --color-alt: var(--c-alt);
   --color-surface: var(--c-surface);
-  --color-surface-raised: var(--c-surface-raised);
   --color-sunken: var(--c-sunken);
 
   --color-fg: var(--c-fg);
@@ -145,7 +150,6 @@
     --c-base: #262e37;
     --c-alt: #2c3640;
     --c-surface: #2f3943;
-    --c-surface-raised: #354049;
     --c-sunken: #1c2229;
     --c-header: #1e252d;
 
@@ -168,7 +172,6 @@
 
     --c-shadow: 0 24px 50px -28px rgb(5 9 15 / 0.7);
     --c-dot: rgb(157 200 238 / 0.24);
-    --c-gridline: rgb(157 200 238 / 0.07);
     --c-glow: rgb(97 150 255 / 0.18);
     --c-spot: rgb(97 150 255 / 0.14);
     --c-card-ring: rgb(97 150 255 / 0.5);
@@ -202,7 +205,6 @@
     --c-base: #f8fafc;
     --c-alt: #edf1f6;
     --c-surface: #ffffff;
-    --c-surface-raised: #ffffff;
     --c-sunken: #e4eaf2;
     --c-header: #ffffff;
 
@@ -225,7 +227,6 @@
 
     --c-shadow: 0 24px 50px -30px rgb(30 52 96 / 0.3);
     --c-dot: rgb(47 107 234 / 0.24);
-    --c-gridline: rgb(20 32 46 / 0.06);
     --c-glow: rgb(47 107 234 / 0.12);
     --c-spot: rgb(47 107 234 / 0.09);
     --c-card-ring: rgb(47 107 234 / 0.45);
@@ -258,7 +259,6 @@
     --c-base: #eef2f6;
     --c-alt: #eef2f6;
     --c-surface: #ffffff;
-    --c-surface-raised: #ffffff;
 
     --c-fg: #14202e;
     --c-fg-muted: #4a5768;
@@ -292,7 +292,6 @@
     --c-base: #252d35;
     --c-alt: #252d35;
     --c-surface: #2f3943;
-    --c-surface-raised: #2f3943;
 
     --c-fg: #f4f6f8;
     --c-fg-muted: #bbc5cf;
@@ -380,13 +379,6 @@
 @utility bg-dots {
   background-image: radial-gradient(var(--c-dot) 1.3px, transparent 1.6px);
   background-size: 20px 20px;
-}
-
-@utility bg-grid {
-  background-image:
-    linear-gradient(var(--c-gridline) 1px, transparent 1px),
-    linear-gradient(90deg, var(--c-gridline) 1px, transparent 1px);
-  background-size: 56px 56px;
 }
 
 @utility container {
