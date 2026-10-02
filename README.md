@@ -42,6 +42,13 @@ The dev server runs at http://localhost:3000.
 - **SEO**: sitemap (`/sitemap_index.xml`), `robots.txt`, `hreflang` and canonical links are
   generated at build time.
 
+## Deployment
+
+The site is deployed to [Netlify](https://www.netlify.com) from `main`. Netlify runs
+`npm run generate` with its `netlify-static` preset and publishes `dist` (see
+[`netlify.toml`](./netlify.toml)); images are resized by the Netlify Image CDN. Every pull request
+gets its own deploy preview.
+
 ## Editor setup
 
 **WebStorm** (Settings → Languages & Frameworks):
