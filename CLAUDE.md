@@ -9,6 +9,8 @@ Single-page site, statically generated, Polish by default with an English versio
 - **TypeScript** in strict mode
 - **Tailwind CSS v4** (CSS-first config in `app/assets/css/main.css`, no `tailwind.config`)
 - **@nuxtjs/i18n**: `pl` (default, served at `/`) and `en` (served at `/en`); `/pl` redirects to `/`
+- **@nuxtjs/color-mode** (dark default, `.dark` / `.light` class on `<html>`, no flash) and
+  **@nuxt/icon** (local SVG collection `ic:`)
 - **@nuxt/fonts** (Manrope, JetBrains Mono, Caveat — self-hosted at build time), **@nuxt/image**
   (`<NuxtImg>` / `<NuxtPicture>`, avif/webp) — use these instead of raw `<img>` / font links
 - **@nuxtjs/sitemap** + **@nuxtjs/robots** (site URL in `site.url`); per-page SEO via `useSeoMeta`
@@ -96,10 +98,28 @@ Create folders only when they get their first file.
 
 ### Styling & theming
 
-- Design tokens (colors, fonts, radii, shadows) are defined once in `main.css` (`@theme` + CSS
-  variables for dark/light). Never hard-code hex values in components.
-- Dark theme is the default; light theme toggled via a class on `<html>`.
-- Respect `prefers-reduced-motion` for every animation. Mobile-first; check 390px and 1440px.
+- **Tailwind only — no `<style>` blocks.** Allowed exceptions: things utilities genuinely can't
+  express (complex keyframes, masks). Reusable visual patterns become a `@utility` in `main.css`
+  or a component — never copy-pasted class soup across components.
+- Design tokens live once in `app/assets/css/main.css`. Theme colors are CSS variables
+  (`--c-*`) swapped by `.dark` / `.light` on `<html>` (@nuxtjs/color-mode, dark by default)
+  and by `.theme-inverted` (inverted section). Use the **semantic utilities**, never hex values
+  and normally no `dark:` / `light:` variants:
+  - surfaces: `bg-base`, `bg-alt`, `bg-surface`, `bg-surface-raised`, `bg-sunken`, `bg-hero`
+  - text: `text-fg`, `text-fg-muted`, `text-fg-soft`; borders: `border-line`
+  - accent: `bg-accent`, `text-accent-fg`, `text-on-accent`, `bg-accent-soft`, `border-accent-line`
+  - warm accent: `text-warm`, `text-warm-fg`, `bg-warm-soft`
+  - fixed dark "Systems" palette: `bg-ink`, `bg-ink-surface`, `text-ink-*`, `bg-peach`, …
+  - helpers: `border-gradient`, `border-gradient-strong` (fill follows `--card-bg`, default
+    surface), `bg-dots`, `bg-grid`, `shadow-card`, `container` (page width + gutters)
+  - fonts: `font-sans` (Manrope), `font-mono` (JetBrains Mono), `font-hand` (Caveat);
+    easing: `ease-smooth`, `ease-rise`
+- Breakpoints follow the design: base = phone, `md` ≥ 760px (tablet), `lg` ≥ 1100px (desktop).
+  Build every component mobile-first for all three at once; check 390px and 1440px.
+- Icons: SVGs from the design in `app/assets/icons/*.svg`, used as
+  `<Icon name="ic:<file>" />` (@nuxt/icon, bundled, inherits `currentColor`). Decorative icons
+  get `aria-hidden="true"`.
+- Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 
 ### Accessibility
 
