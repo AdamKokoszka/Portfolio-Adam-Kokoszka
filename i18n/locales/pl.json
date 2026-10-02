@@ -54,5 +54,10 @@
   },
   "common": {
     "newTab": "(otwiera się w nowej karcie)"
+  },
+  "about": {
+    "title": "Od pierwszej strony do złożonych aplikacji.",
+    "paragraph1": "Jestem Senior Frontend Developerem specjalizującym się w Vue.js. Mam doświadczenie w rozwijaniu systemów dla hotelarstwa i branży ubezpieczeniowej. Dbam o czytelny kod, wygodne interfejsy i rozwiązania, które można sprawnie utrzymywać i rozwijać.",
+    "paragraph2": "Pierwsze strony w HTML tworzyłem jeszcze w gimnazjum. Z czasem zainteresowanie przerodziło się w zawód, a proste strony ustąpiły miejsca rozbudowanym aplikacjom. Nadal chętnie poznaję nowe technologie i szukam lepszych sposobów rozwiązywania problemów. W codziennej pracy wykorzystuję również AI do tworzenia i rozwijania aplikacji."
   }
 }

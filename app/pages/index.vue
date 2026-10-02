@@ -3,6 +3,8 @@ import { SECTION_IDS } from '~/data/navigation'
 
 const { t } = useI18n()
 
+const PLACEHOLDER_SECTION_IDS = SECTION_IDS.filter((id) => id !== 'about')
+
 useSeoMeta({
   title: () => t('meta.title'),
   description: () => t('meta.description'),
@@ -12,8 +14,9 @@ useSeoMeta({
 <template>
   <main>
     <SectionHero />
+    <SectionAbout />
     <section
-      v-for="(id, index) in SECTION_IDS"
+      v-for="(id, index) in PLACEHOLDER_SECTION_IDS"
       :id="id"
       :key="id"
       class="min-h-[80vh] border-t border-line py-28"
