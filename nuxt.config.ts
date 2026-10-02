@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/color-mode',
     '@nuxt/icon',
+    '@vueuse/nuxt',
   ],
 
   devtools: { enabled: true },
