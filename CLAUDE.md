@@ -9,9 +9,15 @@ Single-page site, statically generated, Polish by default with an English versio
 - **TypeScript** in strict mode
 - **Tailwind CSS v4** (CSS-first config in `app/assets/css/main.css`, no `tailwind.config`)
 - **@nuxtjs/i18n**: `pl` (default, served at `/`) and `en` (served at `/en`); `/pl` redirects to `/`
+- **@nuxt/fonts** (Manrope, JetBrains Mono, Caveat — self-hosted at build time), **@nuxt/image**
+  (`<NuxtImg>` / `<NuxtPicture>`, avif/webp) — use these instead of raw `<img>` / font links
+- **@nuxtjs/sitemap** + **@nuxtjs/robots** (site URL in `site.url`); per-page SEO via `useSeoMeta`
+  with texts from i18n (`meta.*`)
 - **ESLint** (`@nuxt/eslint`, flat config) + **Prettier** (with Tailwind class sorting)
+- **Lighthouse CI** in GitHub Actions (`lighthouserc.json`): a11y & SEO ≥ 0.95 are hard gates
 - Node version: see `.nvmrc` (24 LTS). Package manager: **npm** only.
 - Deploy target: Netlify (static). No tests in this project.
+- Editor used by the author: WebStorm.
 
 ## Design source
 
