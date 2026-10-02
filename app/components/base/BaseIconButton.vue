@@ -1,6 +1,5 @@
 <script setup lang="ts">
 defineProps<{
-  /** Accessible name — also shown as a tooltip. */
   label: string
 }>()
 </script>
@@ -10,8 +9,7 @@ defineProps<{
     type="button"
     :aria-label="label"
     :title="label"
-    class="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line text-fg-muted transition-colors duration-400 ease-smooth hover:border-accent-line hover:text-fg lg:size-10"
-  >
+    class="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line text-fg-muted transition-colors duration-400 ease-smooth hover:border-accent-line hover:text-fg lg:size-10">
     <slot />
   </button>
 </template>

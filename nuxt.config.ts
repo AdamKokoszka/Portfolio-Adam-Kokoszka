@@ -20,10 +20,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  components: [
-    // Component name = file name, regardless of folder (no `BaseBase…` / `CommonX` prefixes).
-    { path: '~/components', pathPrefix: false },
-  ],
+  components: [{ path: '~/components', pathPrefix: false }],
 
   css: ['~/assets/css/main.css'],
 
@@ -33,7 +30,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    // Polish lives at the root; `/pl` would duplicate it.
     '/pl': { redirect: { to: '/', statusCode: 301 } },
     '/pl/**': { redirect: { to: '/', statusCode: 301 } },
   },
@@ -56,7 +52,6 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    // Downloaded at build time and self-hosted — no requests to Google at runtime.
     defaults: {
       subsets: ['latin', 'latin-ext'],
     },
@@ -68,7 +63,6 @@ export default defineNuxtConfig({
   },
 
   colorMode: {
-    // Dark is the design default; a visitor's choice is remembered in localStorage.
     preference: 'dark',
     fallback: 'dark',
     classSuffix: '',
@@ -77,8 +71,6 @@ export default defineNuxtConfig({
 
   icon: {
     mode: 'svg',
-    // Icons from the design live in app/assets/icons and are bundled into the client build.
-    // Use literal icon names in templates (no computed names) so the scanner picks them up.
     customCollections: [{ prefix: 'ic', dir: './app/assets/icons' }],
     clientBundle: { scan: true, includeCustomCollections: true },
   },
@@ -90,7 +82,6 @@ export default defineNuxtConfig({
 
   eslint: {
     config: {
-      // Formatting is owned by Prettier.
       stylistic: false,
     },
   },

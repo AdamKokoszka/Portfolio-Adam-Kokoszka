@@ -4,8 +4,6 @@
   # (together with `_redirects` and `_headers` generated from `routeRules`).
   publish = "dist"
 
-# Node version is read from .nvmrc.
-
 [[headers]]
   for = "/_nuxt/*"
   [headers.values]
