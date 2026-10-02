@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { promiseTimeout } from '@vueuse/core'
 import { TECHNOLOGIES } from '~/data/technologies'
 import type { TechFilter } from '~/types/technologies'
 
@@ -40,36 +41,50 @@ const tileClass = computed(() =>
 const HEIGHT_TRANSITION_CLASSES = [
   'overflow-hidden',
   'transition-[height]',
-  'duration-500',
+  'duration-[600ms]',
   'ease-smooth',
 ]
 
-const animateHeight = async (update: () => void) => {
+const FADE_DURATION = 200
+const HEIGHT_DURATION = 600
+
+const isListHidden = ref(false)
+
+const switchLayout = async (update: () => void) => {
   const el = viewport.value
   if (!el || reducedMotion.value === 'reduce') return update()
+
+  isListHidden.value = true
+  await promiseTimeout(FADE_DURATION)
 
   const from = el.offsetHeight
   update()
   await nextTick()
   const to = el.offsetHeight
-  if (from === to) return
 
   el.style.height = `${from}px`
   el.classList.add(...HEIGHT_TRANSITION_CLASSES)
   el.getBoundingClientRect()
   el.style.height = `${to}px`
+  isListHidden.value = false
 
-  useTimeoutFn(() => {
-    el.style.height = ''
-    el.classList.remove(...HEIGHT_TRANSITION_CLASSES)
-  }, 520)
+  await promiseTimeout(HEIGHT_DURATION)
+  el.style.height = ''
+  el.classList.remove(...HEIGHT_TRANSITION_CLASSES)
 }
 
-const setFilter = (filter: TechFilter) =>
-  animateHeight(() => {
+const listClass = computed(() => [
+  trackClass.value,
+  isListHidden.value ? 'opacity-0 duration-200' : 'opacity-100 duration-500',
+])
+
+const setFilter = (filter: TechFilter) => {
+  if (filter === activeFilter.value) return
+  return switchLayout(() => {
     activeFilter.value = filter
-    unrefElement(track)?.scrollTo({ left: 0 })
+    track.value?.scrollTo({ left: 0 })
   })
+}
 
 const ORBITS = [
   {
@@ -95,7 +110,7 @@ const ORBIT_DOT_CLASSES = [
 ] as const
 
 const scrollTrack = (direction: 1 | -1) => {
-  const el = unrefElement(track)
+  const el = track.value
   if (!el) return
   el.scrollBy({
     left: direction * Math.max(200, el.clientWidth * 0.75),
@@ -107,7 +122,7 @@ const scrollPrev = () => scrollTrack(-1)
 const scrollNext = () => scrollTrack(1)
 
 const toggleExpanded = () =>
-  animateHeight(() => {
+  switchLayout(() => {
     isExpanded.value = !isExpanded.value
   })
 </script>
@@ -213,18 +228,13 @@ const toggleExpanded = () =>
         @update:model-value="setFilter" />
 
       <div ref="viewport">
-        <TransitionGroup
+        <ul
           id="stack-list"
           ref="track"
-          tag="ul"
           tabindex="0"
-          class="m-0 list-none"
-          :class="trackClass"
-          :aria-label="t('stack.listLabel')"
-          move-class="transition-transform! duration-500! ease-smooth!"
-          enter-active-class="transition-[opacity,scale]! duration-400! ease-smooth!"
-          enter-from-class="scale-95 opacity-0"
-          leave-active-class="hidden">
+          class="m-0 list-none transition-opacity ease-smooth"
+          :class="listClass"
+          :aria-label="t('stack.listLabel')">
           <BaseCard
             v-for="tech in visibleTechnologies"
             :key="tech.id"
@@ -244,7 +254,7 @@ const toggleExpanded = () =>
               <span class="sr-only">{{ t('common.newTab') }}</span>
             </a>
           </BaseCard>
-        </TransitionGroup>
+        </ul>
       </div>
 
       <div class="mt-6.5 flex justify-center md:mt-9">
