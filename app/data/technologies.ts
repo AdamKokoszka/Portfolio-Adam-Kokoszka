@@ -5,6 +5,13 @@ export const TECH_CATEGORIES = ['frontend', 'backend', 'tools', 'ai'] as const
 export const TECHNOLOGIES: readonly Technology[] = [
   { id: 'vue', name: 'Vue.js', icon: 'logos:vue', url: 'https://vuejs.org', category: 'frontend' },
   {
+    id: 'javascript',
+    name: 'JavaScript',
+    icon: 'logos:javascript',
+    url: 'https://developer.mozilla.org/docs/Web/JavaScript',
+    category: 'frontend',
+  },
+  {
     id: 'typescript',
     name: 'TypeScript',
     icon: 'logos:typescript-icon',
@@ -19,10 +26,17 @@ export const TECHNOLOGIES: readonly Technology[] = [
     category: 'frontend',
   },
   {
-    id: 'pinia',
-    name: 'Pinia',
-    icon: 'logos:pinia',
-    url: 'https://pinia.vuejs.org',
+    id: 'nuxt',
+    name: 'Nuxt',
+    icon: 'logos:nuxt-icon',
+    url: 'https://nuxt.com',
+    category: 'frontend',
+  },
+  {
+    id: 'primevue',
+    name: 'PrimeVue',
+    icon: 'simple-icons:primevue',
+    url: 'https://primevue.org',
     category: 'frontend',
   },
   {
@@ -33,24 +47,10 @@ export const TECHNOLOGIES: readonly Technology[] = [
     category: 'ai',
   },
   {
-    id: 'primevue',
-    name: 'PrimeVue',
-    icon: 'simple-icons:primevue',
-    url: 'https://primevue.org',
-    category: 'frontend',
-  },
-  {
-    id: 'nuxt',
-    name: 'Nuxt',
-    icon: 'logos:nuxt-icon',
-    url: 'https://nuxt.com',
-    category: 'frontend',
-  },
-  {
-    id: 'javascript',
-    name: 'JavaScript',
-    icon: 'logos:javascript',
-    url: 'https://developer.mozilla.org/docs/Web/JavaScript',
+    id: 'pinia',
+    name: 'Pinia',
+    icon: 'logos:pinia',
+    url: 'https://pinia.vuejs.org',
     category: 'frontend',
   },
   {
@@ -72,7 +72,7 @@ export const TECHNOLOGIES: readonly Technology[] = [
   {
     id: 'vee-validate',
     name: 'VeeValidate',
-    icon: 'ic:form-check',
+    icon: 'ic:vee-validate',
     url: 'https://vee-validate.logaretm.com',
     category: 'frontend',
   },
