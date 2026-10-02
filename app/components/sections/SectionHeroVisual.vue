@@ -7,7 +7,7 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
 
 <template>
   <div
-    class="absolute top-0 left-0 h-150 w-125 [zoom:0.62] md:[zoom:0.8] lg:[zoom:1]"
+    class="absolute top-0 left-0 h-150 w-125 [zoom:0.62] md:[zoom:0.8] lg:[zoom:0.9]"
     :style="{ '--orbit-inner': ORBIT_INNER_PATH, '--orbit-outer': ORBIT_OUTER_PATH }">
     <div
       class="absolute -top-3 -left-24 h-171.25 w-172.5 -rotate-18 text-accent"
@@ -73,7 +73,7 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
       :alt="t('hero.photoAlt')"
       :width="520"
       :height="650"
-      sizes="322px md:416px lg:520px"
+      sizes="322px md:416px lg:468px"
       format="webp"
       loading="eager"
       fetchpriority="high"
