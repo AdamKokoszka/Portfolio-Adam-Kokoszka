@@ -1,11 +1,5 @@
 import type { MaybeRefOrGetter } from 'vue'
-
-interface TypewriterDelays {
-  type?: number
-  erase?: number
-  hold?: number
-  gap?: number
-}
+import type { TypewriterDelays } from '~/types/composables'
 
 export const useTypewriter = (
   words: readonly string[],

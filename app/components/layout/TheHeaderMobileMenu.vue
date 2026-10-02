@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { SECTION_IDS, type SectionId } from '~/data/navigation'
+import { SECTION_IDS } from '~/data/navigation'
+import type { TheHeaderMobileMenuEmits, TheHeaderMobileMenuProps } from '~/types/layout'
 
-const props = defineProps<{
-  open: boolean
-  activeId: SectionId | null
-  isScrolled: boolean
-}>()
+const props = defineProps<TheHeaderMobileMenuProps>()
 
-defineEmits<{
-  close: []
-}>()
+defineEmits<TheHeaderMobileMenuEmits>()
 
 const { t } = useI18n()
 
-const items = SECTION_IDS.map((id, index) => ({
-  id,
-  number: String(index + 1).padStart(2, '0'),
-}))
+const items = SECTION_IDS.map((id, index) => ({ id, number: String(index + 1).padStart(2, '0') }))
 
 const panelClass = computed(() =>
   props.isScrolled ? 'top-[calc(100%+0.5rem)] md:top-[calc(100%+0.75rem)]' : 'top-full',

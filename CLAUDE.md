@@ -55,7 +55,9 @@ app/
     sections/          # page sections                    → SectionHero, SectionAbout
   composables/         # useX() logic                     → useTheme, useScrollSpy
   data/                # typed static data (no copy!)     → experience.ts, technologies.ts
-  types/               # shared TS types
+  types/               # ALL TS types/interfaces, one file per area (base, layout, sections,
+                       #   navigation, composables) — never declared inside components,
+                       #   composables or data files; component types named `<Component>Props/Emits`
   assets/css/main.css  # Tailwind import + design tokens (@theme), themes
   assets/images/       # images processed by the build
 i18n/locales/          # pl.json, en.json — ALL user-facing text
@@ -75,11 +77,11 @@ Create folders only when they get their first file.
   (`SectionExperience` → `SectionExperienceCard`).
 - Components are auto-imported **by file name only** (`pathPrefix: false`):
   `components/common/ThemeToggle.vue` → `<ThemeToggle>`. File names must therefore be unique.
-- Props/emits: type-based (`defineProps<…>()`, `defineEmits<{ … }>()`), props and events in
-  camelCase. Optional props with defaults use
-  `const props = withDefaults(defineProps<Props>(), { … })` with an `interface Props`; props are
-  never destructured (enforced by `vue/define-props-destructuring`) — access them as `props.x`
-  in the script and directly in the template.
+- Props/emits: typed with interfaces from `app/types/` — `defineProps<BaseButtonProps>()`,
+  `defineEmits<TheHeaderMobileMenuEmits>()`. Required props have no `?`; optional props with a
+  default use `const props = withDefaults(defineProps<XProps>(), { … })`. Props are never
+  destructured (enforced by `vue/define-props-destructuring`) — use `props.x` in the script and
+  the plain name in the template. Props and events in camelCase.
 - Keep components small and presentational; move logic to composables.
 - Prefer Tailwind utilities in the template; use `<style scoped>` only for things utilities
   can't express (complex keyframes, masks). No inline `style` except dynamic CSS variables.
