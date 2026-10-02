@@ -55,6 +55,7 @@
   --color-fg-soft: var(--c-fg-soft);
 
   --color-line: var(--c-line);
+  --color-header: var(--c-header);
 
   --color-accent: var(--c-accent);
   --color-accent-fg: var(--c-accent-fg);
@@ -80,6 +81,7 @@
     --c-surface: #2f3943;
     --c-surface-raised: #354049;
     --c-sunken: #1c2229;
+    --c-header: #1e252d;
 
     --c-fg: #f4f6f8;
     --c-fg-muted: #bbc5cf;
@@ -120,6 +122,7 @@
     --c-surface: #ffffff;
     --c-surface-raised: #ffffff;
     --c-sunken: #e4eaf2;
+    --c-header: #ffffff;
 
     --c-fg: #14202e;
     --c-fg-muted: #4a5768;
