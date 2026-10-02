@@ -75,7 +75,8 @@ const schools = computed(() =>
                 <BaseLogoTile
                   :src="company.logo"
                   :alt="company.name"
-                  :fit="company.logoFit" />
+                  :fit="company.logoFit"
+                  :height="company.logoHeight" />
                 <div v-if="company.isFeatured">
                   <p class="text-lg/[1.3] font-bold text-fg md:text-xl/[1.3]">
                     {{ company.name }}
@@ -129,7 +130,8 @@ const schools = computed(() =>
                 <BaseLogoTile
                   :src="school.logo"
                   :alt="school.name"
-                  :fit="school.logoFit" />
+                  :fit="school.logoFit"
+                  :height="school.logoHeight" />
                 <div>
                   <p
                     class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-caption">

@@ -30,20 +30,23 @@ const VARIANTS = {
 const { t } = useI18n()
 
 const styles = computed(() => VARIANTS[props.variant])
+
+const imageAttrs = computed(() => ({
+  alt: '',
+  loading: 'lazy' as const,
+  class: `absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${styles.value.image}`,
+}))
 </script>
 
 <template>
   <article
     class="group/system beam-border relative overflow-hidden rounded-[1.375rem] border border-white/8 bg-ink-surface transition-colors duration-600 ease-smooth hover:border-peach-fg/22"
     :class="styles.root">
-    <NuxtImg
+    <NuxtPicture
       :src="system.image"
       :sizes="styles.sizes"
-      format="webp"
-      loading="lazy"
-      alt=""
-      class="absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025]"
-      :class="styles.image" />
+      format="avif,webp"
+      :img-attrs="imageAttrs" />
     <div
       class="pointer-events-none absolute inset-0"
       :class="styles.shade"

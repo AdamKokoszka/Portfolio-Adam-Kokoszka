@@ -10,6 +10,7 @@ export interface ExperienceItem {
   id: string
   logo: string
   logoFit: LogoFit
+  logoHeight?: number
   isFeatured?: boolean
   roles: readonly ExperienceRole[]
 }
@@ -18,6 +19,7 @@ export interface EducationItem {
   id: string
   logo: string
   logoFit: LogoFit
+  logoHeight?: number
   from: string
   to: string
 }

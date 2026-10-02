@@ -1,6 +1,13 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
+const portraitAttrs = computed(() => ({
+  alt: t('hero.photoAlt'),
+  loading: 'eager' as const,
+  fetchpriority: 'high' as const,
+  class: 'absolute -top-4.5 -left-2.5 h-162.5 w-130 mask-portrait object-cover object-top',
+}))
+
 const ORBIT_INNER_PATH = "path('M 15 342 a 330 128 0 1 0 660 0 a 330 128 0 1 0 -660 0')"
 const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -570 0')"
 </script>
@@ -68,15 +75,12 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
       {{ t('hero.note') }}
     </p>
 
-    <NuxtImg
+    <NuxtPicture
       src="/images/adam-kokoszka.webp"
-      :alt="t('hero.photoAlt')"
       :width="520"
       :height="650"
       sizes="322px md:416px lg:468px"
-      format="webp"
-      loading="eager"
-      fetchpriority="high"
-      class="absolute -top-4.5 -left-2.5 h-162.5 w-130 mask-portrait object-cover object-top" />
+      format="avif,webp"
+      :img-attrs="portraitAttrs" />
   </div>
 </template>

@@ -40,6 +40,7 @@ export interface BaseLogoTileProps {
   src: string
   alt: string
   fit?: LogoFit
+  height?: number
 }
 
 export interface WaveShape {
