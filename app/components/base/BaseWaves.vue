@@ -11,18 +11,12 @@ const gradientId = useId()
 const viewBox = computed(() => `0 0 ${props.width} ${props.height}`)
 const stroke = computed(() => `url(#${gradientId})`)
 
-const round = (value: number) => Math.round(value * 10) / 10
-
 const paths = computed(() =>
-  Array.from({ length: props.lines }, (_, index) => {
-    const { width: w, height: h, spread } = props
-    const offset = index * spread
-    const y = round(h * 0.4 + offset)
-    const control1 = round(y - h * 0.233 - offset * 0.3)
-    const control2 = round(y + h * 0.21 + offset * 0.27)
-    const smooth = round(y - h * 0.187 - offset * 0.24)
-    const end = round(y + h * 0.047 + offset * 0.06)
-    return `M-40 ${y} C ${0.22 * w} ${control1}, ${0.42 * w} ${control2}, ${0.6 * w} ${y} S ${0.92 * w} ${smooth}, ${w + 40} ${end}`
+  createWavePaths({
+    width: props.width,
+    height: props.height,
+    lines: props.lines,
+    spread: props.spread,
   }),
 )
 </script>
