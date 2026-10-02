@@ -31,6 +31,7 @@ export default withNuxt(
       'vue/define-emits-declaration': ['error', 'type-literal'],
       'vue/require-typed-ref': 'error',
       'vue/no-required-prop-with-default': 'error',
+      'vue/require-default-prop': 'off',
 
       'vue/component-name-in-template-casing': [
         'error',

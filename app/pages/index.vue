@@ -11,11 +11,7 @@ useSeoMeta({
 
 <template>
   <main>
-    <div class="min-h-dvh pt-16 bg-hero md:pt-21">
-      <div class="container py-24">
-        <p class="text-fg-muted">{{ t('home.placeholder') }}</p>
-      </div>
-    </div>
+    <SectionHero />
     <section
       v-for="(id, index) in SECTION_IDS"
       :id="id"

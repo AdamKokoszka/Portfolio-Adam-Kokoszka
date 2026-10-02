@@ -3,9 +3,6 @@
     "title": "Adam Kokoszka - Senior Frontend Developer",
     "description": "Adam Kokoszka - Senior Frontend Developer specjalizujący się w Vue.js. Tworzę przemyślane interfejsy aplikacji webowych."
   },
-  "home": {
-    "placeholder": "Portfolio w budowie."
-  },
   "theme": {
     "toLight": "Włącz jasny motyw",
     "toDark": "Włącz ciemny motyw"
@@ -15,11 +12,11 @@
     "owner": "Adam Kokoszka"
   },
   "header": {
-    "brandLabel": "IncoCode Adam Kokoszka - początek strony",
     "navLabel": "Główna nawigacja",
     "mobileNavLabel": "Menu mobilne",
     "openMenu": "Otwórz menu",
-    "closeMenu": "Zamknij menu"
+    "closeMenu": "Zamknij menu",
+    "backToTop": "początek strony"
   },
   "nav": {
     "about": "O mnie",
@@ -30,5 +27,32 @@
   },
   "language": {
     "label": "Język strony"
+  },
+  "hero": {
+    "hello": "Cześć, nazywam się",
+    "firstName": "Adam",
+    "lastName": "Kokoszka",
+    "role": "Senior {highlight} Developer",
+    "roleHighlight": "Frontend",
+    "lead": "{strong} Łączę kod z dbałością o doświadczenie użytkownika.",
+    "leadStrong": "Tworzę przemyślane interfejsy aplikacji webowych.",
+    "ctaPrimary": "Porozmawiajmy",
+    "ctaSecondary": "Moje doświadczenie",
+    "note": "Keep it\nsimple…",
+    "scroll": "Przewiń",
+    "photoAlt": "Adam Kokoszka - Senior Frontend Developer",
+    "editor": {
+      "file": "profile.js",
+      "label": "Kod: const developer = {'{'} name: 'Adam Kokoszka', focus: 'frontend' {'}'};",
+      "pause": "Zatrzymaj animację",
+      "resume": "Wznów animację"
+    }
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "common": {
+    "newTab": "(otwiera się w nowej karcie)"
   }
 }

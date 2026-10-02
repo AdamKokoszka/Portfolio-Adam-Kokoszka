@@ -29,6 +29,61 @@
 
   --color-success: #2fa866;
   --color-danger: #e9783a;
+
+  --color-code-bg: #161c23;
+  --color-code-bar: #1b2229;
+  --color-code-fg: #dce3ea;
+  --color-code-muted: #aeb9c5;
+  --color-code-gutter: #4e5c6c;
+  --color-code-dot: #3b4652;
+  --color-code-keyword: #8ab4ff;
+  --color-code-string: #ffbe92;
+  --color-code-punct: #8d99a6;
+  --color-code-prop: #bfd0e0;
+
+  --animate-enter: enter-up 0.62s var(--ease-smooth) both;
+  --animate-rise: rise 1s var(--ease-rise) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-orbit: orbit 32s linear infinite;
+  --animate-cue: cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+
+  @keyframes enter-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(108%);
+    }
+  }
+
+  @keyframes float {
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes orbit {
+    to {
+      offset-distance: 100%;
+    }
+  }
+
+  @keyframes cue {
+    to {
+      transform: translateY(80px);
+    }
+  }
 }
 
 @theme inline {
@@ -50,12 +105,14 @@
   --color-on-accent: var(--c-on-accent);
   --color-accent-soft: var(--c-accent-soft);
   --color-accent-line: var(--c-accent-line);
+  --color-accent-hover: var(--c-accent-hover);
 
   --color-warm: var(--c-warm);
   --color-warm-fg: var(--c-warm-fg);
   --color-warm-soft: var(--c-warm-soft);
 
   --shadow-card: var(--c-shadow);
+  --shadow-disc: var(--c-shadow-disc);
 }
 
 @layer base {
@@ -80,6 +137,8 @@
     --c-on-accent: #0e1726;
     --c-accent-soft: rgb(97 150 255 / 0.12);
     --c-accent-line: rgb(97 150 255 / 0.5);
+    --c-accent-hover: #7aa7ff;
+    --c-highlight: rgb(97 150 255 / 0.38);
 
     --c-warm: #ffaa72;
     --c-warm-fg: #ffb98a;
@@ -99,6 +158,16 @@
       rgb(58 72 88 / 0.28)
     );
     --c-gradient-border-strong: linear-gradient(135deg, #9dc8ee, #5d8cc0 45%, #3a4858);
+    --c-gradient-disc: radial-gradient(
+      120% 90% at 30% 18%,
+      #7fa6ff 0%,
+      #4f7fe3 34%,
+      #2f528f 68%,
+      #263548 100%
+    );
+    --c-shadow-disc:
+      0 50px 100px -40px rgb(40 90 200 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.25),
+      inset 0 0 0 1px rgb(255 255 255 / 0.1);
   }
 
   .light {
@@ -121,6 +190,8 @@
     --c-on-accent: #ffffff;
     --c-accent-soft: rgb(47 107 234 / 0.08);
     --c-accent-line: rgb(47 107 234 / 0.45);
+    --c-accent-hover: #2459d1;
+    --c-highlight: rgb(47 107 234 / 0.2);
 
     --c-warm: #e9783a;
     --c-warm-fg: #b4501b;
@@ -140,6 +211,15 @@
       rgb(20 32 46 / 0.08)
     );
     --c-gradient-border-strong: linear-gradient(135deg, #8db2f7, #2f6bea 42%, #c6d2e2);
+    --c-gradient-disc: radial-gradient(
+      120% 90% at 30% 18%,
+      #a9c6ff 0%,
+      #6e9bf5 36%,
+      #4371d4 72%,
+      #33569e 100%
+    );
+    --c-shadow-disc:
+      0 50px 100px -44px rgb(47 107 234 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.45);
   }
 
   .theme-inverted {
@@ -159,6 +239,7 @@
     --c-accent-fg: #2459d1;
     --c-accent-soft: rgb(47 107 234 / 0.08);
     --c-accent-line: rgb(20 32 46 / 0.18);
+    --c-accent-hover: #2459d1;
 
     --c-warm: #e9783a;
     --c-warm-fg: #b4501b;
@@ -191,6 +272,7 @@
     --c-accent-fg: #8ab4ff;
     --c-accent-soft: rgb(97 150 255 / 0.12);
     --c-accent-line: rgb(157 200 238 / 0.28);
+    --c-accent-hover: #7aa7ff;
 
     --c-warm: #ffaa72;
     --c-warm-fg: #ffb98a;
@@ -276,5 +358,48 @@
 
   @variant lg {
     width: min(72.5rem, calc(100% - 6rem));
+  }
+}
+
+@utility bg-disc {
+  background: var(--c-gradient-disc);
+}
+
+@utility border-gradient-code {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-code-bg), var(--color-code-bg)) padding-box,
+    linear-gradient(135deg, rgb(157 200 238 / 0.6), rgb(93 140 192 / 0.22) 45%, rgb(58 72 88 / 0.5))
+      border-box;
+}
+
+@utility text-highlight {
+  background: linear-gradient(
+    transparent 58%,
+    var(--c-highlight) 58%,
+    var(--c-highlight) 92%,
+    transparent 92%
+  );
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-line);
+}
+
+@utility mask-portrait {
+  mask-image:
+    radial-gradient(circle 240px at 260px 335px, #000 99.6%, transparent 100%),
+    linear-gradient(#000, #000);
+  mask-size:
+    100% 100%,
+    100% 335px;
+  mask-repeat: no-repeat;
+}
+
+@utility animations-paused {
+  &,
+  & * {
+    animation-play-state: paused !important;
   }
 }
