@@ -141,12 +141,14 @@
     "lead": "Got a project idea, a question, or just want to say hi? Drop me a line - I'm happy to talk.",
     "note": "Good ideas start\nwith a conversation.",
     "emailLabel": "Email",
-    "copy": "Copy email address",
-    "copied": "Address copied",
-    "copyError": "Couldn't copy - please select the address manually."
+    "copy": "Copy email address"
   },
   "footer": {
     "copyright": "© {year} Adam Kokoszka",
     "backToTop": "Back to top"
+  },
+  "copy": {
+    "copied": "Copied",
+    "failed": "Couldn't copy"
   }
 }

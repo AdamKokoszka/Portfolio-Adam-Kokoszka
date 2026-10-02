@@ -3,21 +3,7 @@ import { CONTACT_EMAIL } from '~/data/contact'
 
 const { t } = useI18n()
 
-const { status, copy } = useCopyToClipboard()
-
 const mailto = `mailto:${CONTACT_EMAIL}`
-
-const copyEmail = () => copy(CONTACT_EMAIL)
-
-const announcement = computed(() => {
-  if (status.value === 'copied') return t('contact.copied')
-  if (status.value === 'error') return t('contact.copyError')
-  return ''
-})
-
-const announcementClass = computed(() =>
-  status.value === 'copied' ? 'text-success' : 'text-danger',
-)
 </script>
 
 <template>
@@ -44,35 +30,11 @@ const announcementClass = computed(() =>
             class="col-span-3 row-start-2 font-semibold whitespace-nowrap text-base/[1.3] text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg md:text-[1.15625rem] md:wrap-anywhere md:whitespace-normal">
             {{ CONTACT_EMAIL }}
           </a>
-          <BaseIconButton
+          <CopyButton
             class="col-start-3 row-start-1"
-            :class="{ 'text-success!': status === 'copied' }"
-            :label="t('contact.copy')"
-            @click="copyEmail">
-            <Icon
-              v-if="status === 'copied'"
-              name="ic:check"
-              class="size-4.5"
-              aria-hidden="true" />
-            <Icon
-              v-else
-              name="ic:copy"
-              class="size-4.5"
-              aria-hidden="true" />
-          </BaseIconButton>
+            :text="CONTACT_EMAIL"
+            :label="t('contact.copy')" />
         </div>
-        <p
-          class="sr-only"
-          aria-live="polite">
-          {{ announcement }}
-        </p>
-        <p
-          v-if="announcement"
-          class="col-span-3 text-[0.8125rem] font-bold md:mt-1"
-          :class="announcementClass"
-          aria-hidden="true">
-          {{ announcement }}
-        </p>
       </div>
     </div>
 
