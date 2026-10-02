@@ -98,5 +98,20 @@
         "degree": "Technical secondary school, IT"
       }
     }
+  },
+  "stack": {
+    "title": "My stack",
+    "filtersLabel": "Filter technologies",
+    "listLabel": "Technologies",
+    "previous": "Scroll left",
+    "next": "Scroll right",
+    "showAll": "Show all",
+    "collapse": "Collapse",
+    "filters": {
+      "all": "All",
+      "frontend": "Frontend",
+      "tools": "Tools",
+      "ai": "AI"
+    }
   }
 }

@@ -98,5 +98,20 @@
         "degree": "Technikum, kierunek informatyka"
       }
     }
+  },
+  "stack": {
+    "title": "Mój stack",
+    "filtersLabel": "Filtruj technologie",
+    "listLabel": "Technologie",
+    "previous": "Przewiń w lewo",
+    "next": "Przewiń w prawo",
+    "showAll": "Pokaż wszystkie",
+    "collapse": "Zwiń",
+    "filters": {
+      "all": "Wszystkie",
+      "frontend": "Frontend",
+      "tools": "Narzędzia",
+      "ai": "AI"
+    }
   }
 }
