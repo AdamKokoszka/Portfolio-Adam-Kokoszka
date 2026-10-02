@@ -4,5 +4,6 @@
     class="min-h-dvh">
     <TheHeader />
     <slot />
+    <TheFooter />
   </div>
 </template>
