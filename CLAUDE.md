@@ -81,6 +81,25 @@ Create folders only when they get their first file.
 - Prefer Tailwind utilities in the template; use `<style scoped>` only for things utilities
   can't express (complex keyframes, masks). No inline `style` except dynamic CSS variables.
 
+### Code style
+
+- Formatting is fully owned by Prettier (`npm run format`), with Vue style-guide settings:
+  elements with more than one attribute put **one attribute per line**, the closing `>` stays on
+  the last attribute line (`bracketSameLine`), single-attribute elements stay on one line.
+  `htmlWhitespaceSensitivity: ignore` — never rely on whitespace between inline elements; use
+  `gap` / margins.
+- Attribute order follows `vue/attributes-order` (`v-for`, `v-if`, `ref`/`key`, other attributes,
+  `v-model`, events last); empty elements are self-closing.
+- **Modern JS: arrow functions only** — `const toggle = () => {}`, no `function` declarations or
+  function expressions (enforced: `func-style`, `prefer-arrow-callback`). Composables too:
+  `export const useX = () => {}`.
+- **Keep templates declarative**: no long ternaries, string building or formatting logic in the
+  template — move them to `computed` / derived data in `<script setup>` (e.g. `headerClass`).
+  Event handlers are named functions (`@click="toggleMenu"`), not inline assignments.
+- **No comments by default.** Code should explain itself through naming. Add a comment only for a
+  genuinely non-obvious _why_ (e.g. a hosting quirk) — never to restate what the code does, and
+  no JSDoc on component props.
+
 ### Naming
 
 - Composables: `useCamelCase`, file `app/composables/useCamelCase.ts`.
@@ -117,8 +136,9 @@ Create folders only when they get their first file.
 - Breakpoints follow the design: base = phone, `md` ≥ 760px (tablet), `lg` ≥ 1100px (desktop).
   Build every component mobile-first for all three at once; check 390px and 1440px.
 - Icons: SVGs from the design in `app/assets/icons/*.svg`, used as
-  `<Icon name="ic:<file>" />` (@nuxt/icon, bundled, inherits `currentColor`). Decorative icons
-  get `aria-hidden="true"`.
+  `<Icon name="ic:<file>" />` (@nuxt/icon, bundled, inherits `currentColor`). Always use
+  **literal icon names** (switch icons with `v-if`/`v-else`, not a computed `name`) so the bundle
+  scanner includes them. Decorative icons get `aria-hidden="true"`.
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 
 ### Accessibility

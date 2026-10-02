@@ -1,20 +1,9 @@
 @import 'tailwindcss';
 
-/*
- * Design tokens — source: "IncoCode Portfolio" design canvas.
- *
- * Theme values live in plain CSS variables (`--c-*`) that are swapped per theme
- * (`.dark` / `.light` on <html>, set by @nuxtjs/color-mode) and per inverted section
- * (`.theme-inverted`). Tailwind utilities read them through `@theme inline`, so
- * components use semantic classes only (`bg-surface text-fg border-line`) and never
- * need `dark:` variants or hard-coded colors.
- */
-
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant light (&:where(.light, .light *));
 
 @theme {
-  /* Breakpoints match the design: phone ≤ 760px, tablet ≤ 1100px. */
   --breakpoint-md: 47.5rem;
   --breakpoint-lg: 68.75rem;
 
@@ -28,7 +17,6 @@
   --radius-card: 1.125rem;
   --radius-panel: 2rem;
 
-  /* Fixed palette for the always-dark "Systems" section and code editor. */
   --color-ink: #111418;
   --color-ink-surface: #1a1e23;
   --color-ink-fg: #f4f6f8;
@@ -71,7 +59,6 @@
 }
 
 @layer base {
-  /* Dark — the default theme (also the no-JS fallback). */
   :root,
   .dark {
     color-scheme: dark;
@@ -155,7 +142,6 @@
     --c-gradient-border-strong: linear-gradient(135deg, #8db2f7, #2f6bea 42%, #c6d2e2);
   }
 
-  /* Inverted section (Experience): light on the dark theme, dark on the light theme. */
   .theme-inverted {
     color-scheme: light;
 
@@ -220,7 +206,6 @@
 
   html {
     scroll-behavior: smooth;
-    /* Keeps anchored sections clear of the sticky header. */
     scroll-padding-top: 6rem;
   }
 
@@ -251,7 +236,6 @@
   }
 }
 
-/* Gradient hairline border; the fill follows the local surface (override with --card-bg). */
 @utility border-gradient {
   border: 1px solid transparent;
   background:
@@ -270,7 +254,6 @@
   background: var(--c-gradient-hero);
 }
 
-/* Decorative backgrounds */
 @utility bg-dots {
   background-image: radial-gradient(var(--c-dot) 1.3px, transparent 1.6px);
   background-size: 20px 20px;
@@ -283,7 +266,6 @@
   background-size: 56px 56px;
 }
 
-/* Page content width: 1160px max, with 20 / 32 / 48px gutters. */
 @utility container {
   margin-inline: auto;
   width: calc(100% - 2.5rem);

@@ -1,5 +1,7 @@
 <template>
-  <div id="top" class="min-h-dvh">
+  <div
+    id="top"
+    class="min-h-dvh">
     <TheHeader />
     <slot />
   </div>
