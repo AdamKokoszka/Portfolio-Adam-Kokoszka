@@ -6,11 +6,16 @@ const isPaused = ref(false)
 const togglePause = () => {
   isPaused.value = !isPaused.value
 }
+
+const hero = useTemplateRef('hero')
+
+usePointerCssVars(hero)
 </script>
 
 <template>
   <section
-    class="relative overflow-x-clip pt-16 bg-hero md:pt-21 lg:flex lg:min-h-svh lg:flex-col"
+    ref="hero"
+    class="group/hero relative overflow-x-clip pt-16 bg-hero md:pt-21 lg:flex lg:min-h-svh lg:flex-col"
     :class="{ 'animations-paused': isPaused }"
     aria-labelledby="hero-name">
     <div
@@ -18,6 +23,8 @@ const togglePause = () => {
       aria-hidden="true">
       <div
         class="absolute inset-0 bg-dots [mask-image:radial-gradient(ellipse_70%_30%_at_50%_452px,#000_12%,transparent_72%)] opacity-90 md:[mask-image:radial-gradient(ellipse_62%_30%_at_50%_800px,#000_12%,transparent_72%)] lg:[mask-image:radial-gradient(ellipse_52%_58%_at_72%_46%,#000_12%,transparent_72%)]" />
+      <div
+        class="absolute inset-0 bg-dots-spotlight opacity-0 pointer-fine:group-hover/hero:opacity-32" />
       <div
         class="absolute top-25 -right-42.5 size-130 rounded-full bg-[radial-gradient(circle,var(--c-glow),transparent_64%)] md:top-107.5 md:-right-15 md:size-190 lg:top-10" />
       <div

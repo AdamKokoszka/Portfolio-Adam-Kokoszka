@@ -4,3 +4,8 @@ export interface TypewriterDelays {
   hold?: number
   gap?: number
 }
+
+export interface PointerCssVarsOptions {
+  x?: string
+  y?: string
+}
