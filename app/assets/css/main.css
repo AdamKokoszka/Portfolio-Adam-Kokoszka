@@ -41,6 +41,7 @@
   --color-ink-muted: #a9b4bf;
   --color-ink-soft: #9aa5b1;
   --color-ink-text: #c3ccd5;
+  --color-ink-shade: #0d0f12;
   --color-peach: #ffaa72;
   --color-peach-fg: #ffb98a;
   --color-on-peach: #1c1108;
@@ -309,6 +310,15 @@
     --c-gradient-border-strong: linear-gradient(135deg, #ffc7a0, #ffaa72 45%, #3a4858);
   }
 
+  .theme-ink {
+    color-scheme: dark;
+
+    --c-line: rgb(255 255 255 / 0.09);
+    --c-dot: rgb(255 185 138 / 0.28);
+
+    color: var(--color-ink-fg);
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
@@ -476,11 +486,16 @@
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.7s var(--ease-smooth);
-    animation: beam 5s linear infinite;
+    animation: beam 5s linear infinite paused;
     pointer-events: none;
   }
 
   &:hover::before {
     opacity: 1;
+    animation-play-state: running;
   }
+}
+
+@utility bg-peach-glow {
+  background: radial-gradient(closest-side, rgb(255 170 114 / 0.16), transparent);
 }
