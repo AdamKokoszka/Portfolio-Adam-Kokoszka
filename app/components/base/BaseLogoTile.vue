@@ -31,8 +31,6 @@ const isVector = computed(() => props.src.endsWith('.svg'))
       :src="src"
       :alt="alt"
       width="72"
-      height="72"
-      fit="inside"
       densities="x1 x2"
       format="webp"
       loading="lazy"
