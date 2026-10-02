@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { FOCUS_WORDS } from '~/data/hero'
+import type { SectionHeroEditorEmits, SectionHeroEditorProps } from '~/types/sections'
 
-const props = defineProps<{
-  isPaused: boolean
-}>()
+const props = defineProps<SectionHeroEditorProps>()
 
-defineEmits<{
-  togglePause: []
-}>()
+defineEmits<SectionHeroEditorEmits>()
 
 const { t } = useI18n()
 

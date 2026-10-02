@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  label: string
-}>()
+import type { BaseIconButtonProps } from '~/types/base'
+
+defineProps<BaseIconButtonProps>()
 </script>
 
 <template>

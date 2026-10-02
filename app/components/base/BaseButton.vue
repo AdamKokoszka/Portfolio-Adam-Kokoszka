@@ -1,11 +1,7 @@
 <script setup lang="ts">
-interface Props {
-  variant?: 'primary' | 'ghost'
-  size?: 'md' | 'sm'
-  href?: string
-}
+import type { BaseButtonProps, ButtonSize, ButtonVariant } from '~/types/base'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<BaseButtonProps>(), {
   variant: 'primary',
   size: 'md',
 })
@@ -13,12 +9,12 @@ const props = withDefaults(defineProps<Props>(), {
 const VARIANT_CLASSES = {
   primary: 'bg-accent text-on-accent hover:bg-accent-hover',
   ghost: 'border-[1.5px] border-accent-line text-fg hover:border-accent hover:bg-accent-soft',
-} as const
+} satisfies Record<ButtonVariant, string>
 
 const SIZE_CLASSES = {
   md: 'h-13 px-6.5 text-[0.9375rem]',
   sm: 'h-11.5 px-6 text-sm',
-} as const
+} satisfies Record<ButtonSize, string>
 
 const classes = computed(() => [VARIANT_CLASSES[props.variant], SIZE_CLASSES[props.size]])
 </script>

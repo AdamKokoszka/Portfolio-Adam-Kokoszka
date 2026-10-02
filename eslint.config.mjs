@@ -28,7 +28,7 @@ export default withNuxt(
         { order: ['defineOptions', 'defineProps', 'defineEmits', 'defineModel', 'defineSlots'] },
       ],
       'vue/define-props-declaration': ['error', 'type-based'],
-      'vue/define-emits-declaration': ['error', 'type-literal'],
+      'vue/define-emits-declaration': ['error', 'type-based'],
       'vue/require-typed-ref': 'error',
       'vue/no-required-prop-with-default': 'error',
       'vue/require-default-prop': 'off',
