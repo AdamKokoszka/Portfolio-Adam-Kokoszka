@@ -75,8 +75,11 @@ Create folders only when they get their first file.
   (`SectionExperience` → `SectionExperienceCard`).
 - Components are auto-imported **by file name only** (`pathPrefix: false`):
   `components/common/ThemeToggle.vue` → `<ThemeToggle>`. File names must therefore be unique.
-- Props/emits: type-based (`defineProps<{ … }>()`, `defineEmits<{ … }>()`), props in camelCase,
-  events in camelCase. Use `withDefaults` / destructuring defaults, never `required` + default.
+- Props/emits: type-based (`defineProps<…>()`, `defineEmits<{ … }>()`), props and events in
+  camelCase. Optional props with defaults use
+  `const props = withDefaults(defineProps<Props>(), { … })` with an `interface Props`; props are
+  never destructured (enforced by `vue/define-props-destructuring`) — access them as `props.x`
+  in the script and directly in the template.
 - Keep components small and presentational; move logic to composables.
 - Prefer Tailwind utilities in the template; use `<style scoped>` only for things utilities
   can't express (complex keyframes, masks). No inline `style` except dynamic CSS variables.

@@ -32,6 +32,7 @@ export default withNuxt(
       'vue/require-typed-ref': 'error',
       'vue/no-required-prop-with-default': 'error',
       'vue/require-default-prop': 'off',
+      'vue/define-props-destructuring': ['error', { destructure: 'never' }],
 
       'vue/component-name-in-template-casing': [
         'error',
