@@ -9,5 +9,26 @@
   "theme": {
     "toLight": "Switch to light theme",
     "toDark": "Switch to dark theme"
+  },
+  "brand": {
+    "name": "IncoCode",
+    "owner": "Adam Kokoszka"
+  },
+  "header": {
+    "brandLabel": "IncoCode Adam Kokoszka — back to top",
+    "navLabel": "Main navigation",
+    "mobileNavLabel": "Mobile menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "stack": "Tech stack",
+    "systems": "Systems",
+    "contact": "Contact"
+  },
+  "language": {
+    "label": "Site language"
   }
 }

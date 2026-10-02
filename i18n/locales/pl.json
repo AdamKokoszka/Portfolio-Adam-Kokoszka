@@ -9,5 +9,26 @@
   "theme": {
     "toLight": "Włącz jasny motyw",
     "toDark": "Włącz ciemny motyw"
+  },
+  "brand": {
+    "name": "IncoCode",
+    "owner": "Adam Kokoszka"
+  },
+  "header": {
+    "brandLabel": "IncoCode Adam Kokoszka — początek strony",
+    "navLabel": "Główna nawigacja",
+    "mobileNavLabel": "Menu mobilne",
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu"
+  },
+  "nav": {
+    "about": "O mnie",
+    "experience": "Doświadczenie",
+    "stack": "Technologie",
+    "systems": "Systemy",
+    "contact": "Kontakt"
+  },
+  "language": {
+    "label": "Język strony"
   }
 }
