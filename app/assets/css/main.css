@@ -1,1 +1,295 @@
 @import 'tailwindcss';
+
+/*
+ * Design tokens — source: "IncoCode Portfolio" design canvas.
+ *
+ * Theme values live in plain CSS variables (`--c-*`) that are swapped per theme
+ * (`.dark` / `.light` on <html>, set by @nuxtjs/color-mode) and per inverted section
+ * (`.theme-inverted`). Tailwind utilities read them through `@theme inline`, so
+ * components use semantic classes only (`bg-surface text-fg border-line`) and never
+ * need `dark:` variants or hard-coded colors.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  /* Breakpoints match the design: phone ≤ 760px, tablet ≤ 1100px. */
+  --breakpoint-md: 47.5rem;
+  --breakpoint-lg: 68.75rem;
+
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-hand: 'Caveat', cursive;
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-rise: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --radius-card: 1.125rem;
+  --radius-panel: 2rem;
+
+  /* Fixed palette for the always-dark "Systems" section and code editor. */
+  --color-ink: #111418;
+  --color-ink-surface: #1a1e23;
+  --color-ink-fg: #f4f6f8;
+  --color-ink-muted: #a9b4bf;
+  --color-ink-soft: #9aa5b1;
+  --color-ink-text: #c3ccd5;
+  --color-peach: #ffaa72;
+  --color-peach-fg: #ffb98a;
+  --color-on-peach: #1c1108;
+
+  --color-success: #2fa866;
+  --color-danger: #e9783a;
+}
+
+@theme inline {
+  --color-base: var(--c-base);
+  --color-alt: var(--c-alt);
+  --color-surface: var(--c-surface);
+  --color-surface-raised: var(--c-surface-raised);
+  --color-sunken: var(--c-sunken);
+
+  --color-fg: var(--c-fg);
+  --color-fg-muted: var(--c-fg-muted);
+  --color-fg-soft: var(--c-fg-soft);
+
+  --color-line: var(--c-line);
+
+  --color-accent: var(--c-accent);
+  --color-accent-fg: var(--c-accent-fg);
+  --color-on-accent: var(--c-on-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-accent-line: var(--c-accent-line);
+
+  --color-warm: var(--c-warm);
+  --color-warm-fg: var(--c-warm-fg);
+  --color-warm-soft: var(--c-warm-soft);
+
+  --shadow-card: var(--c-shadow);
+}
+
+@layer base {
+  /* Dark — the default theme (also the no-JS fallback). */
+  :root,
+  .dark {
+    color-scheme: dark;
+
+    --c-base: #262e37;
+    --c-alt: #2c3640;
+    --c-surface: #2f3943;
+    --c-surface-raised: #354049;
+    --c-sunken: #1c2229;
+
+    --c-fg: #f4f6f8;
+    --c-fg-muted: #bbc5cf;
+    --c-fg-soft: #8f9ba8;
+    --c-line: rgb(157 200 238 / 0.11);
+
+    --c-accent: #6196ff;
+    --c-accent-fg: #8ab4ff;
+    --c-on-accent: #0e1726;
+    --c-accent-soft: rgb(97 150 255 / 0.12);
+    --c-accent-line: rgb(97 150 255 / 0.5);
+
+    --c-warm: #ffaa72;
+    --c-warm-fg: #ffb98a;
+    --c-warm-soft: rgb(255 170 114 / 0.14);
+
+    --c-shadow: 0 24px 50px -28px rgb(5 9 15 / 0.7);
+    --c-dot: rgb(157 200 238 / 0.24);
+    --c-gridline: rgb(157 200 238 / 0.07);
+    --c-glow: rgb(97 150 255 / 0.18);
+    --c-spot: rgb(97 150 255 / 0.14);
+
+    --c-gradient-hero: linear-gradient(165deg, #222a32 0%, #28313b 55%, #2b3540 100%);
+    --c-gradient-border: linear-gradient(
+      135deg,
+      rgb(157 200 238 / 0.42),
+      rgb(93 140 192 / 0.16) 45%,
+      rgb(58 72 88 / 0.28)
+    );
+    --c-gradient-border-strong: linear-gradient(135deg, #9dc8ee, #5d8cc0 45%, #3a4858);
+  }
+
+  .light {
+    color-scheme: light;
+
+    --c-base: #f8fafc;
+    --c-alt: #edf1f6;
+    --c-surface: #ffffff;
+    --c-surface-raised: #ffffff;
+    --c-sunken: #e4eaf2;
+
+    --c-fg: #14202e;
+    --c-fg-muted: #4a5768;
+    --c-fg-soft: #667283;
+    --c-line: rgb(20 32 46 / 0.1);
+
+    --c-accent: #2f6bea;
+    --c-accent-fg: #2459d1;
+    --c-on-accent: #ffffff;
+    --c-accent-soft: rgb(47 107 234 / 0.08);
+    --c-accent-line: rgb(47 107 234 / 0.45);
+
+    --c-warm: #e9783a;
+    --c-warm-fg: #b4501b;
+    --c-warm-soft: rgb(233 120 58 / 0.12);
+
+    --c-shadow: 0 24px 50px -30px rgb(30 52 96 / 0.3);
+    --c-dot: rgb(47 107 234 / 0.24);
+    --c-gridline: rgb(20 32 46 / 0.06);
+    --c-glow: rgb(47 107 234 / 0.12);
+    --c-spot: rgb(47 107 234 / 0.09);
+
+    --c-gradient-hero: linear-gradient(165deg, #f6f8fb 0%, #edf2f8 60%, #e8eef6 100%);
+    --c-gradient-border: linear-gradient(
+      135deg,
+      rgb(47 107 234 / 0.28),
+      rgb(20 32 46 / 0.08) 50%,
+      rgb(20 32 46 / 0.08)
+    );
+    --c-gradient-border-strong: linear-gradient(135deg, #8db2f7, #2f6bea 42%, #c6d2e2);
+  }
+
+  /* Inverted section (Experience): light on the dark theme, dark on the light theme. */
+  .theme-inverted {
+    color-scheme: light;
+
+    --c-base: #eef2f6;
+    --c-alt: #eef2f6;
+    --c-surface: #ffffff;
+    --c-surface-raised: #ffffff;
+
+    --c-fg: #14202e;
+    --c-fg-muted: #4a5768;
+    --c-fg-soft: #5f6b7b;
+    --c-line: rgb(20 32 46 / 0.1);
+
+    --c-accent: #2f6bea;
+    --c-accent-fg: #2459d1;
+    --c-accent-soft: rgb(47 107 234 / 0.08);
+    --c-accent-line: rgb(20 32 46 / 0.18);
+
+    --c-warm: #e9783a;
+    --c-warm-fg: #b4501b;
+    --c-warm-soft: rgb(233 120 58 / 0.12);
+
+    --c-shadow: 0 24px 50px -30px rgb(30 52 96 / 0.32);
+    --c-dot: rgb(20 32 46 / 0.17);
+    --c-spot: rgb(233 120 58 / 0.09);
+
+    --c-gradient-border: linear-gradient(135deg, rgb(20 32 46 / 0.16), rgb(20 32 46 / 0.06));
+    --c-gradient-border-strong: linear-gradient(135deg, #f4b68a, #e9783a 45%, #e1e6ec);
+
+    color: var(--c-fg);
+  }
+
+  .light .theme-inverted {
+    color-scheme: dark;
+
+    --c-base: #252d35;
+    --c-alt: #252d35;
+    --c-surface: #2f3943;
+    --c-surface-raised: #2f3943;
+
+    --c-fg: #f4f6f8;
+    --c-fg-muted: #bbc5cf;
+    --c-fg-soft: #97a3af;
+    --c-line: rgb(157 200 238 / 0.12);
+
+    --c-accent: #6196ff;
+    --c-accent-fg: #8ab4ff;
+    --c-accent-soft: rgb(97 150 255 / 0.12);
+    --c-accent-line: rgb(157 200 238 / 0.28);
+
+    --c-warm: #ffaa72;
+    --c-warm-fg: #ffb98a;
+    --c-warm-soft: rgb(255 170 114 / 0.14);
+
+    --c-shadow: 0 24px 50px -28px rgb(5 9 15 / 0.7);
+    --c-dot: rgb(157 200 238 / 0.22);
+    --c-spot: rgb(255 170 114 / 0.14);
+
+    --c-gradient-border: linear-gradient(135deg, rgb(157 200 238 / 0.4), rgb(58 72 88 / 0.3));
+    --c-gradient-border-strong: linear-gradient(135deg, #ffc7a0, #ffaa72 45%, #3a4858);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the sticky header. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-sunken font-sans text-[1rem]/[1.7] text-fg antialiased md:text-[1.0625rem];
+  }
+
+  ::selection {
+    @apply bg-accent text-on-accent;
+  }
+
+  :focus-visible {
+    @apply rounded-lg outline-2 outline-offset-3 outline-accent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Gradient hairline border; the fill follows the local surface (override with --card-bg). */
+@utility border-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card-bg, var(--c-surface)), var(--card-bg, var(--c-surface))) padding-box,
+    var(--c-gradient-border) border-box;
+}
+
+@utility border-gradient-strong {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--card-bg, var(--c-surface)), var(--card-bg, var(--c-surface))) padding-box,
+    var(--c-gradient-border-strong) border-box;
+}
+
+@utility bg-hero {
+  background: var(--c-gradient-hero);
+}
+
+/* Decorative backgrounds */
+@utility bg-dots {
+  background-image: radial-gradient(var(--c-dot) 1.3px, transparent 1.6px);
+  background-size: 20px 20px;
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--c-gridline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-gridline) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Page content width: 1160px max, with 20 / 32 / 48px gutters. */
+@utility container {
+  margin-inline: auto;
+  width: calc(100% - 2.5rem);
+
+  @variant md {
+    width: calc(100% - 4rem);
+  }
+
+  @variant lg {
+    width: min(72.5rem, calc(100% - 6rem));
+  }
+}
