@@ -8,7 +8,13 @@ defineEmits<TheHeaderMobileMenuEmits>()
 
 const { t } = useI18n()
 
-const items = SECTION_IDS.map((id) => ({ id, number: sectionNumber(id) }))
+const items = computed(() =>
+  SECTION_IDS.map((id) => ({
+    id,
+    number: sectionNumber(id),
+    ariaCurrent: props.activeId === id ? ('location' as const) : undefined,
+  })),
+)
 
 const panelClass = computed(() =>
   props.isScrolled ? 'top-[calc(100%+0.5rem)] md:top-[calc(100%+0.75rem)]' : 'top-full',
@@ -36,10 +42,10 @@ const panelClass = computed(() =>
           :aria-label="t('header.mobileNavLabel')"
           class="container flex flex-col pt-2 pb-5">
           <a
-            v-for="{ id, number } in items"
+            v-for="{ id, number, ariaCurrent } in items"
             :key="id"
             :href="`#${id}`"
-            :aria-current="activeId === id ? 'location' : undefined"
+            :aria-current="ariaCurrent"
             class="flex items-baseline gap-4 border-b border-line py-3.75 text-xl font-semibold tracking-[-0.01em] text-fg aria-[current=location]:text-accent-fg md:py-4 md:text-[1.375rem]"
             @click="$emit('close')">
             <span class="min-w-5.5 text-xs font-bold tracking-[0.14em] text-accent-fg">

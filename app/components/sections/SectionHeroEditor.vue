@@ -13,6 +13,10 @@ const canAnimate = useCanAnimate(editor)
 
 const isActive = computed(() => !props.isPaused && canAnimate.value)
 
+const pauseLabel = computed(() =>
+  props.isPaused ? t('hero.editor.resume') : t('hero.editor.pause'),
+)
+
 const { text: focusText, isTyping } = useTypewriter(FOCUS_WORDS, isActive)
 
 const QUOTE = "'"
@@ -46,7 +50,7 @@ const FOCUS_LINE_INDEX = 2
 <template>
   <div
     ref="editor"
-    class="w-[12.875rem] animate-float overflow-hidden rounded-xl font-mono text-[0.625rem]/[1.7] text-code-fg shadow-[0_26px_50px_-22px_rgb(4_8_14/0.7)] border-gradient-code md:w-75 md:rounded-[0.875rem] md:text-[0.8125rem]/[1.85]">
+    class="w-[12.875rem] animate-float overflow-hidden rounded-xl font-mono text-[0.625rem]/[1.7] text-code-fg shadow-editor border-gradient-code md:w-75 md:rounded-[0.875rem] md:text-caption/[1.85]">
     <div
       class="flex h-7 items-center gap-2.5 border-b border-white/8 bg-code-bar pr-1 pl-3 text-[0.656rem] text-code-muted md:h-9 md:pl-3.5 md:text-xs">
       <span
@@ -61,8 +65,8 @@ const FOCUS_LINE_INDEX = 2
       <button
         type="button"
         class="ml-auto inline-flex size-7.5 cursor-pointer items-center justify-center rounded-lg text-code-punct transition-colors duration-400 ease-smooth hover:bg-white/6 hover:text-code-fg"
-        :aria-label="isPaused ? t('hero.editor.resume') : t('hero.editor.pause')"
-        :title="isPaused ? t('hero.editor.resume') : t('hero.editor.pause')"
+        :aria-label="pauseLabel"
+        :title="pauseLabel"
         @click="$emit('togglePause')">
         <Icon
           v-if="isPaused"

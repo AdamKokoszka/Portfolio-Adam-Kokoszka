@@ -38,7 +38,7 @@ const items = computed(() =>
         class="absolute top-0.75 -left-12.75 z-10 size-4.5 rounded-full border-2 border-warm bg-[radial-gradient(circle,var(--c-warm)_0_2.5px,var(--c-surface)_3px)] md:-left-16.25"
         aria-hidden="true" />
 
-      <p class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-[0.8125rem]">
+      <p class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-caption">
         {{ item.period }}
       </p>
       <p class="mt-0.75 font-semibold text-base/[1.45] text-fg md:text-[1.09375rem]/[1.45]">

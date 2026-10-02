@@ -3,6 +3,7 @@ const colorMode = useColorMode()
 const { t } = useI18n()
 
 const isDark = computed(() => colorMode.value !== 'light')
+const label = computed(() => (isDark.value ? t('theme.toLight') : t('theme.toDark')))
 
 const toggle = () => {
   colorMode.preference = isDark.value ? 'light' : 'dark'
@@ -11,7 +12,7 @@ const toggle = () => {
 
 <template>
   <BaseIconButton
-    :label="isDark ? t('theme.toLight') : t('theme.toDark')"
+    :label="label"
     @click="toggle">
     <ColorScheme>
       <Icon

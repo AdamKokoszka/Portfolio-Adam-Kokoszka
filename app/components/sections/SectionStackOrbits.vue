@@ -18,8 +18,8 @@ const ORBITS = [
 ] as const
 
 const DOT_CLASSES = [
-  'size-2 bg-accent shadow-[0_0_10px_3px_rgb(97_150_255/0.45)]',
-  'size-1.75 bg-peach shadow-[0_0_10px_3px_rgb(255_170_114/0.45)]',
+  'size-2 bg-accent shadow-glow-accent-sm',
+  'size-1.75 bg-peach shadow-glow-peach-sm',
 ] as const
 </script>
 

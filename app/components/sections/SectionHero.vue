@@ -35,7 +35,7 @@ usePointerCssVars(hero)
       class="relative container grid grid-cols-1 items-center pt-5.5 pb-16 md:pt-14 md:pb-30 lg:flex-1 lg:grid-cols-2 lg:gap-12 lg:pt-8 lg:pb-24">
       <div class="contents lg:block">
         <p
-          class="mb-4 inline-flex animate-enter items-center gap-2.5 justify-self-start rounded-full border border-line bg-accent-soft py-1.5 pr-3.5 pl-2.5 text-[0.6875rem] font-bold tracking-[0.16em] text-accent-fg uppercase md:mb-4.5 md:pr-4 md:pl-3 md:text-[0.78rem]">
+          class="mb-4 inline-flex animate-enter items-center gap-2.5 justify-self-start rounded-full border border-line bg-accent-soft py-1.5 pr-3.5 pl-2.5 text-micro font-bold tracking-[0.16em] text-accent-fg uppercase md:mb-4.5 md:pr-4 md:pl-3 md:text-[0.78rem]">
           <span
             class="relative size-2 rounded-full bg-accent"
             aria-hidden="true">
@@ -112,7 +112,7 @@ usePointerCssVars(hero)
 
     <a
       href="#about"
-      class="absolute bottom-5.5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.6875rem] font-bold tracking-[0.24em] text-fg-muted uppercase transition-colors duration-400 ease-smooth hover:text-fg md:flex">
+      class="absolute bottom-5.5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-micro font-bold tracking-[0.24em] text-fg-muted uppercase transition-colors duration-400 ease-smooth hover:text-fg md:flex">
       <span
         class="relative block h-14 w-[1.5px] overflow-hidden rounded-xs bg-line"
         aria-hidden="true">

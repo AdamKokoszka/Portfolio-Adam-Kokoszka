@@ -3,10 +3,19 @@ import { SECTION_IDS } from '~/data/navigation'
 
 const { t } = useI18n()
 
+const SCROLLED_OFFSET = 24
+
 const { y } = useWindowScroll()
-const isScrolled = computed(() => y.value > 24)
+const isScrolled = computed(() => y.value > SCROLLED_OFFSET)
 
 const { activeId } = useScrollSpy(SECTION_IDS)
+
+const navItems = computed(() =>
+  SECTION_IDS.map((id) => ({
+    id,
+    ariaCurrent: activeId.value === id ? ('location' as const) : undefined,
+  })),
+)
 
 const headerClass = computed(() =>
   isScrolled.value
@@ -21,9 +30,11 @@ const {
   toggle: toggleMenu,
   close: closeMenu,
 } = useMobileMenu({
-  closeAt: '(min-width: 68.75rem)',
+  closeAt: DESKTOP_MEDIA_QUERY,
   onEscape: () => menuButton.value?.$el.focus(),
 })
+
+const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('header.openMenu')))
 </script>
 
 <template>
@@ -39,7 +50,7 @@ const {
         </span>
         <span
           v-if="!isScrolled"
-          class="mt-0.5 block text-xs font-medium text-fg-soft md:text-[0.8125rem]">
+          class="mt-0.5 block text-xs font-medium text-fg-soft md:text-caption">
           {{ t('brand.owner') }}
         </span>
         <span class="sr-only">{{ t('header.backToTop') }}</span>
@@ -50,12 +61,12 @@ const {
         class="flex items-center gap-7">
         <ul class="hidden gap-7.5 lg:flex">
           <li
-            v-for="id in SECTION_IDS"
+            v-for="{ id, ariaCurrent } in navItems"
             :key="id">
             <a
               :href="`#${id}`"
-              :aria-current="activeId === id ? 'location' : undefined"
-              class="relative block py-2 text-[0.9375rem] font-medium text-fg-muted transition-colors duration-400 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg aria-[current=location]:after:scale-x-100">
+              :aria-current="ariaCurrent"
+              class="relative block py-2 text-ui font-medium text-fg-muted transition-colors duration-400 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg aria-[current=location]:after:scale-x-100">
               {{ t(`nav.${id}`) }}
             </a>
           </li>
@@ -67,7 +78,7 @@ const {
           <BaseIconButton
             ref="menuButton"
             class="text-fg lg:hidden"
-            :label="isMenuOpen ? t('header.closeMenu') : t('header.openMenu')"
+            :label="menuLabel"
             :aria-expanded="isMenuOpen"
             aria-controls="mobile-menu"
             @click="toggleMenu">

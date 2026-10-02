@@ -1,4 +1,4 @@
-import type { LogoFit } from './experience'
+export type LogoFit = 'tight' | 'padded'
 
 export type ButtonVariant = 'primary' | 'ghost'
 

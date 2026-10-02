@@ -13,7 +13,7 @@ const { t } = useI18n()
         :href="link.href"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem] font-semibold text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg">
+        class="inline-flex min-h-11 items-center gap-2.5 text-ui font-semibold text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg">
         <Icon
           :name="link.icon"
           class="size-5.5"

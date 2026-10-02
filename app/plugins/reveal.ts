@@ -1,5 +1,5 @@
 const HIDDEN_CLASSES = ['opacity-0', 'translate-y-4']
-const TRANSITION_CLASSES = ['transition-[opacity,translate]', 'duration-[550ms]', 'ease-smooth']
+const TRANSITION_CLASSES = ['transition-[opacity,translate]', 'duration-550', 'ease-smooth']
 
 export default defineNuxtPlugin((nuxtApp) => {
   const observers = new WeakMap<HTMLElement, IntersectionObserver>()

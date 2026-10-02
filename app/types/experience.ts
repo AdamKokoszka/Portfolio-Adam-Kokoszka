@@ -1,4 +1,4 @@
-export type LogoFit = 'tight' | 'padded'
+import type { LogoFit } from './base'
 
 export interface ExperienceRole {
   id: string

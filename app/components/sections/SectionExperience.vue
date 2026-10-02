@@ -86,7 +86,7 @@ const schools = computed(() =>
                 </div>
                 <div v-else>
                   <p
-                    class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-[0.8125rem]">
+                    class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-caption">
                     {{ company.period }}
                   </p>
                   <p
@@ -132,7 +132,7 @@ const schools = computed(() =>
                   :fit="school.logoFit" />
                 <div>
                   <p
-                    class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-[0.8125rem]">
+                    class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-caption">
                     {{ school.period }}
                   </p>
                   <p

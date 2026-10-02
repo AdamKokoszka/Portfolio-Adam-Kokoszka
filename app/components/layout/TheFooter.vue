@@ -9,9 +9,9 @@ const year = new Date().getFullYear()
 <template>
   <footer class="bg-sunken pb-8">
     <div
-      class="container grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-1.5 border-t border-line pt-6 text-[0.8125rem] text-fg-soft md:flex md:justify-between md:gap-6 md:pt-7 md:text-sm">
+      class="container grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-1.5 border-t border-line pt-6 text-caption text-fg-soft md:flex md:justify-between md:gap-6 md:pt-7 md:text-sm">
       <div class="contents md:flex md:items-center md:gap-4.5">
-        <p class="col-start-1 row-start-1 text-[0.9375rem] font-bold text-fg">
+        <p class="col-start-1 row-start-1 text-ui font-bold text-fg">
           {{ t('brand.name') }}
         </p>
         <p class="col-start-1 row-start-2">{{ t('footer.copyright', { year }) }}</p>
