@@ -114,5 +114,26 @@
       "tools": "Tools",
       "ai": "AI"
     }
+  },
+  "systems": {
+    "eyebrow": "Systems I've worked on",
+    "title": "Products I've helped build.",
+    "current": "Current project",
+    "ecosystem": "proRMS ecosystem · the system and its back office",
+    "illustrative": "Illustrative images",
+    "items": {
+      "insurance": {
+        "title": "Insurance multi-agency platform",
+        "description": "Developing an application for the insurance industry."
+      },
+      "prorms": {
+        "title": "proRMS",
+        "description": "Automated hotel pricing and revenue management."
+      },
+      "proRmsBackoffice": {
+        "title": "proRMS back office",
+        "description": "Administration back office for the proRMS system."
+      }
+    }
   }
 }

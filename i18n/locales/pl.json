@@ -114,5 +114,26 @@
       "tools": "Narzędzia",
       "ai": "AI"
     }
+  },
+  "systems": {
+    "eyebrow": "Systemy, które rozwijałem",
+    "title": "Produkty, które współtworzyłem.",
+    "current": "Aktualny projekt",
+    "ecosystem": "Ekosystem proRMS · system i jego zaplecze",
+    "illustrative": "Ilustracje poglądowe",
+    "items": {
+      "insurance": {
+        "title": "Multiagencja ubezpieczeniowa",
+        "description": "Rozwój aplikacji dla branży ubezpieczeniowej."
+      },
+      "prorms": {
+        "title": "proRMS",
+        "description": "Automatyczne zarządzanie cenami i przychodami hotelu."
+      },
+      "proRmsBackoffice": {
+        "title": "Backoffice proRMS",
+        "description": "Zaplecze administracyjne systemu proRMS."
+      }
+    }
   }
 }
