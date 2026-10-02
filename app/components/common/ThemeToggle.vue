@@ -19,7 +19,8 @@ function toggle() {
     @click="toggle"
   >
     <ColorScheme>
-      <Icon :name="isDark ? 'ic:sun' : 'ic:moon'" class="size-[1.125rem]" aria-hidden="true" />
+      <Icon v-if="isDark" name="ic:sun" class="size-[1.125rem]" aria-hidden="true" />
+      <Icon v-else name="ic:moon" class="size-[1.125rem]" aria-hidden="true" />
       <template #placeholder>
         <Icon name="ic:sun" class="size-[1.125rem]" aria-hidden="true" />
       </template>

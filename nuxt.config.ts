@@ -76,10 +76,10 @@ export default defineNuxtConfig({
 
   icon: {
     mode: 'svg',
-    // Icons from the design live in app/assets/icons and are bundled — no runtime fetches.
+    // Icons from the design live in app/assets/icons and are bundled into the client build.
+    // Use literal icon names in templates (no computed names) so the scanner picks them up.
     customCollections: [{ prefix: 'ic', dir: './app/assets/icons' }],
-    provider: 'none',
-    clientBundle: { scan: true },
+    clientBundle: { scan: true, includeCustomCollections: true },
   },
 
   image: {
