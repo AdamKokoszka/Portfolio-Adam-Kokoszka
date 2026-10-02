@@ -16,7 +16,7 @@ const isVector = computed(() => props.src.endsWith('.svg'))
 
 <template>
   <div
-    class="flex size-14 shrink-0 items-center justify-center rounded-[0.875rem] border border-line bg-white shadow-[0_8px_18px_-12px_rgb(0_0_0/0.55)] md:size-18 md:rounded-2xl"
+    class="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-[0.875rem] border border-line bg-white shadow-[0_8px_18px_-12px_rgb(0_0_0/0.55)] md:size-18 md:rounded-2xl"
     :class="FIT_CLASSES[fit]">
     <img
       v-if="isVector"
@@ -25,7 +25,7 @@ const isVector = computed(() => props.src.endsWith('.svg'))
       width="56"
       height="56"
       loading="lazy"
-      class="max-h-full max-w-full object-contain" />
+      class="max-h-full max-w-full rounded-[0.625rem] object-contain md:rounded-xl" />
     <NuxtImg
       v-else
       :src="src"
@@ -34,6 +34,6 @@ const isVector = computed(() => props.src.endsWith('.svg'))
       densities="x1 x2"
       format="webp"
       loading="lazy"
-      class="max-h-full max-w-full object-contain" />
+      class="max-h-full max-w-full rounded-[0.625rem] object-contain md:rounded-xl" />
   </div>
 </template>
