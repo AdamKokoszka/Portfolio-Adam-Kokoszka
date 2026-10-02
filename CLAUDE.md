@@ -113,6 +113,9 @@ Create folders only when they get their first file.
 - **No hard-coded user-facing text in templates** (enforced by `vue/no-bare-strings-in-template`).
   Every string lives in both `pl.json` and `en.json`. Polish is the source language; English
   translations are written by Claude.
+- Translation strings use vue-i18n message syntax: `{ } @ $ |` are special — write literal braces
+  as `{'{'}` / `{'}'}`. Rich text (bold, highlight) goes through `<I18nT>` slots, never `v-html`.
+- In copy use a plain hyphen `-`, not an em dash.
 - Static data in `app/data/` holds structure only (ids, dates, logos, links); text comes from i18n.
 
 ### Styling & theming
@@ -135,10 +138,10 @@ Create folders only when they get their first file.
     easing: `ease-smooth`, `ease-rise`
 - Breakpoints follow the design: base = phone, `md` ≥ 760px (tablet), `lg` ≥ 1100px (desktop).
   Build every component mobile-first for all three at once; check 390px and 1440px.
-- Icons: SVGs from the design in `app/assets/icons/*.svg`, used as
-  `<Icon name="ic:<file>" />` (@nuxt/icon, bundled, inherits `currentColor`). Always use
-  **literal icon names** (switch icons with `v-if`/`v-else`, not a computed `name`) so the bundle
-  scanner includes them. Decorative icons get `aria-hidden="true"`.
+- Icons: SVGs from the design in `app/assets/icons/*.svg`, used as `<Icon name="ic:<file>" />`
+  (@nuxt/icon; the whole local collection is bundled, inherits `currentColor`). Names may come
+  from data (`icon: 'ic:github'`) but always as full literal strings. Decorative icons get
+  `aria-hidden="true"`.
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 
 ### Accessibility
