@@ -1,6 +1,8 @@
 [build]
   command = "npm run generate"
-  publish = ".output/public"
+  # On Netlify, Nitro uses the `netlify-static` preset, which outputs to `dist`
+  # (together with `_redirects` and `_headers` generated from `routeRules`).
+  publish = "dist"
 
 # Node version is read from .nvmrc.
 
@@ -16,16 +18,3 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-
-# Polish lives at the root — real 301s instead of the prerendered meta-refresh pages.
-[[redirects]]
-  from = "/pl"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/pl/*"
-  to = "/"
-  status = 301
-  force = true
