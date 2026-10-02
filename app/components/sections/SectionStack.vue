@@ -27,12 +27,35 @@ const COUNTS = {
 const trackClass = computed(() =>
   isExpanded.value
     ? 'grid grid-cols-3 gap-3 md:grid-cols-[repeat(auto-fill,minmax(9.375rem,1fr))] md:gap-4'
-    : 'flex snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] -mr-5 pr-5 md:mr-0 md:pr-0.5',
+    : 'flex snap-x snap-mandatory scroll-px-1 gap-4 overflow-x-auto [scrollbar-width:none] -mt-2 -ml-1 -mr-5 pt-2 pl-1 pr-5 pb-3 md:-mr-1 md:pr-1',
 )
 
 const tileClass = computed(() =>
   isExpanded.value ? 'h-31 md:h-41' : 'h-34 w-31 shrink-0 snap-start md:h-41 md:w-37.5',
 )
+
+const ORBITS = [
+  {
+    size: 'size-71',
+    duration: '[animation-duration:22s]',
+    delays: ['[animation-delay:-4s]', '[animation-delay:-15s]'],
+  },
+  {
+    size: 'size-100',
+    duration: '[animation-duration:30s] [animation-direction:reverse]',
+    delays: ['[animation-delay:-22s]', '[animation-delay:-7s]'],
+  },
+  {
+    size: 'size-129',
+    duration: '[animation-duration:38s]',
+    delays: ['[animation-delay:-30s]', '[animation-delay:-11s]'],
+  },
+] as const
+
+const ORBIT_DOT_CLASSES = [
+  'size-2 bg-accent shadow-[0_0_10px_3px_rgb(97_150_255/0.45)]',
+  'size-1.75 bg-peach shadow-[0_0_10px_3px_rgb(255_170_114/0.45)]',
+] as const
 
 const scrollTrack = (direction: 1 | -1) => {
   const el = track.value
@@ -58,31 +81,49 @@ watch(activeFilter, () => track.value?.scrollTo({ left: 0 }))
     id="stack"
     class="relative overflow-hidden bg-base py-18 md:py-28"
     aria-labelledby="stack-title">
-    <svg
-      class="pointer-events-none absolute -bottom-50 -left-55 size-130 scale-60 text-accent md:scale-100"
-      viewBox="0 0 520 520"
-      fill="none"
+    <div
+      class="pointer-events-none absolute -bottom-50 -left-55 size-130 origin-bottom-left scale-60 text-accent md:scale-100"
       aria-hidden="true">
-      <circle
-        cx="260"
-        cy="260"
-        r="258"
-        stroke="currentColor"
-        stroke-opacity=".10" />
-      <circle
-        cx="260"
-        cy="260"
-        r="200"
-        stroke="currentColor"
-        stroke-opacity=".14" />
-      <circle
-        cx="260"
-        cy="260"
-        r="142"
-        stroke="currentColor"
-        stroke-opacity=".18"
-        stroke-dasharray="4 8" />
-    </svg>
+      <svg
+        class="absolute inset-0 size-full"
+        viewBox="0 0 520 520"
+        fill="none">
+        <circle
+          cx="260"
+          cy="260"
+          r="258"
+          stroke="currentColor"
+          stroke-opacity=".10" />
+        <circle
+          cx="260"
+          cy="260"
+          r="200"
+          stroke="currentColor"
+          stroke-opacity=".14" />
+        <circle
+          cx="260"
+          cy="260"
+          r="142"
+          stroke="currentColor"
+          stroke-opacity=".18"
+          stroke-dasharray="4 8" />
+      </svg>
+      <span
+        v-for="orbit in ORBITS"
+        :key="orbit.size"
+        class="absolute top-1/2 left-1/2 -translate-1/2 rounded-full"
+        :class="orbit.size">
+        <span
+          v-for="(delay, index) in orbit.delays"
+          :key="delay"
+          class="absolute inset-0 animate-spin rounded-full"
+          :class="[orbit.duration, delay]">
+          <span
+            class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 rounded-full"
+            :class="ORBIT_DOT_CLASSES[index]" />
+        </span>
+      </span>
+    </div>
     <div
       class="pointer-events-none absolute top-16 left-[2.5%] size-18 bg-dots md:size-25"
       aria-hidden="true" />
@@ -138,22 +179,27 @@ watch(activeFilter, () => track.value?.scrollTo({ left: 0 }))
         id="stack-list"
         ref="track"
         tabindex="0"
-        class="m-0 list-none p-0.5 pb-3"
+        class="m-0 list-none"
         :class="trackClass"
         :aria-label="t('stack.listLabel')">
         <BaseCard
           v-for="tech in visibleTechnologies"
           :key="tech.id"
           as="li"
-          class="flex flex-col items-center justify-center gap-3 rounded-[1.125rem] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-[0.9375rem]"
+          class="rounded-[1.125rem]"
           :class="tileClass">
-          <div class="flex flex-col items-center gap-3 md:gap-4">
+          <a
+            :href="tech.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-[0.9375rem]">
             <Icon
               :name="tech.icon"
               class="size-11.5 md:size-14"
               aria-hidden="true" />
-            <span>{{ tech.name }}</span>
-          </div>
+            {{ tech.name }}
+            <span class="sr-only">{{ t('common.newTab') }}</span>
+          </a>
         </BaseCard>
       </ul>
 
