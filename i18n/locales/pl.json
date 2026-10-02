@@ -135,5 +135,18 @@
         "description": "Zaplecze administracyjne systemu proRMS."
       }
     }
+  },
+  "contact": {
+    "title": "Porozmawiajmy\no współpracy.",
+    "lead": "Masz pomysł na projekt, pytanie lub po prostu chcesz się poznać? Napisz do mnie - chętnie porozmawiam.",
+    "note": "Dobre pomysły zaczynają się\nod rozmowy.",
+    "emailLabel": "E-mail",
+    "copy": "Kopiuj adres e-mail",
+    "copied": "Adres skopiowany",
+    "copyError": "Nie udało się skopiować - zaznacz adres ręcznie."
+  },
+  "footer": {
+    "copyright": "© {year} Adam Kokoszka",
+    "backToTop": "Wróć na górę strony"
   }
 }

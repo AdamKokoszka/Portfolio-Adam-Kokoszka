@@ -1,0 +1,81 @@
+<script setup lang="ts">
+import { CONTACT_EMAIL } from '~/data/contact'
+
+const { t } = useI18n()
+
+const { status, copy } = useCopyToClipboard()
+
+const mailto = `mailto:${CONTACT_EMAIL}`
+
+const copyEmail = () => copy(CONTACT_EMAIL)
+
+const announcement = computed(() => {
+  if (status.value === 'copied') return t('contact.copied')
+  if (status.value === 'error') return t('contact.copyError')
+  return ''
+})
+
+const announcementClass = computed(() =>
+  status.value === 'copied' ? 'text-success' : 'text-danger',
+)
+</script>
+
+<template>
+  <BaseCard
+    as="div"
+    class="rounded-[1.125rem] px-4 pt-5 pb-4 shadow-card [--card-bg:var(--color-panel-card)] md:rounded-[1.375rem] md:p-7.5">
+    <div
+      class="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3.5 md:flex md:items-start md:gap-4">
+      <span
+        class="col-start-1 row-start-1 flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-fg md:size-12.5 md:rounded-[0.875rem]"
+        aria-hidden="true">
+        <Icon
+          name="ic:mail"
+          class="size-5" />
+      </span>
+
+      <div class="contents md:block md:min-w-0 md:flex-1">
+        <p class="col-start-2 row-start-1 text-[0.8125rem] font-semibold text-fg-soft">
+          {{ t('contact.emailLabel') }}
+        </p>
+        <div class="contents md:flex md:flex-wrap md:items-center md:gap-1">
+          <a
+            :href="mailto"
+            class="col-span-3 row-start-2 font-semibold whitespace-nowrap text-base/[1.3] text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg md:text-[1.15625rem] md:wrap-anywhere md:whitespace-normal">
+            {{ CONTACT_EMAIL }}
+          </a>
+          <BaseIconButton
+            class="col-start-3 row-start-1"
+            :class="{ 'text-success!': status === 'copied' }"
+            :label="t('contact.copy')"
+            @click="copyEmail">
+            <Icon
+              v-if="status === 'copied'"
+              name="ic:check"
+              class="size-4.5"
+              aria-hidden="true" />
+            <Icon
+              v-else
+              name="ic:copy"
+              class="size-4.5"
+              aria-hidden="true" />
+          </BaseIconButton>
+        </div>
+        <p
+          class="sr-only"
+          aria-live="polite">
+          {{ announcement }}
+        </p>
+        <p
+          v-if="announcement"
+          class="col-span-3 text-[0.8125rem] font-bold md:mt-1"
+          :class="announcementClass"
+          aria-hidden="true">
+          {{ announcement }}
+        </p>
+      </div>
+    </div>
+
+    <SocialLinks class="mt-4.5 border-t border-line pt-4 md:mt-5.5 md:pt-5" />
+  </BaseCard>
+</template>
