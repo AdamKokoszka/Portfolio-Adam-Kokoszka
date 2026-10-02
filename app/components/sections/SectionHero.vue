@@ -10,7 +10,7 @@ const togglePause = () => {
 
 <template>
   <section
-    class="relative overflow-x-clip pt-16 bg-hero md:pt-21"
+    class="relative overflow-x-clip pt-16 bg-hero md:pt-21 lg:flex lg:min-h-svh lg:flex-col"
     :class="{ 'animations-paused': isPaused }"
     aria-labelledby="hero-name">
     <div
@@ -25,7 +25,7 @@ const togglePause = () => {
     </div>
 
     <div
-      class="relative container grid grid-cols-1 items-center pt-5.5 pb-16 md:pt-14 md:pb-30 lg:min-h-204 lg:grid-cols-2 lg:gap-12 lg:pt-12 lg:pb-28">
+      class="relative container grid grid-cols-1 items-center pt-5.5 pb-16 md:pt-14 md:pb-30 lg:flex-1 lg:grid-cols-2 lg:gap-12 lg:pt-8 lg:pb-24">
       <div class="contents lg:block">
         <p
           class="mb-4 inline-flex animate-enter items-center gap-2.5 justify-self-start rounded-full border border-line bg-accent-soft py-1.5 pr-3.5 pl-2.5 text-[0.6875rem] font-bold tracking-[0.16em] text-accent-fg uppercase md:mb-4.5 md:pr-4 md:pl-3 md:text-[0.78rem]">
@@ -94,10 +94,10 @@ const togglePause = () => {
       </div>
 
       <div
-        class="relative order-1 mx-auto mt-1 h-93 w-77.5 animate-enter [animation-delay:255ms] md:mt-14 md:h-120 md:w-100 lg:order-none lg:mx-0 lg:-mt-6 lg:mr-7 lg:h-150 lg:w-125 lg:justify-self-end">
+        class="relative order-1 mx-auto mt-1 h-93 w-77.5 animate-enter [animation-delay:255ms] md:mt-14 md:h-120 md:w-100 lg:order-none lg:mx-0 lg:-mt-6 lg:mr-7 lg:h-135 lg:w-112.5 lg:justify-self-end">
         <SectionHeroVisual />
         <SectionHeroEditor
-          class="absolute -bottom-5.5 -left-1.5 z-10 md:-bottom-4.5 md:-left-10 lg:-bottom-3.5 lg:-left-26"
+          class="absolute -bottom-5.5 -left-1.5 z-10 md:-bottom-4.5 md:-left-10 lg:-bottom-3 lg:-left-24"
           :is-paused="isPaused"
           @toggle-pause="togglePause" />
       </div>
