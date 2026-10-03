@@ -246,7 +246,8 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 ### Domains
 
 - incocode.com is the primary domain on Netlify; incocode.pl, adamkokoszka.pl and adamkokoszka.com
-  (with www) are domain aliases redirected to it by host rules in `public/_redirects`. They
+  (with www) are domain aliases redirected to it by host rules in `public/_redirects`, as is
+  portfolioadamkokoszka.netlify.app (deploy previews keep their own URLs). They
   must live there, not in `netlify.toml`: Nitro copies `public/_redirects` above its own rules,
   which end with a `/* /404.html 404` catch-all that would otherwise match first.
 - DNS stays at OVH: `A @ 75.2.60.5`, `CNAME www portfolioadamkokoszka.netlify.app.`; MX records
@@ -257,8 +258,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Umami Cloud (cookieless, no consent banner), loaded by `useAnalytics()` in
   `layouts/default.vue`. The website ID and the tracked hosts live in
   `runtimeConfig.public.umamiWebsiteId` / `umamiDomains` (overridable with
-  `NUXT_PUBLIC_UMAMI_*`); localhost and deploy previews are never counted. Drop the
-  `netlify.app` host from `umamiDomains` once incocode.com is the only production domain.
+  `NUXT_PUBLIC_UMAMI_*`); only incocode.com is counted (not localhost or deploy previews).
 - Clicks worth knowing about are tracked declaratively with `data-umami-event="<kebab-name>"`
   (+ `data-umami-event-<key>` for details) - no JS calls. Current events: `cta-contact`,
   `cta-experience`, `email-click`, `email-copy`, `social-github` / `social-linkedin`
