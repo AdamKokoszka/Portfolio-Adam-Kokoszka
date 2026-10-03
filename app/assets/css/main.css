@@ -296,7 +296,7 @@
 
   @keyframes reveal-draw {
     from {
-      stroke-dashoffset: 1;
+      stroke-dashoffset: var(--draw-length, 1);
     }
   }
 }

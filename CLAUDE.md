@@ -132,11 +132,12 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Heading block: `<BaseEyebrow :number>` + `<h2>`; nav label `t('nav.<id>')` is the eyebrow text.
 - Content wrapper gets `v-reveal`; the elements inside that should animate get `data-reveal`
   (`up` default, `scale` for cards and panels, `fade` for dividers and captions, `draw` for SVG
-  strokes with `pathLength="1"` + `stroke-dasharray="1"`, `soft` for section headings (the
+  strokes (length measured at runtime, no `pathLength` - unreliable in Safari), `soft` for section headings (the
   About heading uses `group` + `<BaseSplitText>` letters), `sharpen` for system cards, `flight`
   for an SVG element moving along its `offset-path`, `group` when only the children animate -
   the experience timeline, the tech tile wave). Variants that add `is-revealed` let children
-  animate with `in-[.is-revealed]:animate-*`; the class is removed after the entrance, so
+  animate with `in-[.is-revealed]:animate-*`; SVG children are observed through their `<svg>`
+  (Safari's IntersectionObserver is unreliable on paths); the class is removed after the entrance, so
   elements rendered later (carousel, expand, filters) appear without animation. Each element is revealed when it
   scrolls into view; elements entering together are staggered (90 ms steps, max 10). Optional
   `data-reveal-delay="<ms>"` adds to the stagger. Elements already in view on load, or with

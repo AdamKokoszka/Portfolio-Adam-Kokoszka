@@ -22,7 +22,7 @@ const HIDDEN_CLASSES: Record<RevealVariant, string> = {
   soft: 'opacity-0',
   scale: 'opacity-0',
   fade: 'opacity-0',
-  draw: '[stroke-dashoffset:1]',
+  draw: '[stroke-dashoffset:var(--draw-length)]',
   flight: 'opacity-0',
   sharpen: 'opacity-0',
   group: 'opacity-0',
@@ -39,8 +39,17 @@ const variantOf = (item: Element): RevealVariant => {
 const isBelowViewport = (entry: IntersectionObserverEntry) =>
   entry.boundingClientRect.top >= window.innerHeight
 
-const isRevealItem = (element: Element): element is RevealItem =>
-  element instanceof HTMLElement || element instanceof SVGElement
+const observedTarget = (item: RevealItem): Element =>
+  item instanceof SVGElement && !(item instanceof SVGSVGElement) && item.ownerSVGElement
+    ? item.ownerSVGElement
+    : item
+
+const prepareDraw = (item: RevealItem) => {
+  if (!(item instanceof SVGGeometryElement)) return
+  const length = Math.ceil(item.getTotalLength())
+  item.style.setProperty('--draw-length', String(length))
+  item.style.setProperty('stroke-dasharray', String(length))
+}
 
 const byDocumentOrder = (a: Element, b: Element) =>
   a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
@@ -57,9 +66,16 @@ export default defineNuxtPlugin((nuxtApp) => {
       const nested = Array.from(el.querySelectorAll<RevealItem>(ITEM_SELECTOR))
       const items: RevealItem[] = nested.length ? nested : [el]
       const hidden = new WeakSet<Element>()
+      const itemsByTarget = new Map<Element, RevealItem[]>()
+      items.forEach((item) => {
+        const target = observedTarget(item)
+        itemsByTarget.set(target, [...(itemsByTarget.get(target) ?? []), item])
+      })
 
-      const hide = (item: Element) => {
-        item.classList.add(HIDDEN_CLASSES[variantOf(item)])
+      const hide = (item: RevealItem) => {
+        const variant = variantOf(item)
+        if (variant === 'draw') prepareDraw(item)
+        item.classList.add(HIDDEN_CLASSES[variant])
         hidden.add(item)
       }
 
@@ -76,16 +92,15 @@ export default defineNuxtPlugin((nuxtApp) => {
         (entries) => {
           const entering: RevealItem[] = []
           entries.forEach((entry) => {
-            const item = entry.target
-            if (!isRevealItem(item)) return
-            if (hidden.has(item)) {
+            const targetItems = itemsByTarget.get(entry.target) ?? []
+            if (targetItems.some((item) => hidden.has(item))) {
               if (!entry.isIntersecting) return
-              entering.push(item)
-              observer.unobserve(item)
+              entering.push(...targetItems)
+              observer.unobserve(entry.target)
               return
             }
-            if (isBelowViewport(entry)) hide(item)
-            else observer.unobserve(item)
+            if (isBelowViewport(entry)) targetItems.forEach(hide)
+            else observer.unobserve(entry.target)
           })
           entering
             .sort(byDocumentOrder)
@@ -94,7 +109,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         { rootMargin: '0px 0px -8% 0px' },
       )
 
-      items.forEach((item) => observer.observe(item))
+      itemsByTarget.forEach((_, target) => observer.observe(target))
       observers.set(el, observer)
     },
     unmounted: (el) => {

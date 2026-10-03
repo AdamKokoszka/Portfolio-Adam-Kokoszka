@@ -115,8 +115,6 @@ const flightStyle = {
                   stroke="currentColor"
                   stroke-width="2.2"
                   stroke-linecap="round"
-                  pathLength="1"
-                  stroke-dasharray="1"
                   data-reveal="draw"
                   data-reveal-delay="300" />
                 <path
@@ -125,8 +123,6 @@ const flightStyle = {
                   stroke-width="2.2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  pathLength="1"
-                  stroke-dasharray="1"
                   data-reveal="draw"
                   data-reveal-delay="1000" />
               </svg>
