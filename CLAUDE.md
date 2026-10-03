@@ -243,6 +243,15 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Large images use `<NuxtPicture format="avif,webp">`; give every `<img>` explicit `width` and
   `height` (Lighthouse "unsized images").
 
+### Domains
+
+- incocode.com is the primary domain on Netlify; incocode.pl, adamkokoszka.pl and adamkokoszka.com
+  (with www) are domain aliases redirected to it by host rules in `public/_redirects`. They
+  must live there, not in `netlify.toml`: Nitro copies `public/_redirects` above its own rules,
+  which end with a `/* /404.html 404` catch-all that would otherwise match first.
+- DNS stays at OVH: `A @ 75.2.60.5`, `CNAME www portfolioadamkokoszka.netlify.app.`; MX records
+  belong to OVH mail and stay untouched.
+
 ### Analytics
 
 - Umami Cloud (cookieless, no consent banner), loaded by `useAnalytics()` in
