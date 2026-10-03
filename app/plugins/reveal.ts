@@ -28,9 +28,12 @@ const HIDDEN_CLASSES: Record<RevealVariant, string> = {
   group: 'opacity-0',
 }
 
+const isRevealVariant = (value: string | null): value is RevealVariant =>
+  value !== null && value in ANIMATION_CLASSES
+
 const variantOf = (item: Element): RevealVariant => {
   const variant = item.getAttribute('data-reveal')
-  return variant && variant in ANIMATION_CLASSES ? (variant as RevealVariant) : 'up'
+  return isRevealVariant(variant) ? variant : 'up'
 }
 
 const isBelowViewport = (entry: IntersectionObserverEntry) =>
@@ -70,7 +73,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         (entries) => {
           const entering: HTMLElement[] = []
           entries.forEach((entry) => {
-            const item = entry.target as HTMLElement
+            const item = entry.target
+            if (!(item instanceof HTMLElement)) return
             if (hidden.has(item)) {
               if (!entry.isIntersecting) return
               entering.push(item)

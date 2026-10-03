@@ -10,8 +10,9 @@ const nextTheme = computed(() => (isDark.value ? 'light' : 'dark'))
 const { switchTheme } = useThemeTransition()
 
 const toggle = (event: MouseEvent) => {
+  if (!(event.currentTarget instanceof HTMLElement)) return
   const theme = nextTheme.value
-  switchTheme(event.currentTarget as HTMLElement, theme, () => {
+  switchTheme(event.currentTarget, theme, () => {
     colorMode.preference = theme
   })
 }

@@ -3,6 +3,10 @@ const { t } = useI18n()
 
 const number = sectionNumber('contact')
 
+const section = useTemplateRef('section')
+const canAnimate = useCanAnimate(section)
+const glideClass = computed(() => (canAnimate.value ? '' : 'animations-paused'))
+
 const flightStyle = {
   '--flight-path': "path('M4 112c40-6 70-30 96-52s60-40 100-34c8 0 16-4 25-12')",
 }
@@ -11,6 +15,7 @@ const flightStyle = {
 <template>
   <section
     id="contact"
+    ref="section"
     class="relative overflow-hidden bg-sunken pt-18 pb-14 md:pt-26 md:pb-22"
     aria-labelledby="contact-title">
     <div
@@ -54,7 +59,9 @@ const flightStyle = {
             :style="flightStyle"
             data-reveal="flight"
             data-reveal-delay="500">
-            <g class="origin-center animate-glide [transform-box:fill-box]">
+            <g
+              class="origin-center animate-glide [transform-box:fill-box]"
+              :class="glideClass">
               <path
                 d="M-17-11 21 0-17 11-8 0Z"
                 fill="currentColor"

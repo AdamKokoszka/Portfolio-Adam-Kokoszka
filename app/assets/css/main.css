@@ -119,7 +119,6 @@
   --shadow-logo: 0 8px 18px -12px rgb(0 0 0 / 0.55);
   --shadow-badge: 0 10px 26px -12px rgb(255 170 114 / 0.7);
 
-  --animate-enter: enter-up 0.62s var(--ease-smooth) both;
   --animate-rise: rise 1s var(--ease-rise) both;
   --animate-float: float 7s ease-in-out infinite;
   --animate-blink: blink 1s steps(1) infinite;
@@ -133,13 +132,6 @@
   --animate-blur-in: blur-in 0.9s var(--ease-smooth) backwards;
   --animate-draw: reveal-draw 1.6s var(--ease-smooth) backwards;
   --animate-fade: reveal-fade 1s ease-out backwards;
-
-  @keyframes enter-up {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-  }
 
   @keyframes rise {
     from {
