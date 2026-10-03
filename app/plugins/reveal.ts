@@ -1,4 +1,4 @@
-import type { RevealVariant } from '~/types/plugins'
+import type { RevealItem, RevealVariant } from '~/types/plugins'
 
 const ITEM_SELECTOR = '[data-reveal]'
 const STAGGER_MS = 90
@@ -39,6 +39,9 @@ const variantOf = (item: Element): RevealVariant => {
 const isBelowViewport = (entry: IntersectionObserverEntry) =>
   entry.boundingClientRect.top >= window.innerHeight
 
+const isRevealItem = (element: Element): element is RevealItem =>
+  element instanceof HTMLElement || element instanceof SVGElement
+
 const byDocumentOrder = (a: Element, b: Element) =>
   a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
 
@@ -51,8 +54,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       if (prefersReducedMotion || !('IntersectionObserver' in window)) return
 
-      const nested = Array.from(el.querySelectorAll<HTMLElement>(ITEM_SELECTOR))
-      const items = nested.length ? nested : [el]
+      const nested = Array.from(el.querySelectorAll<RevealItem>(ITEM_SELECTOR))
+      const items: RevealItem[] = nested.length ? nested : [el]
       const hidden = new WeakSet<Element>()
 
       const hide = (item: Element) => {
@@ -60,7 +63,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         hidden.add(item)
       }
 
-      const show = (item: HTMLElement, step: number) => {
+      const show = (item: RevealItem, step: number) => {
         const variant = variantOf(item)
         const extraDelay = Number(item.dataset.revealDelay ?? 0)
         item.style.setProperty('--reveal-delay', `${step * STAGGER_MS + extraDelay}ms`)
@@ -71,10 +74,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       const observer = new IntersectionObserver(
         (entries) => {
-          const entering: HTMLElement[] = []
+          const entering: RevealItem[] = []
           entries.forEach((entry) => {
             const item = entry.target
-            if (!(item instanceof HTMLElement)) return
+            if (!isRevealItem(item)) return
             if (hidden.has(item)) {
               if (!entry.isIntersecting) return
               entering.push(item)
