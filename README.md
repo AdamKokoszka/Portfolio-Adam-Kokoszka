@@ -44,8 +44,8 @@ The dev server runs at http://localhost:3000.
 
 ## Analytics
 
-[Umami Cloud](https://umami.is) - set `NUXT_PUBLIC_UMAMI_WEBSITE_ID` in the Netlify
-environment variables to enable it. Without it no tracking script is rendered.
+[Umami Cloud](https://umami.is) - website ID and tracked domains are in `runtimeConfig.public`
+(`nuxt.config.ts`). Only the production hosts are counted, never localhost or deploy previews.
 
 ## Deployment
 
