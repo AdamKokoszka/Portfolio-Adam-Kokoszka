@@ -38,7 +38,7 @@ const flightStyle = {
         </div>
 
         <svg
-          class="pointer-events-none absolute top-3.5 right-3 h-14.5 w-30 text-accent-fg opacity-70 md:top-7.5 md:right-12 md:h-27.5 md:w-57.5 md:opacity-100"
+          class="pointer-events-none absolute top-3.5 right-3 h-14.5 w-30 overflow-visible text-accent-fg opacity-70 md:top-7.5 md:right-12 md:h-27.5 md:w-57.5 md:opacity-100"
           viewBox="0 0 250 120"
           fill="none"
           aria-hidden="true">

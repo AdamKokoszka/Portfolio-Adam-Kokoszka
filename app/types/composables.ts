@@ -10,6 +10,10 @@ export interface PointerCssVarsOptions {
   y?: string
 }
 
+export interface PointerParallaxOptions {
+  smoothing?: number
+}
+
 export interface PointerTiltOptions {
   maxDegrees?: number
 }
