@@ -6,7 +6,7 @@ export interface CopyButtonProps {
 }
 
 export type RevealVariant =
-  'up' | 'scale' | 'fade' | 'draw' | 'flight' | 'wave' | 'sharpen' | 'group'
+  'up' | 'soft' | 'scale' | 'fade' | 'draw' | 'flight' | 'sharpen' | 'group'
 
 export interface SocialLinksProps {
   placement: 'hero' | 'contact'

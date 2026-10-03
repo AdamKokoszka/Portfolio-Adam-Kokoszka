@@ -58,13 +58,13 @@ const schools = computed(() =>
         class="grid grid-cols-1 gap-10 md:gap-12 lg:grid-cols-[minmax(0,1.3fr)_1px_minmax(0,1fr)] lg:gap-13">
         <div>
           <h3
-            data-reveal="group"
+            data-reveal="soft"
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
             <BaseIcon
               name="briefcase"
               class="size-5.5 text-warm md:size-6.5"
               aria-hidden="true" />
-            <BaseSplitText :text="t('experience.work')" />
+            {{ t('experience.work') }}
           </h3>
 
           <div class="flex flex-col gap-4.5">
@@ -117,13 +117,13 @@ const schools = computed(() =>
 
         <div>
           <h3
-            data-reveal="group"
+            data-reveal="soft"
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
             <BaseIcon
               name="graduation-cap"
               class="size-5.5 text-warm md:size-6.5"
               aria-hidden="true" />
-            <BaseSplitText :text="t('experience.education')" />
+            {{ t('experience.education') }}
           </h3>
 
           <div class="flex flex-col gap-4.5">

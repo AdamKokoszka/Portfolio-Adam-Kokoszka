@@ -36,9 +36,9 @@ const number = sectionNumber('systems')
         </BaseEyebrow>
         <h2
           id="systems-title"
-          data-reveal="group"
+          data-reveal="soft"
           class="text-[1.75rem]/[1.15] font-semibold tracking-[-0.02em] text-white md:text-[2.375rem]/[1.15]">
-          <BaseSplitText :text="t('systems.title')" />
+          {{ t('systems.title') }}
         </h2>
       </div>
 

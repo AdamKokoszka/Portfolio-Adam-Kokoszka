@@ -3,25 +3,27 @@ import type { RevealVariant } from '~/types/common'
 const ITEM_SELECTOR = '[data-reveal]'
 const STAGGER_MS = 90
 const MAX_STAGGER_STEPS = 10
+const SETTLE_MS = 4000
+const TRIGGER_CLASS = 'is-revealed'
 
 const ANIMATION_CLASSES: Record<RevealVariant, string[]> = {
   up: ['animate-reveal-up'],
+  soft: ['animate-reveal-soft'],
   scale: ['animate-reveal-scale'],
   fade: ['animate-reveal-fade'],
   draw: ['animate-reveal-draw'],
   flight: ['animate-reveal-flight'],
-  wave: ['animate-reveal-wave', 'is-revealed'],
-  sharpen: ['animate-reveal-sharpen', 'is-revealed'],
-  group: ['is-revealed'],
+  sharpen: ['animate-reveal-sharpen', TRIGGER_CLASS],
+  group: [TRIGGER_CLASS],
 }
 
 const HIDDEN_CLASSES: Record<RevealVariant, string> = {
   up: 'opacity-0',
+  soft: 'opacity-0',
   scale: 'opacity-0',
   fade: 'opacity-0',
   draw: '[stroke-dashoffset:1]',
   flight: 'opacity-0',
-  wave: 'opacity-0',
   sharpen: 'opacity-0',
   group: 'opacity-0',
 }
@@ -61,6 +63,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         item.style.setProperty('--reveal-delay', `${step * STAGGER_MS + extraDelay}ms`)
         item.classList.remove(HIDDEN_CLASSES[variant])
         item.classList.add(...ANIMATION_CLASSES[variant])
+        setTimeout(() => item.classList.remove(TRIGGER_CLASS), SETTLE_MS)
       }
 
       const observer = new IntersectionObserver(
