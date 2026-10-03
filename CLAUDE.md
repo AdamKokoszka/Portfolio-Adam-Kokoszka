@@ -122,9 +122,11 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Heading block: `<BaseEyebrow :number>` + `<h2>`; nav label `t('nav.<id>')` is the eyebrow text.
 - Content wrapper gets `v-reveal`; the elements inside that should animate get `data-reveal`
   (`up` default, `scale` for cards and panels, `fade` for dividers and captions, `draw` for SVG
-  strokes with `pathLength="1"` + `stroke-dasharray="1"`, `chars` for section headings rendered
-  with `<BaseSplitText>`, `flight` for an SVG element moving along its `offset-path`). Each element is revealed when it
-  scrolls into view; elements entering together are staggered (90 ms steps). Optional
+  strokes with `pathLength="1"` + `stroke-dasharray="1"`, `wave` for tech tiles, `sharpen` for
+  system cards, `flight` for an SVG element moving along its `offset-path`, `group` when only
+  the children animate - letters of `<BaseSplitText>` headings, the experience timeline). Variants
+  that add `is-revealed` let children animate with `in-[.is-revealed]:animate-*`. Each element is revealed when it
+  scrolls into view; elements entering together are staggered (90 ms steps, max 10). Optional
   `data-reveal-delay="<ms>"` adds to the stagger. Elements already in view on load, or with
   reduced motion, are never hidden. A wrapper without `data-reveal` children animates itself.
 
@@ -180,18 +182,19 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Motion layers (no animation library - CSS + small composables, ~0 KB):
   - scroll reveals: `v-reveal` + `data-reveal` (see Page sections), keyframes `reveal-*`
   - scroll-linked (CSS scroll-driven animations, progressive enhancement - Firefox shows the
-    static state): `scroll-progress` (top bar), `scroll-drift` (ghost numbers), `scroll-grow-y`
-    (timeline connectors), `scroll-settle` (system images)
+    static state): `scroll-progress` (top bar), `scroll-drift` (ghost numbers)
   - hero intro: blurred mask rise of the name, `animate-enter-blur` copy, `animate-pop` disc,
     `animate-portrait` circle reveal, `animate-draw` orbit, `animate-slide-tilt` editor
   - pointer: `usePointerCssVars` (card spotlight), `usePointerParallax` + `parallax-<px>` (hero
-    depth layers), `usePointerTilt` (system cards); fine pointers only; springy hovers with
-    `ease-spring`
+    depth layers, eased, a few px only); fine pointers only; springy hovers with `ease-spring`
   - text: `<BaseSplitText>` (letters, screen readers get the plain text), `<BaseScrollHighlight>`
     (words light up with scroll, CSS view timeline)
   - nav: `useSlidingIndicator` (glowing line under the active section)
   - theme switch: `useThemeTransition` (View Transitions circle from the toggle)
   - loops: `animate-float`, `animate-orbit`, `animate-glide`, `animate-ping`, `beam-border`
+- Animation tokens whose timing reads per-element variables (`--reveal-delay`, `--step`,
+  `--char-index`) must live in `@theme inline`; in `@theme` they resolve on `:root` and every
+  stagger collapses to 0.
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 
 ### Images

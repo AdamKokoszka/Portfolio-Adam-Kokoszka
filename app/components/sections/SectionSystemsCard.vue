@@ -31,21 +31,16 @@ const { t } = useI18n()
 
 const styles = computed(() => VARIANTS[props.variant])
 
-const card = useTemplateRef<HTMLElement>('card')
-
-usePointerTilt(card, { maxDegrees: 2.5 })
-
 const imageAttrs = computed(() => ({
   alt: '',
   loading: 'lazy' as const,
-  class: `absolute inset-0 size-full scroll-settle object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${styles.value.image}`,
+  class: `absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${styles.value.image}`,
 }))
 </script>
 
 <template>
   <article
-    ref="card"
-    class="group/system beam-border relative [transform:perspective(75rem)_rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))] overflow-hidden rounded-[1.375rem] border border-white/8 bg-ink-surface [transition:border-color_0.6s_var(--ease-smooth),transform_0.5s_var(--ease-smooth)] hover:border-peach-fg/22"
+    class="group/system beam-border relative overflow-hidden rounded-[1.375rem] border border-white/8 bg-ink-surface transition-colors duration-600 ease-smooth hover:border-peach-fg/22"
     :class="styles.root">
     <NuxtPicture
       :src="system.image"
@@ -58,7 +53,7 @@ const imageAttrs = computed(() => ({
       aria-hidden="true" />
 
     <div
-      class="absolute z-[2]"
+      class="absolute z-[2] in-[.is-revealed]:animate-caption-in"
       :class="styles.body">
       <span
         v-if="system.isCurrent"
