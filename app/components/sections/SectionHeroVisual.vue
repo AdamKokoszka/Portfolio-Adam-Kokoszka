@@ -81,6 +81,7 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
       :height="650"
       sizes="322px md:416px lg:468px"
       format="avif,webp"
+      :quality="60"
       :img-attrs="portraitAttrs" />
   </div>
 </template>
