@@ -44,7 +44,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       umamiWebsiteId: '85181a36-01db-4783-bef5-ceb4f6607a01',
-      umamiDomains: 'incocode.com,portfolioadamkokoszka.netlify.app',
+      umamiDomains: 'incocode.com',
     },
   },
 
