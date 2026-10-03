@@ -69,8 +69,8 @@ export default defineNuxtConfig({
     },
     families: [
       { name: 'Manrope', provider: 'google', weights: [300, 400, 500, 600, 700] },
-      { name: 'JetBrains Mono', provider: 'google', weights: [400], subsets: ['latin'] },
-      { name: 'Caveat', provider: 'google', weights: [600] },
+      { name: 'JetBrains Mono', provider: 'none' },
+      { name: 'Caveat', provider: 'none' },
     ],
   },
 

@@ -1,5 +1,32 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/caveat-600-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+2026;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/caveat-600-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF;
+}
+
 @property --pointer-x {
   syntax: '<length>';
   inherits: true;

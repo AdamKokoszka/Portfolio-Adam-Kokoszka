@@ -200,6 +200,15 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Large images use `<NuxtPicture format="avif,webp">`; give every `<img>` explicit `width` and
   `height` (Lighthouse "unsized images").
 
+### Fonts
+
+- Manrope is served by @nuxt/fonts (Google, self-hosted at build time).
+- Caveat (handwritten notes) and JetBrains Mono (hero code editor) are **subset to the glyphs
+  actually used** and self-hosted from `public/fonts/` (`@font-face` in `main.css`; @nuxt/fonts
+  is told to skip them with `provider: 'none'`). Together ~20 KB instead of ~93 KB.
+- **When the handwritten notes or the editor text change, regenerate the subsets** with
+  `design/fonts/subset.sh` — characters outside the subset fall back to a system font.
+
 ### Accessibility
 
 - Semantic HTML (`<button>`, `<a href>`, landmarks, headings in order), visible focus states,
