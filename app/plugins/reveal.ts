@@ -1,4 +1,4 @@
-import type { RevealVariant } from '~/types/common'
+import type { RevealVariant } from '~/types/plugins'
 
 const ITEM_SELECTOR = '[data-reveal]'
 const STAGGER_MS = 90
