@@ -32,10 +32,13 @@ const {
   counts,
 } = useCategoryFilter(TECHNOLOGIES, TECH_CATEGORIES)
 
+const WAVE_STEPS = 9
+
 const tiles = computed(() =>
-  filteredTechnologies.value.map((tech) => ({
+  filteredTechnologies.value.map((tech, index) => ({
     ...tech,
     logoStyle: { '--logo': `url(${tech.logo})` },
+    waveStyle: { '--tile-index': Math.min(index, WAVE_STEPS) },
   })),
 )
 
@@ -82,9 +85,9 @@ const toggleExpanded = () =>
           </BaseEyebrow>
           <h2
             id="stack-title"
-            data-reveal="group"
+            data-reveal="soft"
             class="text-[1.75rem]/[1.15] font-semibold tracking-[-0.02em] text-fg md:text-[2.375rem]/[1.15]">
-            <BaseSplitText :text="t('stack.title')" />
+            {{ t('stack.title') }}
           </h2>
         </div>
         <div
@@ -123,6 +126,7 @@ const toggleExpanded = () =>
         <ul
           id="stack-list"
           ref="track"
+          data-reveal="group"
           tabindex="0"
           class="m-0 list-none"
           :class="layout.track"
@@ -130,10 +134,10 @@ const toggleExpanded = () =>
           <BaseCard
             v-for="tech in tiles"
             :key="tech.id"
-            data-reveal="wave"
             as="li"
-            class="rounded-[1.125rem]"
-            :class="layout.tile">
+            class="rounded-[1.125rem] in-[.is-revealed]:animate-tile-wave"
+            :class="layout.tile"
+            :style="tech.waveStyle">
             <a
               :href="tech.url"
               target="_blank"

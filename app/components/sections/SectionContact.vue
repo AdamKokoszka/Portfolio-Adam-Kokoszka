@@ -81,9 +81,9 @@ const flightStyle = {
             </BaseEyebrow>
             <h2
               id="contact-title"
-              data-reveal="group"
+              data-reveal="soft"
               class="text-[2.125rem]/[1.08] font-semibold tracking-[-0.03em] whitespace-pre-line text-fg md:text-[3.25rem]/[1.08]">
-              <BaseSplitText :text="t('contact.title')" />
+              {{ t('contact.title') }}
             </h2>
             <p
               data-reveal
