@@ -159,6 +159,7 @@ const toggleExpanded = () =>
           variant="ghost"
           size="sm"
           aria-controls="stack-list"
+          data-umami-event="stack-toggle"
           :aria-expanded="isExpanded"
           @click="toggleExpanded">
           {{ toggleLabel }}
