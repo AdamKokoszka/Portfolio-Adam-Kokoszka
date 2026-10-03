@@ -15,19 +15,19 @@ const toggle = () => {
     :label="label"
     @click="toggle">
     <ColorScheme>
-      <Icon
+      <BaseIcon
         v-if="isDark"
-        name="ic:sun"
+        name="sun"
         class="size-[1.125rem]"
         aria-hidden="true" />
-      <Icon
+      <BaseIcon
         v-else
-        name="ic:moon"
+        name="moon"
         class="size-[1.125rem]"
         aria-hidden="true" />
       <template #placeholder>
-        <Icon
-          name="ic:sun"
+        <BaseIcon
+          name="sun"
           class="size-[1.125rem]"
           aria-hidden="true" />
       </template>

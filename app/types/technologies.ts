@@ -8,7 +8,8 @@ export type TechFilter = CategoryFilter<TechCategory>
 export interface Technology {
   id: string
   name: string
-  icon: string
+  logo: string
+  isMono?: boolean
   color?: string
   url: string
   category: TechCategory

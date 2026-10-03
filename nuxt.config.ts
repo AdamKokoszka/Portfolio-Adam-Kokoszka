@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxtjs/color-mode',
-    '@nuxt/icon',
     '@vueuse/nuxt',
   ],
 
@@ -79,12 +78,6 @@ export default defineNuxtConfig({
     fallback: 'dark',
     classSuffix: '',
     storageKey: 'theme',
-  },
-
-  icon: {
-    mode: 'svg',
-    customCollections: [{ prefix: 'ic', dir: './app/assets/icons' }],
-    clientBundle: { scan: true, includeCustomCollections: true },
   },
 
   image: {

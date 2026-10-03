@@ -58,8 +58,8 @@ const schools = computed(() =>
         <div>
           <h3
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
-            <Icon
-              name="ic:briefcase"
+            <BaseIcon
+              name="briefcase"
               class="size-5.5 text-warm md:size-6.5"
               aria-hidden="true" />
             {{ t('experience.work') }}
@@ -114,8 +114,8 @@ const schools = computed(() =>
         <div>
           <h3
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
-            <Icon
-              name="ic:graduation-cap"
+            <BaseIcon
+              name="graduation-cap"
               class="size-5.5 text-warm md:size-6.5"
               aria-hidden="true" />
             {{ t('experience.education') }}

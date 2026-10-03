@@ -32,6 +32,13 @@ const {
   counts,
 } = useCategoryFilter(TECHNOLOGIES, TECH_CATEGORIES)
 
+const tiles = computed(() =>
+  filteredTechnologies.value.map((tech) => ({
+    ...tech,
+    logoStyle: { '--logo': `url(${tech.logo})` },
+  })),
+)
+
 const { scrollPrev, scrollNext, scrollToStart } = useHorizontalScroll(track)
 const { run: transitionLayout } = useLayoutTransition(viewport)
 
@@ -84,8 +91,8 @@ const toggleExpanded = () =>
             size="lg"
             :label="t('stack.previous')"
             @click="scrollPrev">
-            <Icon
-              name="ic:chevron-left"
+            <BaseIcon
+              name="chevron-left"
               class="size-5"
               aria-hidden="true" />
           </BaseIconButton>
@@ -93,8 +100,8 @@ const toggleExpanded = () =>
             size="lg"
             :label="t('stack.next')"
             @click="scrollNext">
-            <Icon
-              name="ic:chevron-right"
+            <BaseIcon
+              name="chevron-right"
               class="size-5"
               aria-hidden="true" />
           </BaseIconButton>
@@ -116,7 +123,7 @@ const toggleExpanded = () =>
           :class="layout.track"
           :aria-label="t('stack.listLabel')">
           <BaseCard
-            v-for="tech in filteredTechnologies"
+            v-for="tech in tiles"
             :key="tech.id"
             as="li"
             class="rounded-[1.125rem]"
@@ -126,11 +133,20 @@ const toggleExpanded = () =>
               target="_blank"
               rel="noopener noreferrer"
               class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-ui">
-              <Icon
-                :name="tech.icon"
-                class="size-11.5 md:size-14"
+              <span
+                v-if="tech.isMono"
+                class="size-10 bg-current [mask-image:var(--logo)] mask-contain mask-center mask-no-repeat md:size-12"
                 :class="tech.color"
+                :style="tech.logoStyle"
                 aria-hidden="true" />
+              <img
+                v-else
+                :src="tech.logo"
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                class="size-10 object-contain md:size-12" />
               {{ tech.name }}
               <span class="sr-only">{{ t('common.newTab') }}</span>
             </a>
@@ -146,13 +162,15 @@ const toggleExpanded = () =>
           :aria-expanded="isExpanded"
           @click="toggleExpanded">
           {{ toggleLabel }}
-          <Icon
+          <BaseIcon
             v-if="isExpanded"
-            name="ic:chevron-up"
+            name="chevron-up"
+            class="size-[1em]"
             aria-hidden="true" />
-          <Icon
+          <BaseIcon
             v-else
-            name="ic:arrow-right"
+            name="arrow-right"
+            class="size-[1em]"
             aria-hidden="true" />
         </BaseButton>
       </div>

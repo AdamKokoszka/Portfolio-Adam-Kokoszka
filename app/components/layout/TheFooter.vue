@@ -27,8 +27,8 @@ const year = new Date().getFullYear()
           class="col-start-2 row-span-3 row-start-1 inline-flex size-11 items-center justify-center rounded-full border-[1.5px] border-accent-line text-fg transition-colors duration-400 ease-smooth hover:border-accent hover:text-accent-fg"
           :aria-label="t('footer.backToTop')"
           :title="t('footer.backToTop')">
-          <Icon
-            name="ic:arrow-up"
+          <BaseIcon
+            name="arrow-up"
             class="size-4.5"
             aria-hidden="true" />
         </a>

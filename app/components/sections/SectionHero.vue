@@ -86,8 +86,9 @@ usePointerCssVars(hero)
           class="order-2 mt-7 flex animate-enter flex-col gap-2.5 [animation-delay:340ms] md:mt-24 md:flex-row md:flex-wrap md:gap-3.5 lg:mt-9.5">
           <BaseButton href="#contact">
             {{ t('hero.ctaPrimary') }}
-            <Icon
-              name="ic:arrow-right"
+            <BaseIcon
+              name="arrow-right"
+              class="size-[1em]"
               aria-hidden="true" />
           </BaseButton>
           <BaseButton

@@ -14,7 +14,7 @@ const { t } = useI18n()
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex min-h-11 items-center gap-2.5 text-ui font-semibold text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg">
-        <Icon
+        <BaseIcon
           :name="link.icon"
           class="size-5.5"
           aria-hidden="true" />

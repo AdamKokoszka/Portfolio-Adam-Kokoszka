@@ -1,3 +1,28 @@
+export type IconName =
+  | 'arrow-right'
+  | 'arrow-up'
+  | 'briefcase'
+  | 'check'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'chevron-up'
+  | 'close'
+  | 'copy'
+  | 'github'
+  | 'graduation-cap'
+  | 'link'
+  | 'linkedin'
+  | 'mail'
+  | 'menu'
+  | 'moon'
+  | 'pause'
+  | 'play'
+  | 'sun'
+
+export interface BaseIconProps {
+  name: IconName
+}
+
 export type LogoFit = 'tight' | 'padded'
 
 export type ButtonVariant = 'primary' | 'ghost'

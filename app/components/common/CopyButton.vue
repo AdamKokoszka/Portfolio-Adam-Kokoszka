@@ -24,14 +24,14 @@ const copyText = () => copy(props.text)
       :class="{ 'text-success! hover:text-success!': isCopied }"
       :label="label"
       @click="copyText">
-      <Icon
+      <BaseIcon
         v-if="isCopied"
-        name="ic:check"
+        name="check"
         class="size-4.5"
         aria-hidden="true" />
-      <Icon
+      <BaseIcon
         v-else
-        name="ic:copy"
+        name="copy"
         class="size-4.5"
         aria-hidden="true" />
     </BaseIconButton>

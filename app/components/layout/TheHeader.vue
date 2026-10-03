@@ -82,14 +82,14 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
             :aria-expanded="isMenuOpen"
             aria-controls="mobile-menu"
             @click="toggleMenu">
-            <Icon
+            <BaseIcon
               v-if="isMenuOpen"
-              name="ic:close"
+              name="close"
               class="size-5"
               aria-hidden="true" />
-            <Icon
+            <BaseIcon
               v-else
-              name="ic:menu"
+              name="menu"
               class="size-5"
               aria-hidden="true" />
           </BaseIconButton>
