@@ -211,9 +211,10 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 ### Analytics
 
 - Umami Cloud (cookieless, no consent banner), loaded by `useAnalytics()` in
-  `layouts/default.vue` only when `runtimeConfig.public.umamiWebsiteId` is set
-  (`NUXT_PUBLIC_UMAMI_WEBSITE_ID` at build time). `data-domains` limits tracking to the
-  production host from `site.url`, so localhost and deploy previews are never counted.
+  `layouts/default.vue`. The website ID and the tracked hosts live in
+  `runtimeConfig.public.umamiWebsiteId` / `umamiDomains` (overridable with
+  `NUXT_PUBLIC_UMAMI_*`); localhost and deploy previews are never counted. Drop the
+  `netlify.app` host from `umamiDomains` once incocode.com is the only production domain.
 - Clicks worth knowing about are tracked declaratively with `data-umami-event="<kebab-name>"`
   (+ `data-umami-event-<key>` for details) - no JS calls. Current events: `cta-contact`,
   `cta-experience`, `email-click`, `email-copy`, `social-github` / `social-linkedin`
