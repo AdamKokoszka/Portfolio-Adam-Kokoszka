@@ -10,11 +10,13 @@ Single-page site, statically generated, Polish by default with an English versio
 - **Tailwind CSS v4** (CSS-first config in `app/assets/css/main.css`, no `tailwind.config`)
 - **@nuxtjs/i18n**: `pl` (default, served at `/`) and `en` (served at `/en`); `/pl` redirects to `/`
 - **@nuxtjs/color-mode** (dark default, `.dark` / `.light` class on `<html>`, no flash)
-- **@nuxt/fonts** (Manrope, JetBrains Mono, Caveat — self-hosted at build time), **@nuxt/image**
-  (`<NuxtImg>` / `<NuxtPicture>`, avif/webp) — use these instead of raw `<img>` / font links
+- **@nuxt/fonts** (Manrope, self-hosted at build time; Caveat and JetBrains Mono are subset files in
+  `public/fonts`, see Fonts), **@nuxt/image** (`<NuxtImg>` / `<NuxtPicture>`, avif/webp) — use
+  these instead of raw `<img>` / font links for raster images
 - **@nuxtjs/sitemap** + **@nuxtjs/robots** (site URL in `site.url`); per-page SEO via `useSeoMeta`
   with texts from i18n (`meta.*`)
 - **ESLint** (`@nuxt/eslint`, flat config) + **Prettier** (with Tailwind class sorting)
+- **Umami Cloud** analytics (cookieless, see Analytics)
 - **Lighthouse CI** in GitHub Actions (`lighthouserc.json`): a11y & SEO ≥ 0.95 are hard gates
 - Node version: see `.nvmrc` (24 LTS). Package manager: **npm** only.
 - Deploy target: Netlify (static). No tests in this project.
@@ -97,8 +99,8 @@ Create folders only when they get their first file.
   destructured (enforced by `vue/define-props-destructuring`) — use `props.x` in the script and
   the plain name in the template. Props and events in camelCase.
 - Keep components small and presentational; move logic to composables.
-- Prefer Tailwind utilities in the template; use `<style scoped>` only for things utilities
-  can't express (complex keyframes, masks). No inline `style` except dynamic CSS variables.
+- Prefer Tailwind utilities in the template; never add `<style>` blocks (see Styling & theming)
+  and no inline `style` except dynamic CSS variables.
 
 ### Code style
 
