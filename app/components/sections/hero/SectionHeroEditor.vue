@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FOCUS_WORDS } from '~/data/hero'
-import type { SectionHeroEditorEmits, SectionHeroEditorProps } from '~/types/sections'
+import type { SectionHeroEditorEmits, SectionHeroEditorProps } from '~/types/hero'
 
 const props = defineProps<SectionHeroEditorProps>()
 
