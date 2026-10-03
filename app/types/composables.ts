@@ -10,6 +10,10 @@ export interface PointerCssVarsOptions {
   y?: string
 }
 
+export interface PointerTiltOptions {
+  maxDegrees?: number
+}
+
 export type CategoryFilter<C extends string> = 'all' | C
 
 export interface LayoutTransitionOptions {

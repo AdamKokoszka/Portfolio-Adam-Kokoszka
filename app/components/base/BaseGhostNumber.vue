@@ -6,7 +6,7 @@ defineProps<BaseGhostNumberProps>()
 
 <template>
   <span
-    class="pointer-events-none absolute top-6 right-[3%] z-0 text-[7.375rem]/none font-bold tracking-[-0.06em] text-outline select-none md:text-[15rem]"
+    class="pointer-events-none absolute top-6 right-[3%] z-0 scroll-drift text-[7.375rem]/none font-bold tracking-[-0.06em] text-outline select-none md:text-[15rem]"
     aria-hidden="true"
     v-text="number" />
 </template>

@@ -24,7 +24,7 @@ const items = computed(() =>
       class="relative pb-6 last:pb-0">
       <span
         v-if="item.hasConnector"
-        class="absolute top-6.75 bottom-0.5 -left-10.75 w-0.5 rounded-xs bg-[linear-gradient(180deg,var(--c-warm),var(--c-warm-soft))] md:-left-14.25"
+        class="absolute top-6.75 bottom-0.5 -left-10.75 w-0.5 scroll-grow-y rounded-xs bg-[linear-gradient(180deg,var(--c-warm),var(--c-warm-soft))] md:-left-14.25"
         aria-hidden="true" />
       <span
         v-if="item.isCurrent"

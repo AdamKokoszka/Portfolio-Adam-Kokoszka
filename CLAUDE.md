@@ -120,8 +120,12 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Number from `sectionNumber('<id>')` (auto-imported util) — used by `<BaseEyebrow>` and
   `<BaseGhostNumber>` so numbering always follows the section order.
 - Heading block: `<BaseEyebrow :number>` + `<h2>`; nav label `t('nav.<id>')` is the eyebrow text.
-- Content wrapper gets `v-reveal` (fade-up on first scroll into view; skipped when already in view
-  or with reduced motion).
+- Content wrapper gets `v-reveal`; the elements inside that should animate get `data-reveal`
+  (`up` default, `scale` for cards and panels, `fade` for dividers and captions, `draw` for SVG
+  strokes with `pathLength="1"` + `stroke-dasharray="1"`). Each element is revealed when it
+  scrolls into view; elements entering together are staggered (90 ms steps). Optional
+  `data-reveal-delay="<ms>"` adds to the stagger. Elements already in view on load, or with
+  reduced motion, are never hidden. A wrapper without `data-reveal` children animates itself.
 
 ### Naming
 
@@ -172,6 +176,14 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Technology logos are static files in `public/icons/tech/<id>.svg`, exported from Iconify (and
   `design/icons/*.svg`) by `node design/icons/export-tech-logos.mjs`. Single-color logos are
   marked `isMono` and drawn as a CSS mask so they follow the theme color.
+- Motion layers (no animation library - CSS + small composables, ~0 KB):
+  - scroll reveals: `v-reveal` + `data-reveal` (see Page sections), keyframes `reveal-*`
+  - scroll-linked (CSS scroll-driven animations, progressive enhancement - Firefox shows the
+    static state): `scroll-progress` (top bar), `scroll-drift` (ghost numbers), `scroll-grow-y`
+    (timeline connectors), `scroll-settle` (system images)
+  - pointer: `usePointerCssVars` (card spotlight), `usePointerTilt` (system cards, fine pointer
+    only); springy hovers with `ease-spring`
+  - loops: `animate-float`, `animate-orbit`, `animate-glide`, `animate-ping`, `beam-border`
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 
 ### Images

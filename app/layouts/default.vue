@@ -14,6 +14,9 @@ useHead(() => ({
   <div
     id="top"
     class="min-h-dvh">
+    <div
+      class="fixed inset-x-0 top-0 z-60 scroll-progress h-0.5 bg-accent"
+      aria-hidden="true" />
     <TheHeader />
     <slot />
     <TheFooter />

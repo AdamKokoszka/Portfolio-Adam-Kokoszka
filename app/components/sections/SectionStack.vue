@@ -74,7 +74,7 @@ const toggleExpanded = () =>
       v-reveal
       class="relative z-10 container">
       <div class="mb-5.5 flex items-center justify-between gap-6 md:mb-9 md:items-end">
-        <div>
+        <div data-reveal>
           <BaseEyebrow :number="number">
             {{ t('nav.stack') }}
           </BaseEyebrow>
@@ -86,6 +86,7 @@ const toggleExpanded = () =>
         </div>
         <div
           v-if="!isExpanded"
+          data-reveal="fade"
           class="flex gap-2 md:gap-3">
           <BaseIconButton
             size="lg"
@@ -109,6 +110,7 @@ const toggleExpanded = () =>
       </div>
 
       <SectionStackFilters
+        data-reveal
         :model-value="activeFilter"
         class="mb-5.5 md:mb-7"
         :counts="counts"
@@ -125,6 +127,7 @@ const toggleExpanded = () =>
           <BaseCard
             v-for="tech in tiles"
             :key="tech.id"
+            data-reveal="scale"
             as="li"
             class="rounded-[1.125rem]"
             :class="layout.tile">
@@ -135,7 +138,7 @@ const toggleExpanded = () =>
               class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-ui">
               <span
                 v-if="tech.isMono"
-                class="size-10 bg-current [mask-image:var(--logo)] mask-contain mask-center mask-no-repeat md:size-12"
+                class="size-10 bg-current [mask-image:var(--logo)] mask-contain mask-center mask-no-repeat transition-transform duration-700 ease-spring group-hover/card:-translate-y-1 group-hover/card:scale-110 md:size-12"
                 :class="tech.color"
                 :style="tech.logoStyle"
                 aria-hidden="true" />
@@ -146,7 +149,7 @@ const toggleExpanded = () =>
                 width="48"
                 height="48"
                 loading="lazy"
-                class="size-10 object-contain md:size-12" />
+                class="size-10 object-contain transition-transform duration-700 ease-spring group-hover/card:-translate-y-1 group-hover/card:scale-110 md:size-12" />
               {{ tech.name }}
               <span class="sr-only">{{ t('common.newTab') }}</span>
             </a>
@@ -154,7 +157,9 @@ const toggleExpanded = () =>
         </ul>
       </div>
 
-      <div class="mt-6.5 flex justify-center md:mt-9">
+      <div
+        data-reveal="fade"
+        class="mt-6.5 flex justify-center md:mt-9">
         <BaseButton
           variant="ghost"
           size="sm"
