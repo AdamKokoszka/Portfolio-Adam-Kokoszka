@@ -20,7 +20,10 @@ const label = computed(() => `${props.number} / `)
     :is="as"
     class="mb-3 text-xs font-bold tracking-[0.16em] uppercase md:mb-4 md:text-caption"
     :class="TONE_CLASSES[tone]">
-    <span v-text="label" />
+    <span
+      class="before:content-[attr(data-label)]"
+      :data-label="label"
+      aria-hidden="true" />
     <slot />
   </component>
 </template>
