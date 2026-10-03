@@ -4,6 +4,7 @@ import { SOCIAL_LINKS } from '~/data/socials'
 export const usePageSeo = () => {
   const { t, locale, locales } = useI18n()
   const site = useSiteConfig()
+  const route = useRoute()
 
   const absoluteUrl = (path: string) => new URL(path, site.url).href
 
@@ -12,14 +13,27 @@ export const usePageSeo = () => {
   const imageUrl = absoluteUrl(OG_IMAGE.path)
   const imageAlt = computed(() => t('meta.ogImageAlt'))
 
+  const pageUrl = computed(() => absoluteUrl(route.path))
+
   const language = computed(
     () => locales.value.find((item) => item.code === locale.value)?.language ?? locale.value,
+  )
+
+  const toOgLocale = (code: string) => code.replace('-', '_')
+  const ogLocale = computed(() => toOgLocale(language.value))
+  const ogLocaleAlternate = computed(() =>
+    locales.value.flatMap((item) =>
+      item.code !== locale.value && item.language ? [toOgLocale(item.language)] : [],
+    ),
   )
 
   useSeoMeta({
     title,
     description,
     ogType: 'website',
+    ogUrl: pageUrl,
+    ogLocale,
+    ogLocaleAlternate,
     ogSiteName: site.name,
     ogTitle: title,
     ogDescription: description,
@@ -58,6 +72,16 @@ export const usePageSeo = () => {
         url: site.url,
         inLanguage: language.value,
         author: { '@id': `${site.url}/#person` },
+      },
+      {
+        '@type': 'ProfilePage',
+        '@id': `${pageUrl.value}#webpage`,
+        url: pageUrl.value,
+        name: title.value,
+        description: description.value,
+        inLanguage: language.value,
+        isPartOf: { '@id': `${site.url}/#website` },
+        mainEntity: { '@id': `${site.url}/#person` },
       },
     ],
   }))

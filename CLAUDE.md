@@ -190,11 +190,14 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 ### SEO
 
 - Page meta lives in `usePageSeo()` (`app/composables/usePageSeo.ts`): title, description,
-  Open Graph, Twitter card and JSON-LD (`Person` + `WebSite`). Static facts are in
+  Open Graph (incl. `og:url`, `og:locale`), Twitter card and JSON-LD (`Person`, `WebSite`,
+  `ProfilePage`). Static facts are in
   `app/data/seo.ts`; all copy comes from i18n (`meta.*`). Absolute URLs are built from
   `useSiteConfig().url` (`site.url` in `nuxt.config`, i.e. `https://incocode.com`).
 - `<html lang>`, canonical and hreflang links come from `useLocaleHead()` in `layouts/default.vue`,
   so they also apply to `error.vue` (custom 404 / error page, `noindex`).
+- The sitemap lists only meaningful images (portrait, OG image) via `routeRules` in
+  `nuxt.config`; automatic image discovery is off so logos and icons stay out of it.
 - Icons and manifest are global in `nuxt.config` `app.head`: `favicon.svg` (source of truth),
   `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `site.webmanifest`.
 - `public/og-image.jpg` (1200×630) is rendered from `design/og-image/og-image.html`:
