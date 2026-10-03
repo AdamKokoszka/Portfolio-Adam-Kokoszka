@@ -25,7 +25,7 @@ const number = sectionNumber('about')
         </BaseEyebrow>
         <h2
           id="about-title"
-          data-reveal="chars"
+          data-reveal="group"
           class="text-3xl/[1.15] font-semibold tracking-[-0.025em] text-fg md:text-[2.75rem]/[1.15]">
           <BaseSplitText :text="t('about.title')" />
         </h2>

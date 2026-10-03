@@ -2,15 +2,17 @@ import type { RevealVariant } from '~/types/common'
 
 const ITEM_SELECTOR = '[data-reveal]'
 const STAGGER_MS = 90
-const MAX_STAGGER_STEPS = 7
+const MAX_STAGGER_STEPS = 10
 
-const ANIMATION_CLASSES: Record<RevealVariant, string> = {
-  up: 'animate-reveal-up',
-  scale: 'animate-reveal-scale',
-  fade: 'animate-reveal-fade',
-  draw: 'animate-reveal-draw',
-  chars: 'is-revealed',
-  flight: 'animate-reveal-flight',
+const ANIMATION_CLASSES: Record<RevealVariant, string[]> = {
+  up: ['animate-reveal-up'],
+  scale: ['animate-reveal-scale'],
+  fade: ['animate-reveal-fade'],
+  draw: ['animate-reveal-draw'],
+  flight: ['animate-reveal-flight'],
+  wave: ['animate-reveal-wave', 'is-revealed'],
+  sharpen: ['animate-reveal-sharpen', 'is-revealed'],
+  group: ['is-revealed'],
 }
 
 const HIDDEN_CLASSES: Record<RevealVariant, string> = {
@@ -18,8 +20,10 @@ const HIDDEN_CLASSES: Record<RevealVariant, string> = {
   scale: 'opacity-0',
   fade: 'opacity-0',
   draw: '[stroke-dashoffset:1]',
-  chars: 'opacity-0',
   flight: 'opacity-0',
+  wave: 'opacity-0',
+  sharpen: 'opacity-0',
+  group: 'opacity-0',
 }
 
 const variantOf = (item: Element): RevealVariant => {
@@ -56,7 +60,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         const extraDelay = Number(item.dataset.revealDelay ?? 0)
         item.style.setProperty('--reveal-delay', `${step * STAGGER_MS + extraDelay}ms`)
         item.classList.remove(HIDDEN_CLASSES[variant])
-        item.classList.add(ANIMATION_CLASSES[variant])
+        item.classList.add(...ANIMATION_CLASSES[variant])
       }
 
       const observer = new IntersectionObserver(

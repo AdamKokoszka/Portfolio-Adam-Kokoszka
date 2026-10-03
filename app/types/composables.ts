@@ -14,10 +14,6 @@ export interface PointerParallaxOptions {
   smoothing?: number
 }
 
-export interface PointerTiltOptions {
-  maxDegrees?: number
-}
-
 export type CategoryFilter<C extends string> = 'all' | C
 
 export interface LayoutTransitionOptions {

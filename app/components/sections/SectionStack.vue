@@ -82,7 +82,7 @@ const toggleExpanded = () =>
           </BaseEyebrow>
           <h2
             id="stack-title"
-            data-reveal="chars"
+            data-reveal="group"
             class="text-[1.75rem]/[1.15] font-semibold tracking-[-0.02em] text-fg md:text-[2.375rem]/[1.15]">
             <BaseSplitText :text="t('stack.title')" />
           </h2>
@@ -130,7 +130,7 @@ const toggleExpanded = () =>
           <BaseCard
             v-for="tech in tiles"
             :key="tech.id"
-            data-reveal="scale"
+            data-reveal="wave"
             as="li"
             class="rounded-[1.125rem]"
             :class="layout.tile">
@@ -141,7 +141,7 @@ const toggleExpanded = () =>
               class="flex size-full flex-col items-center justify-center gap-3 rounded-[inherit] px-2.5 text-center text-sm font-semibold text-fg md:gap-4 md:text-ui">
               <span
                 v-if="tech.isMono"
-                class="size-10 bg-current [mask-image:var(--logo)] mask-contain mask-center mask-no-repeat transition-transform duration-700 ease-spring group-hover/card:-translate-y-1 group-hover/card:scale-110 md:size-12"
+                class="size-10 bg-current [mask-image:var(--logo)] mask-contain mask-center mask-no-repeat transition-transform duration-700 ease-spring group-hover/card:-translate-y-0.5 group-hover/card:scale-105 in-[.is-revealed]:animate-logo-pop md:size-12"
                 :class="tech.color"
                 :style="tech.logoStyle"
                 aria-hidden="true" />
@@ -152,7 +152,7 @@ const toggleExpanded = () =>
                 width="48"
                 height="48"
                 loading="lazy"
-                class="size-10 object-contain transition-transform duration-700 ease-spring group-hover/card:-translate-y-1 group-hover/card:scale-110 md:size-12" />
+                class="size-10 object-contain transition-transform duration-700 ease-spring group-hover/card:-translate-y-0.5 group-hover/card:scale-105 in-[.is-revealed]:animate-logo-pop md:size-12" />
               {{ tech.name }}
               <span class="sr-only">{{ t('common.newTab') }}</span>
             </a>

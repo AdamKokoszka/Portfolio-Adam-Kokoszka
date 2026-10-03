@@ -12,36 +12,42 @@ const items = computed(() =>
     title: t(`experience.companies.${props.companyId}.roles.${role.id}`),
     isCurrent: role.to === null,
     hasConnector: index < props.roles.length - 1,
+    style: { '--step': index },
   })),
 )
 </script>
 
 <template>
-  <ul class="mt-5 pl-17.5 md:mt-6 md:pl-23">
+  <ul
+    data-reveal="group"
+    class="mt-5 pl-17.5 md:mt-6 md:pl-23">
     <li
       v-for="item in items"
       :key="item.id"
-      class="relative pb-6 last:pb-0">
+      class="relative pb-6 last:pb-0"
+      :style="item.style">
       <span
         v-if="item.hasConnector"
-        class="absolute top-6.75 bottom-0.5 -left-10.75 w-0.5 scroll-grow-y rounded-xs bg-[linear-gradient(180deg,var(--c-warm),var(--c-warm-soft))] md:-left-14.25"
+        class="absolute top-6.75 bottom-0.5 -left-10.75 w-0.5 origin-top rounded-xs bg-[linear-gradient(180deg,var(--c-warm),var(--c-warm-soft))] in-[.is-revealed]:animate-timeline-line md:-left-14.25"
         aria-hidden="true" />
       <span
         v-if="item.isCurrent"
-        class="absolute top-0.75 -left-12.75 z-10 size-4.5 rounded-full bg-warm md:-left-16.25"
+        class="absolute top-0.75 -left-12.75 z-10 size-4.5 rounded-full bg-warm in-[.is-revealed]:animate-timeline-dot md:-left-16.25"
         aria-hidden="true">
         <span class="absolute inset-0 animate-ping rounded-full bg-warm opacity-60" />
         <span class="absolute inset-0 m-auto size-1.25 rounded-full bg-white" />
       </span>
       <span
         v-else
-        class="absolute top-0.75 -left-12.75 z-10 size-4.5 rounded-full border-2 border-warm bg-[radial-gradient(circle,var(--c-warm)_0_2.5px,var(--c-surface)_3px)] md:-left-16.25"
+        class="absolute top-0.75 -left-12.75 z-10 size-4.5 rounded-full border-2 border-warm bg-[radial-gradient(circle,var(--c-warm)_0_2.5px,var(--c-surface)_3px)] in-[.is-revealed]:animate-timeline-dot md:-left-16.25"
         aria-hidden="true" />
 
-      <p class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums md:text-caption">
+      <p
+        class="text-xs font-bold tracking-[0.05em] text-fg-soft tabular-nums in-[.is-revealed]:animate-timeline-text md:text-caption">
         {{ item.period }}
       </p>
-      <p class="mt-0.75 font-semibold text-base/[1.45] text-fg md:text-[1.09375rem]/[1.45]">
+      <p
+        class="mt-0.75 font-semibold text-base/[1.45] text-fg in-[.is-revealed]:animate-timeline-text md:text-[1.09375rem]/[1.45]">
         {{ item.title }}
       </p>
     </li>

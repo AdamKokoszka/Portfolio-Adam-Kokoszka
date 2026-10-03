@@ -36,7 +36,7 @@ const number = sectionNumber('systems')
         </BaseEyebrow>
         <h2
           id="systems-title"
-          data-reveal="chars"
+          data-reveal="group"
           class="text-[1.75rem]/[1.15] font-semibold tracking-[-0.02em] text-white md:text-[2.375rem]/[1.15]">
           <BaseSplitText :text="t('systems.title')" />
         </h2>
@@ -46,7 +46,7 @@ const number = sectionNumber('systems')
         <SectionSystemsCard
           :system="FEATURED_SYSTEM"
           variant="featured"
-          data-reveal="scale" />
+          data-reveal="sharpen" />
 
         <p
           data-reveal="fade"
@@ -63,7 +63,7 @@ const number = sectionNumber('systems')
             v-for="system in PRORMS_SYSTEMS"
             :key="system.id"
             :system="system"
-            data-reveal />
+            data-reveal="sharpen" />
         </div>
       </div>
 
