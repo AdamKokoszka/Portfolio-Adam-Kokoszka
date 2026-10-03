@@ -39,8 +39,6 @@ const number = sectionNumber('about')
             stroke="currentColor"
             stroke-width="3"
             stroke-linecap="round"
-            pathLength="1"
-            stroke-dasharray="1"
             data-reveal="draw"
             data-reveal-delay="350" />
         </svg>

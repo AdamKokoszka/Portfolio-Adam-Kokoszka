@@ -9,6 +9,9 @@ const portraitAttrs = computed(() => ({
     'absolute -top-4.5 left-1 h-162.5 w-130 animate-portrait mask-portrait object-cover object-top parallax-12 [animation-delay:150ms]',
 }))
 
+const ORBIT_INNER_LENGTH = 1520
+const orbitDrawStyle = { '--draw-length': ORBIT_INNER_LENGTH }
+
 const ORBIT_INNER_PATH = "path('M 15 342 a 330 128 0 1 0 660 0 a 330 128 0 1 0 -660 0')"
 const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -570 0')"
 </script>
@@ -32,8 +35,8 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
           stroke="currentColor"
           stroke-opacity=".28"
           stroke-width="1.2"
-          pathLength="1"
-          stroke-dasharray="1"
+          :stroke-dasharray="ORBIT_INNER_LENGTH"
+          :style="orbitDrawStyle"
           class="animate-draw [animation-delay:600ms]" />
       </svg>
       <span
