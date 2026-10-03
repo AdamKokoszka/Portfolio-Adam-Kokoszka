@@ -68,14 +68,14 @@ const FOCUS_LINE_INDEX = 2
         :aria-label="pauseLabel"
         :title="pauseLabel"
         @click="$emit('togglePause')">
-        <Icon
+        <BaseIcon
           v-if="isPaused"
-          name="ic:play"
+          name="play"
           class="size-3.25"
           aria-hidden="true" />
-        <Icon
+        <BaseIcon
           v-else
-          name="ic:pause"
+          name="pause"
           class="size-3.25"
           aria-hidden="true" />
       </button>

@@ -45,8 +45,9 @@ useSeoMeta({
           class="mt-9"
           :href="homePath">
           {{ t('error.backHome') }}
-          <Icon
-            name="ic:arrow-right"
+          <BaseIcon
+            name="arrow-right"
+            class="size-[1em]"
             aria-hidden="true" />
         </BaseButton>
       </div>

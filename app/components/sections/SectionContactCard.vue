@@ -15,8 +15,8 @@ const mailto = `mailto:${CONTACT_EMAIL}`
       <span
         class="col-start-1 row-start-1 flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-fg md:size-12.5 md:rounded-[0.875rem]"
         aria-hidden="true">
-        <Icon
-          name="ic:mail"
+        <BaseIcon
+          name="mail"
           class="size-5" />
       </span>
 
