@@ -111,7 +111,7 @@ usePointerParallax(hero)
         class="relative order-1 mx-auto mt-1 h-93 w-77.5 md:mt-14 md:h-120 md:w-100 lg:order-none lg:mx-0 lg:-mt-6 lg:mr-7 lg:h-135 lg:w-112.5 lg:justify-self-end">
         <SectionHeroVisual />
         <div
-          class="absolute -bottom-5.5 -left-1.5 z-10 parallax-40 animate-slide-tilt [animation-delay:1000ms] md:-bottom-14 md:-left-16 lg:-bottom-8 lg:-left-10">
+          class="absolute -bottom-5.5 -left-1.5 z-10 parallax-10 animate-slide-tilt [animation-delay:1000ms] md:-bottom-14 md:-left-16 lg:-bottom-8 lg:-left-10">
           <SectionHeroEditor
             :is-paused="isPaused"
             @toggle-pause="togglePause" />

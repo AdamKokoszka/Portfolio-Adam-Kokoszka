@@ -759,8 +759,8 @@
     @supports (animation-timeline: view()) {
       animation: scroll-word linear both;
       animation-timeline: --highlight;
-      animation-range: cover calc(25% + var(--word-index) / var(--word-count) * 33%) cover
-        calc(18% + (var(--word-index) + 1) / var(--word-count) * 34%);
+      animation-range: cover calc(2% + var(--word-index) / var(--word-count) * 26%) cover
+        calc(2% + (var(--word-index) + 1) / var(--word-count) * 26%);
     }
   }
 }
@@ -787,5 +787,4 @@ html.theme-transition::view-transition-new(root) {
 @utility parallax-* {
   translate: calc(var(--parallax-x, 0) * --value(integer) * 1px)
     calc(var(--parallax-y, 0) * --value(integer) * 1px);
-  transition: translate 0.7s var(--ease-smooth);
 }
