@@ -46,6 +46,7 @@ const imageAttrs = computed(() => ({
       :src="system.image"
       :sizes="styles.sizes"
       format="avif,webp"
+      :quality="60"
       :img-attrs="imageAttrs" />
     <div
       class="pointer-events-none absolute inset-0"

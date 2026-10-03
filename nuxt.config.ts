@@ -35,6 +35,16 @@ export default defineNuxtConfig({
 
   components: [{ path: '~/components', pathPrefix: false }],
 
+  hooks: {
+    // Assets (tech logos, fonts) are loaded lazily where used; prefetching all of them up front
+    // competes with the hero portrait (LCP) for bandwidth.
+    'build:manifest': (manifest) => {
+      Object.values(manifest).forEach((chunk) => {
+        chunk.assets = []
+      })
+    },
+  },
+
   imports: {
     dirs: ['composables/**'],
   },
