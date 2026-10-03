@@ -37,6 +37,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  runtimeConfig: {
+    public: {
+      umamiWebsiteId: '',
+    },
+  },
+
   site: {
     url: SITE_URL,
     name: 'IncoCode - Adam Kokoszka',

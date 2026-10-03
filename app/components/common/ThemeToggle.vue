@@ -5,14 +5,18 @@ const { t } = useI18n()
 const isDark = computed(() => colorMode.value !== 'light')
 const label = computed(() => (isDark.value ? t('theme.toLight') : t('theme.toDark')))
 
+const nextTheme = computed(() => (isDark.value ? 'light' : 'dark'))
+
 const toggle = () => {
-  colorMode.preference = isDark.value ? 'light' : 'dark'
+  colorMode.preference = nextTheme.value
 }
 </script>
 
 <template>
   <BaseIconButton
     :label="label"
+    data-umami-event="theme-toggle"
+    :data-umami-event-to="nextTheme"
     @click="toggle">
     <ColorScheme>
       <BaseIcon

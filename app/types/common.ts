@@ -5,6 +5,10 @@ export interface CopyButtonProps {
   label: string
 }
 
+export interface SocialLinksProps {
+  placement: 'hero' | 'contact'
+}
+
 export interface ErrorPageProps {
   error: NuxtError
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const head = useLocaleHead()
 
+useAnalytics()
+
 useHead(() => ({
   htmlAttrs: { lang: head.value.htmlAttrs.lang },
   link: head.value.link,

@@ -206,6 +206,17 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Large images use `<NuxtPicture format="avif,webp">`; give every `<img>` explicit `width` and
   `height` (Lighthouse "unsized images").
 
+### Analytics
+
+- Umami Cloud (cookieless, no consent banner), loaded by `useAnalytics()` in
+  `layouts/default.vue` only when `runtimeConfig.public.umamiWebsiteId` is set
+  (`NUXT_PUBLIC_UMAMI_WEBSITE_ID` at build time). `data-domains` limits tracking to the
+  production host from `site.url`, so localhost and deploy previews are never counted.
+- Clicks worth knowing about are tracked declaratively with `data-umami-event="<kebab-name>"`
+  (+ `data-umami-event-<key>` for details) - no JS calls. Current events: `cta-contact`,
+  `cta-experience`, `email-click`, `email-copy`, `social-github` / `social-linkedin`
+  (`placement`), `stack-toggle`, `theme-toggle` (`to`).
+
 ### Fonts
 
 - Manrope is served by @nuxt/fonts (Google, self-hosted at build time).

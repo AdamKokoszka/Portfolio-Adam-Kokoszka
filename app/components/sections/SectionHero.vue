@@ -84,7 +84,9 @@ usePointerCssVars(hero)
 
         <div
           class="order-2 mt-7 flex animate-enter flex-col gap-2.5 [animation-delay:340ms] md:mt-24 md:flex-row md:flex-wrap md:gap-3.5 lg:mt-9.5">
-          <BaseButton href="#contact">
+          <BaseButton
+            href="#contact"
+            data-umami-event="cta-contact">
             {{ t('hero.ctaPrimary') }}
             <BaseIcon
               name="arrow-right"
@@ -93,12 +95,15 @@ usePointerCssVars(hero)
           </BaseButton>
           <BaseButton
             href="#experience"
-            variant="ghost">
+            variant="ghost"
+            data-umami-event="cta-experience">
             {{ t('hero.ctaSecondary') }}
           </BaseButton>
         </div>
 
-        <SocialLinks class="order-2 mt-5.5 animate-enter [animation-delay:425ms] md:mt-9" />
+        <SocialLinks
+          placement="hero"
+          class="order-2 mt-5.5 animate-enter [animation-delay:425ms] md:mt-9" />
       </div>
 
       <div

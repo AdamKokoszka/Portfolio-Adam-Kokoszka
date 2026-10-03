@@ -27,17 +27,21 @@ const mailto = `mailto:${CONTACT_EMAIL}`
         <div class="contents md:flex md:flex-wrap md:items-center md:gap-1">
           <a
             :href="mailto"
+            data-umami-event="email-click"
             class="col-span-3 row-start-2 font-semibold whitespace-nowrap text-base/[1.3] text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg md:text-[1.15625rem] md:wrap-anywhere md:whitespace-normal">
             {{ CONTACT_EMAIL }}
           </a>
           <CopyButton
             class="col-start-3 row-start-1"
             :text="CONTACT_EMAIL"
-            :label="t('contact.copy')" />
+            :label="t('contact.copy')"
+            data-umami-event="email-copy" />
         </div>
       </div>
     </div>
 
-    <SocialLinks class="mt-4.5 border-t border-line pt-4 md:mt-5.5 md:pt-5" />
+    <SocialLinks
+      placement="contact"
+      class="mt-4.5 border-t border-line pt-4 md:mt-5.5 md:pt-5" />
   </BaseCard>
 </template>

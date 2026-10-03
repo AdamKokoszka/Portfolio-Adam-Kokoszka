@@ -42,6 +42,11 @@ The dev server runs at http://localhost:3000.
 - **SEO**: sitemap (`/sitemap_index.xml`), `robots.txt`, `hreflang` and canonical links are
   generated at build time.
 
+## Analytics
+
+[Umami Cloud](https://umami.is) - set `NUXT_PUBLIC_UMAMI_WEBSITE_ID` in the Netlify
+environment variables to enable it. Without it no tracking script is rendered.
+
 ## Deployment
 
 The site is deployed to [Netlify](https://www.netlify.com) from `main`. Netlify runs
