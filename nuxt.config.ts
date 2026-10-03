@@ -58,6 +58,10 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
+  experimental: {
+    appManifest: false,
+  },
+
   typescript: {
     strict: true,
   },
