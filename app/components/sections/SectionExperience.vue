@@ -47,6 +47,7 @@ const schools = computed(() =>
       class="relative z-10 container">
       <BaseEyebrow
         id="experience-title"
+        data-reveal
         as="h2"
         tone="warm"
         :number="number">
@@ -57,6 +58,7 @@ const schools = computed(() =>
         class="grid grid-cols-1 gap-10 md:gap-12 lg:grid-cols-[minmax(0,1.3fr)_1px_minmax(0,1fr)] lg:gap-13">
         <div>
           <h3
+            data-reveal
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
             <BaseIcon
               name="briefcase"
@@ -69,6 +71,7 @@ const schools = computed(() =>
             <BaseCard
               v-for="company in companies"
               :key="company.id"
+              data-reveal
               :is-strong="company.isFeatured"
               class="rounded-2xl px-4.5 py-5 md:rounded-[1.125rem] md:px-7 md:py-6.5">
               <div class="flex items-start gap-3.5 md:gap-5">
@@ -109,10 +112,12 @@ const schools = computed(() =>
 
         <div
           class="hidden self-stretch bg-[linear-gradient(180deg,transparent,var(--c-warm)_20%,var(--c-line)_80%,transparent)] lg:block"
+          data-reveal="fade"
           aria-hidden="true" />
 
         <div>
           <h3
+            data-reveal
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
             <BaseIcon
               name="graduation-cap"
@@ -125,6 +130,7 @@ const schools = computed(() =>
             <BaseCard
               v-for="school in schools"
               :key="school.id"
+              data-reveal
               class="rounded-2xl px-4.5 py-5 md:rounded-[1.125rem] md:px-7 md:py-6.5">
               <div class="flex items-start gap-3.5 md:gap-5">
                 <BaseLogoTile

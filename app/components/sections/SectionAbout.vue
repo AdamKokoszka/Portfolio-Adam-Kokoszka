@@ -17,7 +17,7 @@ const number = sectionNumber('about')
     <div
       v-reveal
       class="relative z-10 container grid grid-cols-1 items-center gap-5.5 md:gap-8 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,1.25fr)] lg:gap-18">
-      <div>
+      <div data-reveal>
         <BaseEyebrow :number="number">
           {{ t('nav.about') }}
         </BaseEyebrow>
@@ -35,17 +35,22 @@ const number = sectionNumber('about')
             d="M3 13C40 5 90 3 167 9"
             stroke="currentColor"
             stroke-width="3"
-            stroke-linecap="round" />
+            stroke-linecap="round"
+            pathLength="1"
+            stroke-dasharray="1"
+            data-reveal="draw"
+            data-reveal-delay="350" />
         </svg>
       </div>
 
       <div
         class="hidden self-stretch bg-[linear-gradient(180deg,transparent,var(--c-accent-line)_20%,var(--c-line)_80%,transparent)] lg:block"
+        data-reveal="fade"
         aria-hidden="true" />
 
       <div class="space-y-5.5 text-base/[1.75] text-fg-muted md:text-lg/[1.8]">
-        <p>{{ t('about.paragraph1') }}</p>
-        <p>{{ t('about.paragraph2') }}</p>
+        <p data-reveal>{{ t('about.paragraph1') }}</p>
+        <p data-reveal>{{ t('about.paragraph2') }}</p>
       </div>
     </div>
   </section>

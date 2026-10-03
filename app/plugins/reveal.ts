@@ -1,8 +1,33 @@
-const HIDDEN_CLASSES = ['opacity-0', 'translate-y-4']
-const TRANSITION_CLASSES = ['transition-[opacity,translate]', 'duration-550', 'ease-smooth']
+import type { RevealVariant } from '~/types/common'
+
+const ITEM_SELECTOR = '[data-reveal]'
+const STAGGER_MS = 90
+const MAX_STAGGER_STEPS = 7
+
+const ANIMATION_CLASSES: Record<RevealVariant, string> = {
+  up: 'animate-reveal-up',
+  scale: 'animate-reveal-scale',
+  fade: 'animate-reveal-fade',
+  draw: 'animate-reveal-draw',
+}
+
+const HIDDEN_CLASSES: Record<RevealVariant, string> = {
+  up: 'opacity-0',
+  scale: 'opacity-0',
+  fade: 'opacity-0',
+  draw: '[stroke-dashoffset:1]',
+}
+
+const variantOf = (item: Element): RevealVariant => {
+  const variant = item.getAttribute('data-reveal')
+  return variant && variant in ANIMATION_CLASSES ? (variant as RevealVariant) : 'up'
+}
 
 const isBelowViewport = (entry: IntersectionObserverEntry) =>
-  entry.boundingClientRect.top >= (entry.rootBounds?.height ?? window.innerHeight)
+  entry.boundingClientRect.top >= window.innerHeight
+
+const byDocumentOrder = (a: Element, b: Element) =>
+  a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
 
 export default defineNuxtPlugin((nuxtApp) => {
   const observers = new WeakMap<HTMLElement, IntersectionObserver>()
@@ -13,31 +38,45 @@ export default defineNuxtPlugin((nuxtApp) => {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       if (prefersReducedMotion || !('IntersectionObserver' in window)) return
 
-      let isHidden = false
+      const nested = Array.from(el.querySelectorAll<HTMLElement>(ITEM_SELECTOR))
+      const items = nested.length ? nested : [el]
+      const hidden = new WeakSet<Element>()
 
-      const hide = () => {
-        el.classList.add(...TRANSITION_CLASSES, ...HIDDEN_CLASSES)
-        isHidden = true
+      const hide = (item: Element) => {
+        item.classList.add(HIDDEN_CLASSES[variantOf(item)])
+        hidden.add(item)
       }
 
-      const show = () => {
-        el.classList.remove(...HIDDEN_CLASSES)
-        observer.disconnect()
+      const show = (item: HTMLElement, step: number) => {
+        const variant = variantOf(item)
+        const extraDelay = Number(item.dataset.revealDelay ?? 0)
+        item.style.setProperty('--reveal-delay', `${step * STAGGER_MS + extraDelay}ms`)
+        item.classList.remove(HIDDEN_CLASSES[variant])
+        item.classList.add(ANIMATION_CLASSES[variant])
       }
 
       const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry) return
-          if (isHidden) {
-            if (entry.isIntersecting) show()
-            return
-          }
-          if (isBelowViewport(entry)) hide()
-          else observer.disconnect()
+        (entries) => {
+          const entering: HTMLElement[] = []
+          entries.forEach((entry) => {
+            const item = entry.target as HTMLElement
+            if (hidden.has(item)) {
+              if (!entry.isIntersecting) return
+              entering.push(item)
+              observer.unobserve(item)
+              return
+            }
+            if (isBelowViewport(entry)) hide(item)
+            else observer.unobserve(item)
+          })
+          entering
+            .sort(byDocumentOrder)
+            .forEach((item, index) => show(item, Math.min(index, MAX_STAGGER_STEPS)))
         },
-        { threshold: 0.1 },
+        { rootMargin: '0px 0px -8% 0px' },
       )
-      observer.observe(el)
+
+      items.forEach((item) => observer.observe(item))
       observers.set(el, observer)
     },
     unmounted: (el) => {

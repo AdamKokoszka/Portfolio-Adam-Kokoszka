@@ -18,6 +18,7 @@ const number = sectionNumber('contact')
       v-reveal
       class="relative z-10 container">
       <div
+        data-reveal="scale"
         class="relative isolate overflow-hidden rounded-3xl px-5 pt-8 pb-7 shadow-panel panel-surface md:rounded-[2rem] md:px-15 md:py-16">
         <div
           class="pointer-events-none absolute inset-0 -z-10"
@@ -44,39 +45,50 @@ const number = sectionNumber('contact')
             stroke-width="1.6"
             stroke-dasharray="4 7"
             stroke-linecap="round" />
-          <path
-            d="M206 18l38-14-14 40-9-15z"
-            fill="currentColor"
-            fill-opacity=".18"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linejoin="round" />
-          <path
-            d="M221 29l23-25"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round" />
+          <g class="origin-center animate-glide [transform-box:fill-box]">
+            <path
+              d="M206 18l38-14-14 40-9-15z"
+              fill="currentColor"
+              fill-opacity=".18"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round" />
+            <path
+              d="M221 29l23-25"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round" />
+          </g>
         </svg>
 
         <div
           class="grid grid-cols-1 items-center gap-7 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,27.5rem)] lg:gap-16">
           <div>
-            <BaseEyebrow :number="number">
+            <BaseEyebrow
+              data-reveal
+              :number="number">
               {{ t('nav.contact') }}
             </BaseEyebrow>
             <h2
               id="contact-title"
+              data-reveal
               class="text-[2.125rem]/[1.08] font-semibold tracking-[-0.03em] whitespace-pre-line text-fg md:text-[3.25rem]/[1.08]">
               {{ t('contact.title') }}
             </h2>
-            <p class="mt-4 max-w-107.5 text-base/[1.7] text-fg-muted md:mt-5 md:text-lg/[1.75]">
+            <p
+              data-reveal
+              class="mt-4 max-w-107.5 text-base/[1.7] text-fg-muted md:mt-5 md:text-lg/[1.75]">
               {{ t('contact.lead') }}
             </p>
 
             <div
               class="relative mt-5.5 pb-7.5 font-hand text-[1.5625rem]/[1.05] text-accent-fg md:mt-7.5 md:flex md:items-end md:gap-2.5 md:pb-0 md:text-3xl/[1.05]"
               aria-hidden="true">
-              <p class="-rotate-4 whitespace-pre-line">{{ t('contact.note') }}</p>
+              <p
+                data-reveal="fade"
+                class="-rotate-4 whitespace-pre-line">
+                {{ t('contact.note') }}
+              </p>
               <svg
                 class="absolute -bottom-3.5 left-37.5 h-10 w-15.5 -scale-y-100 -rotate-8 md:static md:-mb-3 md:h-14 md:w-24 md:scale-y-100 md:rotate-0"
                 viewBox="0 0 96 56"
@@ -85,18 +97,26 @@ const number = sectionNumber('contact')
                   d="M4 40c30 12 62 6 84-26"
                   stroke="currentColor"
                   stroke-width="2.2"
-                  stroke-linecap="round" />
+                  stroke-linecap="round"
+                  pathLength="1"
+                  stroke-dasharray="1"
+                  data-reveal="draw"
+                  data-reveal-delay="300" />
                 <path
                   d="M76 14h12v12"
                   stroke="currentColor"
                   stroke-width="2.2"
                   stroke-linecap="round"
-                  stroke-linejoin="round" />
+                  stroke-linejoin="round"
+                  pathLength="1"
+                  stroke-dasharray="1"
+                  data-reveal="draw"
+                  data-reveal-delay="1000" />
               </svg>
             </div>
           </div>
 
-          <SectionContactCard />
+          <SectionContactCard data-reveal />
         </div>
       </div>
     </div>

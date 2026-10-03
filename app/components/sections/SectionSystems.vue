@@ -27,7 +27,9 @@ const number = sectionNumber('systems')
     <div
       v-reveal
       class="relative z-10 container">
-      <div class="mb-7 md:mb-12">
+      <div
+        data-reveal
+        class="mb-7 md:mb-12">
         <BaseEyebrow
           tone="peach"
           :number="number">
@@ -43,9 +45,11 @@ const number = sectionNumber('systems')
       <div class="grid gap-4 md:gap-5.5">
         <SectionSystemsCard
           :system="FEATURED_SYSTEM"
-          variant="featured" />
+          variant="featured"
+          data-reveal="scale" />
 
         <p
+          data-reveal="fade"
           class="mt-2 flex items-center gap-2.5 text-[0.78rem] font-semibold tracking-[0.02em] text-ink-soft before:h-px before:flex-1 before:bg-white/10 after:h-px after:flex-1 after:bg-white/10 md:mt-4 md:gap-3 md:text-sm">
           <BaseIcon
             name="link"
@@ -58,11 +62,16 @@ const number = sectionNumber('systems')
           <SectionSystemsCard
             v-for="system in PRORMS_SYSTEMS"
             :key="system.id"
-            :system="system" />
+            :system="system"
+            data-reveal />
         </div>
       </div>
 
-      <p class="mt-4 text-right text-xs text-ink-soft">{{ t('systems.illustrative') }}</p>
+      <p
+        data-reveal="fade"
+        class="mt-4 text-right text-xs text-ink-soft">
+        {{ t('systems.illustrative') }}
+      </p>
     </div>
   </section>
 </template>
