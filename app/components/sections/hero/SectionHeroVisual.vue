@@ -6,7 +6,7 @@ const portraitAttrs = computed(() => ({
   loading: 'eager' as const,
   fetchpriority: 'high' as const,
   class:
-    'absolute -top-4.5 -left-2.5 h-162.5 w-130 animate-portrait mask-portrait object-cover object-top parallax-12 [animation-delay:150ms]',
+    'absolute -top-4.5 left-1 h-162.5 w-130 animate-portrait mask-portrait object-cover object-top parallax-12 [animation-delay:150ms]',
 }))
 
 const ORBIT_INNER_PATH = "path('M 15 342 a 330 128 0 1 0 660 0 a 330 128 0 1 0 -660 0')"

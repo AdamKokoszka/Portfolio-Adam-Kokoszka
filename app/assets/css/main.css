@@ -636,7 +636,7 @@
 
 @utility mask-portrait {
   mask-image:
-    radial-gradient(circle 240px at 260px 348px, #000 99.6%, transparent 100%),
+    radial-gradient(circle 240px at 246px 348px, #000 99.6%, transparent 100%),
     linear-gradient(#000, #000);
   mask-size:
     100% 100%,

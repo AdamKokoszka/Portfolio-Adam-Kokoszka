@@ -9,7 +9,7 @@ const number = sectionNumber('systems')
 <template>
   <section
     id="systems"
-    class="theme-ink relative overflow-hidden bg-ink pt-18 pb-21 md:pt-30 md:pb-32"
+    class="theme-ink relative overflow-hidden bg-ink pt-18 pb-12 md:pt-30 md:pb-32"
     aria-labelledby="systems-title">
     <div
       class="pointer-events-none absolute -bottom-65 left-1/2 h-130 w-300 -translate-x-1/2 rounded-full bg-peach-glow"
