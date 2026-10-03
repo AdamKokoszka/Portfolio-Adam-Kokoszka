@@ -30,9 +30,9 @@ const lines = computed(() => {
           <span
             v-for="(item, charIndex) in chars"
             :key="charIndex"
-            class="inline-block in-[.is-revealed]:animate-reveal-char"
+            class="inline-block before:content-[attr(data-char)] in-[.is-revealed]:animate-reveal-char"
             :style="item.style"
-            v-text="item.char" />
+            :data-char="item.char" />
         </span>
         {{ SPACE }}
       </template>
