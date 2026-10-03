@@ -167,7 +167,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   Build every component mobile-first for all three at once; check 390px and 1440px.
 - UI icons: SVGs from the design in `app/assets/icons/*.svg`, rendered inline with
   `<BaseIcon name="<file>" class="size-5" />` (inherit `currentColor`; add the new file name to
-  `IconName` in `types/base.ts`). Always give a size class - inside buttons use `size-[1em]`.
+  `IconName` in `types/base.ts`). Always give a size class (icons in `BaseButton` use `size-5`).
   Decorative icons get `aria-hidden="true"`. No icon library: @nuxt/icon cost ~19 KB gz of JS.
 - Technology logos are static files in `public/icons/tech/<id>.svg`, exported from Iconify (and
   `design/icons/*.svg`) by `node design/icons/export-tech-logos.mjs`. Single-color logos are

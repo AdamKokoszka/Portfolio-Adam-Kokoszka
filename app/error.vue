@@ -47,7 +47,7 @@ useSeoMeta({
           {{ t('error.backHome') }}
           <BaseIcon
             name="arrow-right"
-            class="size-[1em]"
+            class="size-5"
             aria-hidden="true" />
         </BaseButton>
       </div>

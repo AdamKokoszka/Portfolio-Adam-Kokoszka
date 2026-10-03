@@ -88,7 +88,7 @@ usePointerCssVars(hero)
             {{ t('hero.ctaPrimary') }}
             <BaseIcon
               name="arrow-right"
-              class="size-[1em]"
+              class="size-5"
               aria-hidden="true" />
           </BaseButton>
           <BaseButton

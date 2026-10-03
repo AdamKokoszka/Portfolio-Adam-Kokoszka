@@ -27,7 +27,7 @@ const type = computed(() => (props.href ? undefined : 'button'))
     :is="tag"
     :href="href"
     :type="type"
-    class="inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full font-bold transition-colors duration-400 ease-smooth [&_svg]:size-5 [&_svg]:transition-transform [&_svg]:duration-400 [&_svg]:ease-smooth hover:[&_svg]:translate-x-0.75"
+    class="inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full font-bold transition-colors duration-400 ease-smooth [&_svg]:transition-transform [&_svg]:duration-400 [&_svg]:ease-smooth hover:[&_svg]:translate-x-0.75"
     :class="classes">
     <slot />
   </component>

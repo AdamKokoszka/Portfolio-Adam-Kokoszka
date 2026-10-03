@@ -165,12 +165,12 @@ const toggleExpanded = () =>
           <BaseIcon
             v-if="isExpanded"
             name="chevron-up"
-            class="size-[1em]"
+            class="size-5"
             aria-hidden="true" />
           <BaseIcon
             v-else
             name="arrow-right"
-            class="size-[1em]"
+            class="size-5"
             aria-hidden="true" />
         </BaseButton>
       </div>
