@@ -135,7 +135,8 @@
         "title": "proRMS back office",
         "description": "Administration back office for the proRMS system."
       }
-    }
+    },
+    "imageAlt": "Illustrative image: {title}"
   },
   "contact": {
     "title": "Let's talk\nabout working together.",

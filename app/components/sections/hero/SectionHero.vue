@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
+const SPACE = ' '
+
 const isPaused = ref(false)
 
 const togglePause = () => {
@@ -53,6 +55,7 @@ usePointerParallax(hero)
               {{ t('hero.firstName') }}
             </span>
           </span>
+          {{ SPACE }}
           <span class="-mb-[0.08em] block overflow-hidden pb-[0.08em]">
             <span
               class="block animate-rise font-bold [animation-delay:240ms] after:ml-[0.06em] after:inline-block after:size-[0.16em] after:rounded-[0.04em] after:bg-accent after:content-['']">

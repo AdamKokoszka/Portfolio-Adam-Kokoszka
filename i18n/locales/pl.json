@@ -135,7 +135,8 @@
         "title": "Backoffice proRMS",
         "description": "Zaplecze administracyjne systemu proRMS."
       }
-    }
+    },
+    "imageAlt": "Ilustracja poglądowa: {title}"
   },
   "contact": {
     "title": "Porozmawiajmy\no współpracy.",
