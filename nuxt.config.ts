@@ -2,6 +2,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 const SITE_URL = 'https://incocode.com'
 
+const SITEMAP_IMAGES = { images: [{ loc: '/images/adam-kokoszka.webp' }, { loc: '/og-image.jpg' }] }
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -41,6 +43,8 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/': { sitemap: SITEMAP_IMAGES },
+    '/en': { sitemap: SITEMAP_IMAGES },
     '/pl': { redirect: { to: '/', statusCode: 301 } },
     '/pl/**': { redirect: { to: '/', statusCode: 301 } },
   },
@@ -75,6 +79,10 @@ export default defineNuxtConfig({
       { name: 'JetBrains Mono', provider: 'none' },
       { name: 'Caveat', provider: 'none' },
     ],
+  },
+
+  sitemap: {
+    discoverImages: false,
   },
 
   colorMode: {
