@@ -2,6 +2,10 @@
 const { t } = useI18n()
 
 const number = sectionNumber('contact')
+
+const flightStyle = {
+  '--flight-path': "path('M4 112c40-6 70-30 96-52s60-40 100-34c8 0 16-4 25-12')",
+}
 </script>
 
 <template>
@@ -45,19 +49,25 @@ const number = sectionNumber('contact')
             stroke-width="1.6"
             stroke-dasharray="4 7"
             stroke-linecap="round" />
-          <g class="origin-center animate-glide [transform-box:fill-box]">
-            <path
-              d="M206 18l38-14-14 40-9-15z"
-              fill="currentColor"
-              fill-opacity=".18"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linejoin="round" />
-            <path
-              d="M221 29l23-25"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round" />
+          <g
+            class="[offset-distance:100%] [offset-path:var(--flight-path)] [offset-rotate:auto]"
+            :style="flightStyle"
+            data-reveal="flight"
+            data-reveal-delay="500">
+            <g class="origin-center animate-glide [transform-box:fill-box]">
+              <path
+                d="M-17-11 21 0-17 11-8 0Z"
+                fill="currentColor"
+                fill-opacity=".18"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round" />
+              <path
+                d="M-8 0h29"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round" />
+            </g>
           </g>
         </svg>
 
@@ -71,9 +81,9 @@ const number = sectionNumber('contact')
             </BaseEyebrow>
             <h2
               id="contact-title"
-              data-reveal
+              data-reveal="chars"
               class="text-[2.125rem]/[1.08] font-semibold tracking-[-0.03em] whitespace-pre-line text-fg md:text-[3.25rem]/[1.08]">
-              {{ t('contact.title') }}
+              <BaseSplitText :text="t('contact.title')" />
             </h2>
             <p
               data-reveal

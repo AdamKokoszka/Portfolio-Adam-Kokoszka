@@ -7,8 +7,13 @@ const label = computed(() => (isDark.value ? t('theme.toLight') : t('theme.toDar
 
 const nextTheme = computed(() => (isDark.value ? 'light' : 'dark'))
 
-const toggle = () => {
-  colorMode.preference = nextTheme.value
+const { switchTheme } = useThemeTransition()
+
+const toggle = (event: MouseEvent) => {
+  const theme = nextTheme.value
+  switchTheme(event.currentTarget as HTMLElement, theme, () => {
+    colorMode.preference = theme
+  })
 }
 </script>
 

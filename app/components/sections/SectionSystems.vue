@@ -27,18 +27,18 @@ const number = sectionNumber('systems')
     <div
       v-reveal
       class="relative z-10 container">
-      <div
-        data-reveal
-        class="mb-7 md:mb-12">
+      <div class="mb-7 md:mb-12">
         <BaseEyebrow
+          data-reveal
           tone="peach"
           :number="number">
           {{ t('systems.eyebrow') }}
         </BaseEyebrow>
         <h2
           id="systems-title"
+          data-reveal="chars"
           class="text-[1.75rem]/[1.15] font-semibold tracking-[-0.02em] text-white md:text-[2.375rem]/[1.15]">
-          {{ t('systems.title') }}
+          <BaseSplitText :text="t('systems.title')" />
         </h2>
       </div>
 
