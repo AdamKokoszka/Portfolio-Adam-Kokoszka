@@ -56,7 +56,9 @@ app/
     layout/            # one-per-page chrome              → TheHeader, TheFooter
     sections/<name>/   # one folder per page section with its children
                        #   hero/ → SectionHero, SectionHeroEditor, SectionHeroVisual
-  composables/         # useX() logic, flat (Nuxt auto-imports top-level files only)
+  composables/<group>/ # useX() logic grouped by purpose (auto-imported via `imports.dirs`):
+                       #   motion/ (animation, pointer, theme transition), interaction/
+                       #   (menu, scroll, filters, clipboard), site/ (SEO, analytics)
   utils/               # pure helpers and constants (auto-imported) → sectionNumber, ICONS
   plugins/             # Nuxt plugins                     → reveal (v-reveal directive)
   data/                # typed static data (no copy!)     → experience.ts, technologies.ts
@@ -140,7 +142,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 
 ### Naming
 
-- Composables: `useCamelCase`, file `app/composables/useCamelCase.ts`. Shared constants (e.g. `DESKTOP_MEDIA_QUERY`) live in `app/utils/`.
+- Composables: `useCamelCase`, file `app/composables/<group>/useCamelCase.ts`. Shared constants (e.g. `DESKTOP_MEDIA_QUERY`) live in `app/utils/`.
 - Types/interfaces: `PascalCase`; no `I` prefix. Constants: `SCREAMING_SNAKE_CASE` only for
   true module-level constants.
 - Variables/functions: `camelCase`; booleans read as questions (`isOpen`, `hasError`).
@@ -220,7 +222,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 
 ### SEO
 
-- Page meta lives in `usePageSeo()` (`app/composables/usePageSeo.ts`): title, description,
+- Page meta lives in `usePageSeo()` (`app/composables/site/usePageSeo.ts`): title, description,
   Open Graph (incl. `og:url`, `og:locale`), Twitter card and JSON-LD (`Person`, `WebSite`,
   `ProfilePage`). Static facts are in
   `app/data/seo.ts`; all copy comes from i18n (`meta.*`). Absolute URLs are built from
