@@ -199,7 +199,9 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - The sitemap lists only meaningful images (portrait, OG image) via `routeRules` in
   `nuxt.config`; automatic image discovery is off so logos and icons stay out of it.
 - Icons and manifest are global in `nuxt.config` `app.head`: `favicon.svg` (source of truth),
-  `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `site.webmanifest`.
+  `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `site.webmanifest`. The mark is
+  the "ic." monogram; after editing `favicon.svg` regenerate the raster files with
+  `node design/favicon/build-icons.mjs`.
 - `public/og-image.jpg` (1200×630) is rendered from `design/og-image/og-image.html`:
   `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1200,630 --screenshot=og.png design/og-image/og-image.html`,
   then converted to JPEG (~130 KB).
