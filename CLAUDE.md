@@ -247,7 +247,9 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 
 - incocode.com is the primary domain on Netlify; incocode.pl, adamkokoszka.pl and adamkokoszka.com
   (with www) are domain aliases redirected to it by host rules in `public/_redirects`, as is
-  portfolioadamkokoszka.netlify.app (deploy previews keep their own URLs). They
+  portfolioadamkokoszka.netlify.app (deploy previews keep their own URLs). The root of the .pl
+  domains lands on the Polish home page, the root of adamkokoszka.com on `/en`; deeper paths keep
+  their path. Exact root rules must stay above the `/*` rules. They
   must live there, not in `netlify.toml`: Nitro copies `public/_redirects` above its own rules,
   which end with a `/* /404.html 404` catch-all that would otherwise match first.
 - DNS stays at OVH: `A @ 75.2.60.5`, `CNAME www portfolioadamkokoszka.netlify.app.`; MX records
