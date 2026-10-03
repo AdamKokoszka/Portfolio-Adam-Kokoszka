@@ -1,10 +1,10 @@
-// Exports the technology logos used in the "Tech stack" section to public/icons/tech.
+// Exports the technology logos used in the "Tech stack" section to app/assets/icons/tech.
 // Run with `node design/icons/export-tech-logos.mjs` after adding a technology.
 import { copyFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import logos from '@iconify-json/logos/icons.json' with { type: 'json' }
 import simpleIcons from '@iconify-json/simple-icons/icons.json' with { type: 'json' }
 
-const OUT = 'public/icons/tech'
+const OUT = 'app/assets/icons/tech'
 
 const ICONIFY_LOGOS = {
   vue: [logos, 'vue'],

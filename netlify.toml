@@ -14,17 +14,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Not content-hashed, so cache for a day and revalidate in the background.
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
-
-[[headers]]
-  for = "/icons/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
-
 [[headers]]
   for = "/*"
   [headers.values]

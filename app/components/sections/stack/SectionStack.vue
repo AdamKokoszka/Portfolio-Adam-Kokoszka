@@ -37,7 +37,8 @@ const WAVE_STEPS = 9
 const tiles = computed(() =>
   filteredTechnologies.value.map((tech, index) => ({
     ...tech,
-    logoStyle: { '--logo': `url(${tech.logo})` },
+    logo: TECH_LOGOS[tech.id],
+    logoStyle: { '--logo': `url(${TECH_LOGOS[tech.id]})` },
     waveStyle: { '--tile-index': Math.min(index, WAVE_STEPS) },
   })),
 )
