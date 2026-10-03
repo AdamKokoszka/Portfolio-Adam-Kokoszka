@@ -5,7 +5,8 @@ const portraitAttrs = computed(() => ({
   alt: t('hero.photoAlt'),
   loading: 'eager' as const,
   fetchpriority: 'high' as const,
-  class: 'absolute -top-4.5 -left-2.5 h-162.5 w-130 mask-portrait object-cover object-top',
+  class:
+    'absolute -top-4.5 -left-2.5 h-162.5 w-130 animate-portrait mask-portrait object-cover object-top parallax-24 [animation-delay:150ms]',
 }))
 
 const ORBIT_INNER_PATH = "path('M 15 342 a 330 128 0 1 0 660 0 a 330 128 0 1 0 -660 0')"
@@ -17,7 +18,7 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
     class="absolute top-0 left-0 h-150 w-125 [zoom:0.62] md:[zoom:0.8] lg:[zoom:0.9]"
     :style="{ '--orbit-inner': ORBIT_INNER_PATH, '--orbit-outer': ORBIT_OUTER_PATH }">
     <div
-      class="absolute -top-3 -left-24 h-171.25 w-172.5 -rotate-18 text-accent"
+      class="absolute -top-3 -left-24 h-171.25 w-172.5 parallax-12 -rotate-18 text-accent"
       aria-hidden="true">
       <svg
         class="absolute inset-0 size-full overflow-visible"
@@ -30,7 +31,10 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
           ry="128"
           stroke="currentColor"
           stroke-opacity=".28"
-          stroke-width="1.2" />
+          stroke-width="1.2"
+          pathLength="1"
+          stroke-dasharray="1"
+          class="animate-draw [animation-delay:600ms]" />
       </svg>
       <span
         class="absolute top-0 left-0 -mt-1.25 -ml-1.25 size-2.5 animate-orbit rounded-full bg-accent shadow-glow-accent [offset-path:var(--orbit-inner)] [offset-rotate:0deg]" />
@@ -39,7 +43,7 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
     </div>
 
     <div
-      class="absolute -top-3 -left-24 h-171.25 w-172.5 rotate-24 text-accent"
+      class="absolute -top-3 -left-24 h-171.25 w-172.5 parallax-8 rotate-24 animate-fade text-accent [animation-delay:800ms]"
       aria-hidden="true">
       <svg
         class="absolute inset-0 size-full overflow-visible"
@@ -63,14 +67,14 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
       aria-hidden="true" />
 
     <div
-      class="absolute top-22.5 left-2.5 size-120 rounded-full shadow-disc bg-disc"
+      class="absolute top-22.5 left-2.5 size-120 parallax-18 animate-pop rounded-full shadow-disc [animation-delay:250ms] bg-disc"
       aria-hidden="true">
       <i class="absolute -inset-8.5 rounded-full border border-line" />
       <i class="absolute -inset-16.5 rounded-full border border-dashed border-line" />
     </div>
 
     <p
-      class="absolute top-2 -right-1 z-10 -rotate-8 font-hand text-[2.4rem]/none font-semibold whitespace-pre-line text-accent-fg md:top-7.5 md:-right-27.5 md:text-4xl/none"
+      class="absolute top-2 -right-1 z-10 parallax-32 -rotate-8 animate-blur-in font-hand text-[2.4rem]/none font-semibold whitespace-pre-line text-accent-fg [animation-delay:1300ms] md:top-7.5 md:-right-27.5 md:text-4xl/none"
       aria-hidden="true">
       {{ t('hero.note') }}
     </p>

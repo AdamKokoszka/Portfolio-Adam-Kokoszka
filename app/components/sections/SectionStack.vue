@@ -74,14 +74,17 @@ const toggleExpanded = () =>
       v-reveal
       class="relative z-10 container">
       <div class="mb-5.5 flex items-center justify-between gap-6 md:mb-9 md:items-end">
-        <div data-reveal>
-          <BaseEyebrow :number="number">
+        <div>
+          <BaseEyebrow
+            data-reveal
+            :number="number">
             {{ t('nav.stack') }}
           </BaseEyebrow>
           <h2
             id="stack-title"
+            data-reveal="chars"
             class="text-[1.75rem]/[1.15] font-semibold tracking-[-0.02em] text-fg md:text-[2.375rem]/[1.15]">
-            {{ t('stack.title') }}
+            <BaseSplitText :text="t('stack.title')" />
           </h2>
         </div>
         <div

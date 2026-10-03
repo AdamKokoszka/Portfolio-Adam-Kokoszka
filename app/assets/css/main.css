@@ -126,6 +126,17 @@
   --animate-orbit: orbit 32s linear infinite;
   --animate-cue: cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   --animate-glide: glide 6s ease-in-out infinite;
+  --animate-enter-blur: enter-blur 0.9s var(--ease-smooth) backwards;
+  --animate-pop: pop 1.1s var(--ease-spring) backwards;
+  --animate-portrait: portrait-in 1.3s var(--ease-smooth) backwards;
+  --animate-slide-tilt: slide-tilt 1s var(--ease-spring) backwards;
+  --animate-blur-in: blur-in 0.9s var(--ease-smooth) backwards;
+  --animate-draw: reveal-draw 1.6s var(--ease-smooth) backwards;
+  --animate-fade: reveal-fade 1s ease-out backwards;
+  --animate-reveal-char: reveal-char 0.7s var(--ease-spring)
+    calc(var(--reveal-delay, 0ms) + var(--char-index, 0) * 22ms) backwards;
+  --animate-reveal-flight: reveal-flight 2.4s cubic-bezier(0.45, 0, 0.2, 1) var(--reveal-delay, 0ms)
+    backwards;
   --animate-reveal-up: reveal-up 0.8s var(--ease-smooth) var(--reveal-delay, 0ms) backwards;
   --animate-reveal-scale: reveal-scale 0.9s var(--ease-smooth) var(--reveal-delay, 0ms) backwards;
   --animate-reveal-fade: reveal-fade 1s ease-out var(--reveal-delay, 0ms) backwards;
@@ -141,6 +152,65 @@
   @keyframes rise {
     from {
       transform: translateY(108%);
+      filter: blur(8px);
+    }
+  }
+
+  @keyframes enter-blur {
+    from {
+      opacity: 0;
+      translate: 0 1.125rem;
+      filter: blur(8px);
+    }
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      scale: 0.55;
+    }
+  }
+
+  @keyframes portrait-in {
+    from {
+      clip-path: circle(14% at 50% 54%);
+    }
+    to {
+      clip-path: circle(100% at 50% 54%);
+    }
+  }
+
+  @keyframes slide-tilt {
+    from {
+      opacity: 0;
+      translate: -1.875rem 3rem;
+      rotate: -6deg;
+    }
+  }
+
+  @keyframes blur-in {
+    from {
+      opacity: 0;
+      scale: 0.9;
+      filter: blur(10px);
+    }
+  }
+
+  @keyframes reveal-char {
+    from {
+      opacity: 0;
+      translate: 0 0.6em;
+      rotate: 8deg;
+    }
+  }
+
+  @keyframes reveal-flight {
+    from {
+      opacity: 0;
+      offset-distance: 0%;
+    }
+    12% {
+      opacity: 1;
     }
   }
 
@@ -672,4 +742,50 @@
       animation-range: entry 0% cover 45%;
     }
   }
+}
+
+@keyframes scroll-word {
+  from {
+    opacity: 0.22;
+  }
+}
+
+@utility scroll-highlight {
+  view-timeline-name: --highlight;
+}
+
+@utility scroll-highlight-word {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: scroll-word linear both;
+      animation-timeline: --highlight;
+      animation-range: cover calc(25% + var(--word-index) / var(--word-count) * 33%) cover
+        calc(18% + (var(--word-index) + 1) / var(--word-count) * 34%);
+    }
+  }
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-x) var(--theme-y));
+  }
+  to {
+    clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+  }
+}
+
+html.theme-transition::view-transition-old(root),
+html.theme-transition::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.theme-transition::view-transition-new(root) {
+  animation: theme-reveal 0.75s var(--ease-smooth);
+}
+
+@utility parallax-* {
+  translate: calc(var(--parallax-x, 0) * --value(integer) * 1px)
+    calc(var(--parallax-y, 0) * --value(integer) * 1px);
+  transition: translate 0.7s var(--ease-smooth);
 }

@@ -10,6 +10,7 @@ const togglePause = () => {
 const hero = useTemplateRef('hero')
 
 usePointerCssVars(hero)
+usePointerParallax(hero)
 </script>
 
 <template>
@@ -35,7 +36,7 @@ usePointerCssVars(hero)
       class="relative container grid grid-cols-1 items-center pt-5.5 pb-16 md:pt-14 md:pb-30 lg:flex-1 lg:grid-cols-2 lg:gap-12 lg:pt-8 lg:pb-24">
       <div class="contents lg:block">
         <p
-          class="mb-4 inline-flex animate-enter items-center gap-2.5 justify-self-start rounded-full border border-line bg-accent-soft py-1.5 pr-3.5 pl-2.5 text-micro font-bold tracking-[0.16em] text-accent-fg uppercase md:mb-4.5 md:pr-4 md:pl-3 md:text-[0.78rem]">
+          class="mb-4 inline-flex animate-enter-blur items-center gap-2.5 justify-self-start rounded-full border border-line bg-accent-soft py-1.5 pr-3.5 pl-2.5 text-micro font-bold tracking-[0.16em] text-accent-fg uppercase md:mb-4.5 md:pr-4 md:pl-3 md:text-[0.78rem]">
           <span
             class="relative size-2 rounded-full bg-accent"
             aria-hidden="true">
@@ -64,7 +65,7 @@ usePointerCssVars(hero)
           keypath="hero.role"
           tag="p"
           scope="global"
-          class="mt-3 animate-enter text-[1.1875rem] font-medium tracking-[-0.005em] text-fg/90 [animation-delay:170ms] md:mt-6 md:text-[1.4375rem]">
+          class="mt-3 animate-enter-blur text-[1.1875rem] font-medium tracking-[-0.005em] text-fg/90 [animation-delay:170ms] md:mt-6 md:text-[1.4375rem]">
           <template #highlight>
             <mark class="bg-transparent px-[0.08em] text-inherit text-highlight">
               {{ t('hero.roleHighlight') }}
@@ -76,14 +77,14 @@ usePointerCssVars(hero)
           keypath="hero.lead"
           tag="p"
           scope="global"
-          class="order-2 mt-11 max-w-115 animate-enter text-base/[1.7] text-fg-muted [animation-delay:255ms] md:order-none md:mt-5.5 md:text-lg/[1.75]">
+          class="order-2 mt-11 max-w-115 animate-enter-blur text-base/[1.7] text-fg-muted [animation-delay:255ms] md:order-none md:mt-5.5 md:text-lg/[1.75]">
           <template #strong>
             <strong class="font-semibold text-fg">{{ t('hero.leadStrong') }}</strong>
           </template>
         </I18nT>
 
         <div
-          class="order-2 mt-7 flex animate-enter flex-col gap-2.5 [animation-delay:340ms] md:mt-24 md:flex-row md:flex-wrap md:gap-3.5 lg:mt-9.5">
+          class="order-2 mt-7 flex animate-enter-blur flex-col gap-2.5 [animation-delay:340ms] md:mt-24 md:flex-row md:flex-wrap md:gap-3.5 lg:mt-9.5">
           <BaseButton
             href="#contact"
             data-umami-event="cta-contact">
@@ -103,16 +104,18 @@ usePointerCssVars(hero)
 
         <SocialLinks
           placement="hero"
-          class="order-2 mt-5.5 animate-enter [animation-delay:425ms] md:mt-9" />
+          class="order-2 mt-5.5 animate-enter-blur [animation-delay:425ms] md:mt-9" />
       </div>
 
       <div
-        class="relative order-1 mx-auto mt-1 h-93 w-77.5 animate-enter [animation-delay:255ms] md:mt-14 md:h-120 md:w-100 lg:order-none lg:mx-0 lg:-mt-6 lg:mr-7 lg:h-135 lg:w-112.5 lg:justify-self-end">
+        class="relative order-1 mx-auto mt-1 h-93 w-77.5 md:mt-14 md:h-120 md:w-100 lg:order-none lg:mx-0 lg:-mt-6 lg:mr-7 lg:h-135 lg:w-112.5 lg:justify-self-end">
         <SectionHeroVisual />
-        <SectionHeroEditor
-          class="absolute -bottom-5.5 -left-1.5 z-10 md:-bottom-14 md:-left-16 lg:-bottom-8 lg:-left-10"
-          :is-paused="isPaused"
-          @toggle-pause="togglePause" />
+        <div
+          class="absolute -bottom-5.5 -left-1.5 z-10 parallax-40 animate-slide-tilt [animation-delay:1000ms] md:-bottom-14 md:-left-16 lg:-bottom-8 lg:-left-10">
+          <SectionHeroEditor
+            :is-paused="isPaused"
+            @toggle-pause="togglePause" />
+        </div>
       </div>
     </div>
 

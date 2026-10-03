@@ -81,3 +81,11 @@ export interface BaseWavesProps {
   lines?: number
   spread?: number
 }
+
+export interface BaseSplitTextProps {
+  text: string
+}
+
+export interface BaseScrollHighlightProps {
+  text: string
+}

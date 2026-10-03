@@ -9,6 +9,8 @@ const ANIMATION_CLASSES: Record<RevealVariant, string> = {
   scale: 'animate-reveal-scale',
   fade: 'animate-reveal-fade',
   draw: 'animate-reveal-draw',
+  chars: 'is-revealed',
+  flight: 'animate-reveal-flight',
 }
 
 const HIDDEN_CLASSES: Record<RevealVariant, string> = {
@@ -16,6 +18,8 @@ const HIDDEN_CLASSES: Record<RevealVariant, string> = {
   scale: 'opacity-0',
   fade: 'opacity-0',
   draw: '[stroke-dashoffset:1]',
+  chars: 'opacity-0',
+  flight: 'opacity-0',
 }
 
 const variantOf = (item: Element): RevealVariant => {

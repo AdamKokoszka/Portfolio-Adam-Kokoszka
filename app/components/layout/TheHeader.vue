@@ -10,6 +10,12 @@ const isScrolled = computed(() => y.value > SCROLLED_OFFSET)
 
 const { activeId } = useScrollSpy(SECTION_IDS)
 
+const navList = useTemplateRef('navList')
+
+const { indicatorStyle, isVisible: isIndicatorVisible } = useSlidingIndicator(navList, activeId)
+
+const indicatorClass = computed(() => (isIndicatorVisible.value ? 'opacity-100' : 'opacity-0'))
+
 const navItems = computed(() =>
   SECTION_IDS.map((id) => ({
     id,
@@ -59,17 +65,24 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
       <nav
         :aria-label="t('header.navLabel')"
         class="flex items-center gap-7">
-        <ul class="hidden gap-7.5 lg:flex">
+        <ul
+          ref="navList"
+          class="relative hidden gap-7.5 lg:flex">
           <li
             v-for="{ id, ariaCurrent } in navItems"
             :key="id">
             <a
               :href="`#${id}`"
               :aria-current="ariaCurrent"
-              class="relative block py-2 text-ui font-medium text-fg-muted transition-colors duration-400 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg aria-[current=location]:after:scale-x-100">
+              class="relative block py-2 text-ui font-medium text-fg-muted transition-colors duration-400 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg">
               {{ t(`nav.${id}`) }}
             </a>
           </li>
+          <span
+            class="pointer-events-none absolute bottom-0.5 left-0 h-0.5 w-(--indicator-w) translate-x-(--indicator-x) rounded-full bg-accent shadow-glow-accent-sm transition-[translate,width,opacity] duration-700 ease-spring"
+            :class="indicatorClass"
+            :style="indicatorStyle"
+            aria-hidden="true" />
         </ul>
 
         <div class="flex items-center gap-2 lg:gap-2.5 lg:border-l lg:border-line lg:pl-6">
