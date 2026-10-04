@@ -2,8 +2,10 @@
 import { SITE_DOMAIN } from '~/data/contact'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const year = new Date().getFullYear()
+const privacyPath = computed(() => localePath('privacy'))
 </script>
 
 <template>
@@ -22,9 +24,14 @@ const year = new Date().getFullYear()
           class="col-start-1 row-start-3 justify-self-start font-semibold text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg">
           {{ SITE_DOMAIN.label }}
         </a>
+        <NuxtLink
+          :to="privacyPath"
+          class="col-start-1 row-start-4 justify-self-start transition-colors duration-400 ease-smooth hover:text-fg">
+          {{ t('footer.privacy') }}
+        </NuxtLink>
         <a
           href="#top"
-          class="col-start-2 row-span-3 row-start-1 inline-flex size-11 items-center justify-center rounded-full border-[1.5px] border-accent-line text-fg transition-colors duration-400 ease-smooth hover:border-accent hover:text-accent-fg"
+          class="col-start-2 row-span-4 row-start-1 inline-flex size-11 items-center justify-center rounded-full border-[1.5px] border-accent-line text-fg transition-colors duration-400 ease-smooth hover:border-accent hover:text-accent-fg"
           :aria-label="t('footer.backToTop')"
           :title="t('footer.backToTop')">
           <BaseIcon

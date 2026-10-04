@@ -129,6 +129,7 @@ export default defineNuxtConfig({
     baseUrl: SITE_URL,
     defaultLocale: 'pl',
     strategy: 'prefix_except_default',
+    customRoutes: 'meta',
     detectBrowserLanguage: false,
     locales: [
       { code: 'pl', language: 'pl-PL', name: 'Polski', file: 'pl.json' },
