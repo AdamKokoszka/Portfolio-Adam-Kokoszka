@@ -2,6 +2,7 @@
 import { SECTION_IDS } from '~/data/navigation'
 
 const { t } = useI18n()
+const sectionHref = useSectionHref()
 
 const SCROLLED_OFFSET = 24
 
@@ -9,6 +10,8 @@ const { y } = useWindowScroll()
 const isScrolled = computed(() => y.value > SCROLLED_OFFSET)
 
 const { activeId } = useScrollSpy(SECTION_IDS)
+
+const topHref = computed(() => sectionHref('top'))
 
 const navList = useTemplateRef('navList')
 
@@ -19,6 +22,7 @@ const indicatorClass = computed(() => (isIndicatorVisible.value ? 'opacity-100' 
 const navItems = computed(() =>
   SECTION_IDS.map((id) => ({
     id,
+    href: sectionHref(id),
     ariaCurrent: activeId.value === id ? ('location' as const) : undefined,
   })),
 )
@@ -49,7 +53,7 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
       class="pointer-events-auto relative z-10 container flex items-center justify-between gap-3 transition-[height,margin,padding,border-radius,background-color,box-shadow] duration-500 ease-smooth md:gap-8"
       :class="headerClass">
       <a
-        href="#top"
+        :href="topHref"
         class="flex flex-col leading-tight text-fg">
         <span class="block text-[1.1875rem] font-bold tracking-[-0.015em] md:text-[1.3125rem]">
           {{ t('brand.name') }}
@@ -69,10 +73,10 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
           ref="navList"
           class="relative hidden gap-7.5 lg:flex">
           <li
-            v-for="{ id, ariaCurrent } in navItems"
+            v-for="{ id, href, ariaCurrent } in navItems"
             :key="id">
             <a
-              :href="`#${id}`"
+              :href="href"
               :aria-current="ariaCurrent"
               class="relative block py-2 text-ui font-medium text-fg-muted transition-colors duration-400 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg">
               {{ t(`nav.${id}`) }}

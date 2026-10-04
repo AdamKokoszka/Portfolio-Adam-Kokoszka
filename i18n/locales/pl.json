@@ -148,7 +148,8 @@
   },
   "footer": {
     "copyright": "© {year} Adam Kokoszka",
-    "backToTop": "Wróć na górę strony"
+    "backToTop": "Wróć na górę strony",
+    "privacy": "Polityka prywatności"
   },
   "copy": {
     "copied": "Skopiowano",
@@ -160,5 +161,56 @@
     "title": "Coś poszło nie tak",
     "description": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie za chwilę.",
     "backHome": "Wróć na stronę główną"
+  },
+  "privacy": {
+    "metaTitle": "Polityka prywatności - Adam Kokoszka",
+    "metaDescription": "Jakie dane przetwarza strona incocode.com, w jakim celu i jakie prawa Ci przysługują.",
+    "title": "Polityka prywatności",
+    "updated": "Ostatnia aktualizacja: 4 października 2026",
+    "backHome": "Wróć na stronę główną",
+    "sections": [
+      {
+        "title": "Administrator danych",
+        "paragraphs": [
+          "Administratorem danych osobowych jest Adam Kokoszka. W sprawach dotyczących danych osobowych możesz napisać na adres {email}."
+        ]
+      },
+      {
+        "title": "Zakres i cele przetwarzania",
+        "items": [
+          {
+            "label": "Statystyki odwiedzin",
+            "text": "Do analizy ruchu używam Umami Cloud. Statystyki są anonimowe - adres IP nie jest zapisywany, a zebrane dane nie pozwalają ustalić, kim jesteś. Są przechowywane na serwerach w Unii Europejskiej przez okres potrzebny do analizy ruchu."
+          },
+          {
+            "label": "Hosting",
+            "text": "Przy każdym wejściu serwer Netlify przetwarza dane techniczne (m.in. adres IP i informacje o przeglądarce), aby wyświetlić stronę i zapewnić jej bezpieczeństwo. Logi są przechowywane przez krótki okres określony przez Netlify."
+          },
+          {
+            "label": "Korespondencja e-mail",
+            "text": "Jeśli do mnie napiszesz, przetwarzam Twój adres e-mail i treść wiadomości wyłącznie w celu udzielenia odpowiedzi, przez czas trwania korespondencji. Podanie danych jest dobrowolne, ale niezbędne do udzielenia odpowiedzi."
+          },
+          {
+            "label": "Pliki cookies",
+            "text": "Strona nie używa plików cookies. W pamięci przeglądarki zapisywany jest jedynie wybrany motyw (jasny lub ciemny), który nie jest nigdzie przesyłany."
+          }
+        ],
+        "paragraphs": [
+          "Podstawą prawną przetwarzania jest mój prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO), polegający na udostępnianiu i zabezpieczeniu strony, analizie ruchu oraz odpowiadaniu na wiadomości. Dane nie są wykorzystywane do profilowania ani zautomatyzowanego podejmowania decyzji."
+        ]
+      },
+      {
+        "title": "Odbiorcy danych",
+        "paragraphs": [
+          "Dane mogą być przetwarzane przez dostawców usług, z których korzysta strona: Netlify, Inc. (hosting), Umami Software, Inc. (statystyki) i Google (poczta e-mail). Część z nich ma siedzibę w USA - przekazywanie danych poza Europejski Obszar Gospodarczy odbywa się na podstawie mechanizmów przewidzianych w RODO, takich jak EU-US Data Privacy Framework lub standardowe klauzule umowne."
+        ]
+      },
+      {
+        "title": "Twoje prawa",
+        "paragraphs": [
+          "Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia i ograniczenia przetwarzania oraz prawo sprzeciwu wobec przetwarzania. Przysługuje Ci również prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych."
+        ]
+      }
+    ]
   }
 }

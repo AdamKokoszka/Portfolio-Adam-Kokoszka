@@ -7,10 +7,12 @@ const props = defineProps<TheHeaderMobileMenuProps>()
 defineEmits<TheHeaderMobileMenuEmits>()
 
 const { t } = useI18n()
+const sectionHref = useSectionHref()
 
 const items = computed(() =>
   SECTION_IDS.map((id) => ({
     id,
+    href: sectionHref(id),
     number: sectionNumber(id),
     ariaCurrent: props.activeId === id ? ('location' as const) : undefined,
   })),
@@ -42,9 +44,9 @@ const panelClass = computed(() =>
           :aria-label="t('header.mobileNavLabel')"
           class="container flex flex-col pt-2 pb-5">
           <a
-            v-for="{ id, number, ariaCurrent } in items"
+            v-for="{ id, href, number, ariaCurrent } in items"
             :key="id"
-            :href="`#${id}`"
+            :href="href"
             :aria-current="ariaCurrent"
             class="flex items-baseline gap-4 border-b border-line py-3.75 text-xl font-semibold tracking-[-0.01em] text-fg aria-[current=location]:text-accent-fg md:py-4 md:text-[1.375rem]"
             @click="$emit('close')">

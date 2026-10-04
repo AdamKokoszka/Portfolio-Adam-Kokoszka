@@ -52,6 +52,7 @@ app/
   layouts/default.vue  # <html lang>, canonical + hreflang, analytics, progress bar,
                        #   TheHeader + page + TheFooter
   pages/index.vue      # the whole one-page site: Section* components in order
+  pages/privacy.vue    # privacy policy (/polityka-prywatnosci, /en/privacy-policy), noindex
   components/
     base/              # generic, reusable UI primitives  → BaseButton, BaseCard, BaseSplitText
     common/            # shared app-specific widgets      → ThemeToggle, CopyButton, SocialLinks
@@ -131,6 +132,8 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   scroll container and freezes the scroll-driven animations inside it), its own background and `py-18 md:py-28`.
 - Number from `sectionNumber('<id>')` (auto-imported util) — used by `<BaseEyebrow>` and
   `<BaseGhostNumber>` so numbering always follows the section order.
+- Links to sections go through `useSectionHref()` (`/#about`, `/en#about`), so the header and
+  menu also work from sub-pages (privacy policy, 404).
 - Heading block: `<BaseEyebrow :number>` + `<h2>`; nav label `t('nav.<id>')` is the eyebrow text.
 - Content wrapper gets `v-reveal`; the elements inside that should animate get `data-reveal`
   (`up` default, `scale` for cards and panels, `fade` for dividers and captions, `draw` for SVG

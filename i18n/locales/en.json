@@ -148,7 +148,8 @@
   },
   "footer": {
     "copyright": "© {year} Adam Kokoszka",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "privacy": "Privacy policy"
   },
   "copy": {
     "copied": "Copied",
@@ -160,5 +161,56 @@
     "title": "Something went wrong",
     "description": "An unexpected error occurred. Please try again in a moment.",
     "backHome": "Back to the home page"
+  },
+  "privacy": {
+    "metaTitle": "Privacy policy - Adam Kokoszka",
+    "metaDescription": "What data incocode.com processes, why, and what rights you have.",
+    "title": "Privacy policy",
+    "updated": "Last updated: 4 October 2026",
+    "backHome": "Back to the home page",
+    "sections": [
+      {
+        "title": "Data controller",
+        "paragraphs": [
+          "The controller of personal data is Adam Kokoszka. For any matters concerning personal data, you can write to {email}."
+        ]
+      },
+      {
+        "title": "Scope and purposes of processing",
+        "items": [
+          {
+            "label": "Visitor statistics",
+            "text": "I analyse traffic with Umami Cloud. The statistics are anonymous - IP addresses are not stored, and the collected data does not allow me to identify you. It is stored on servers in the European Union for as long as needed to analyse traffic."
+          },
+          {
+            "label": "Hosting",
+            "text": "On every visit, the Netlify server processes technical data (including IP address and browser information) to deliver the site and keep it secure. Logs are kept for a short period set by Netlify."
+          },
+          {
+            "label": "Email correspondence",
+            "text": "If you write to me, I process your email address and the content of your message solely to reply, for the duration of the correspondence. Providing this data is voluntary, but necessary to receive a reply."
+          },
+          {
+            "label": "Cookies",
+            "text": "The site does not use cookies. The only thing saved in your browser storage is the theme you choose (light or dark), which is never sent anywhere."
+          }
+        ],
+        "paragraphs": [
+          "The legal basis for processing is my legitimate interest (Art. 6(1)(f) GDPR) in providing and securing the site, analysing traffic and replying to messages. The data is not used for profiling or automated decision-making."
+        ]
+      },
+      {
+        "title": "Data recipients",
+        "paragraphs": [
+          "Data may be processed by the service providers the site relies on: Netlify, Inc. (hosting), Umami Software, Inc. (statistics) and Google (email). Some of them are based in the USA - transfers outside the European Economic Area rely on mechanisms provided for in the GDPR, such as the EU-US Data Privacy Framework or standard contractual clauses."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "paragraphs": [
+          "You have the right to access your data, to have it rectified or erased, to restrict its processing and to object to processing. You also have the right to lodge a complaint with a supervisory authority - in Poland, the President of the Personal Data Protection Office (UODO)."
+        ]
+      }
+    ]
   }
 }
