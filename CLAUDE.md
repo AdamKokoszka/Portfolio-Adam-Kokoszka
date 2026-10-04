@@ -127,7 +127,8 @@ Create folders only when they get their first file.
 Every section follows the same pattern (see `SectionAbout.vue`):
 
 - `<section :id>` with the id from `SECTION_IDS` (`app/data/navigation.ts`), `aria-labelledby`
-  pointing at its `<h2>`, `relative overflow-hidden`, its own background and `py-18 md:py-28`.
+  pointing at its `<h2>`, `relative overflow-clip` (not `overflow-hidden`: that makes the section a
+  scroll container and freezes the scroll-driven animations inside it), its own background and `py-18 md:py-28`.
 - Number from `sectionNumber('<id>')` (auto-imported util) — used by `<BaseEyebrow>` and
   `<BaseGhostNumber>` so numbering always follows the section order.
 - Heading block: `<BaseEyebrow :number>` + `<h2>`; nav label `t('nav.<id>')` is the eyebrow text.

@@ -31,7 +31,7 @@ const schools = computed(() =>
 <template>
   <section
     id="experience"
-    class="theme-inverted relative overflow-hidden bg-alt py-18 md:py-28"
+    class="theme-inverted relative overflow-clip bg-alt py-18 md:py-28"
     aria-labelledby="experience-title">
     <div
       class="pointer-events-none absolute bottom-20 -left-7.5 size-24 bg-dots md:size-40"

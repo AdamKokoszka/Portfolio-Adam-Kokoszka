@@ -16,7 +16,7 @@ const flightStyle = {
   <section
     id="contact"
     ref="section"
-    class="relative overflow-hidden bg-sunken pt-18 pb-14 md:pt-26 md:pb-22"
+    class="relative overflow-clip bg-sunken pt-18 pb-14 md:pt-26 md:pb-22"
     aria-labelledby="contact-title">
     <div
       class="pointer-events-none absolute bottom-14 -left-6 size-24 bg-dots md:size-40"
