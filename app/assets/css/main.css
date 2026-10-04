@@ -542,7 +542,11 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 1rem;
+
+    @variant md {
+      scroll-padding-top: 0;
+    }
   }
 
   body {
