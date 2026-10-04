@@ -58,8 +58,9 @@
   },
   "about": {
     "title": "From first web pages to complex applications.",
-    "paragraph1": "I'm a Senior Frontend Developer specialising in Vue.js, with experience building systems for the hospitality and insurance industries. I care about readable code, comfortable interfaces and solutions that are easy to maintain and grow.",
-    "paragraph2": "I built my first HTML pages back in middle school. Over time that interest turned into a profession, and simple pages gave way to complex applications. I still enjoy learning new technologies and looking for better ways to solve problems. In my day-to-day work I also use AI to build and develop applications."
+    "paragraph1": "I'm a Senior Frontend Developer specialising in Vue.js, with experience building and developing applications for the hospitality and insurance industries. I care about readable code, intuitive interfaces and solutions that are easy to maintain and extend.",
+    "paragraph2": "In my current project I act as the frontend lead. I work with the client on gathering requirements and propose solutions tailored to their needs. I turn them into concrete tasks and walk the team through their scope and business goal - so that technical decisions come from a clear understanding of what we want to achieve.",
+    "paragraph3": "I've been into programming since middle school, when I built my first HTML pages. Today I develop complex applications and keep sharpening my craft, using AI tools in my day-to-day work as well."
   },
   "experience": {
     "eyebrow": "Experience and education",
