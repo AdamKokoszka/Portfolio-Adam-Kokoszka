@@ -63,7 +63,7 @@ const toggleExpanded = () =>
 <template>
   <section
     id="stack"
-    class="relative overflow-hidden bg-base py-18 md:py-28"
+    class="relative overflow-clip bg-base py-18 md:py-28"
     aria-labelledby="stack-title">
     <SectionStackOrbits />
     <div
