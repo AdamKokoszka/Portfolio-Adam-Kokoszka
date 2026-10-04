@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { ABOUT_PARAGRAPHS } from '~/data/about'
+
 const { t } = useI18n()
 
 const number = sectionNumber('about')
+const paragraphs = computed(() => ABOUT_PARAGRAPHS.map((key) => t(`about.${key}`)))
 </script>
 
 <template>
   <section
     id="about"
-    class="relative overflow-hidden border-t border-line bg-base py-18 md:py-28"
+    class="relative overflow-clip border-t border-line bg-base py-18 md:py-28"
     aria-labelledby="about-title">
     <div
       class="pointer-events-none absolute bottom-14 -left-7 size-24 bg-dots md:size-40"
@@ -50,11 +53,11 @@ const number = sectionNumber('about')
         aria-hidden="true" />
 
       <div class="space-y-5.5 text-base/[1.75] text-fg-muted md:text-lg/[1.8]">
-        <p data-reveal>
-          <BaseScrollHighlight :text="t('about.paragraph1')" />
-        </p>
-        <p data-reveal>
-          <BaseScrollHighlight :text="t('about.paragraph2')" />
+        <p
+          v-for="paragraph in paragraphs"
+          :key="paragraph"
+          data-reveal>
+          <BaseScrollHighlight :text="paragraph" />
         </p>
       </div>
     </div>
