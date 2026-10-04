@@ -269,6 +269,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   (+ `data-umami-event-<key>` for details) - no JS calls. Current events: `cta-contact`,
   `cta-experience`, `email-click`, `email-copy`, `social-github` / `social-linkedin`
   (`placement`), `stack-toggle`, `theme-toggle` (`to`).
+- Hash changes (`/#top`, `/#stack`) are not counted as page views (`data-exclude-hash`).
 
 ### Performance notes
 

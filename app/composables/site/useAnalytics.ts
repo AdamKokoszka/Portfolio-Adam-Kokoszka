@@ -12,6 +12,7 @@ export const useAnalytics = () => {
         defer: true,
         'data-website-id': umamiWebsiteId,
         'data-domains': umamiDomains,
+        'data-exclude-hash': 'true',
       },
     ],
   })
