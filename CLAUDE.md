@@ -281,6 +281,9 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - The hero portrait (LCP) is preloaded with `fetchPriority: 'high'`. Don't inline the CSS
   (`features.inlineStyles`): Nuxt puts the ~80 KB style block above the preload and the LCP gets
   slower for real users, even though the simulated PageSpeed score barely moves.
+- The hero visual is scaled with `zoom` (0.62 / 0.8 / 0.9): keep the portrait offsets multiples of
+  10px and without parallax, so it lands on whole pixels - otherwise it renders blurry on 1x
+  screens (Windows at 100%), invisible on Retina.
 - Measure with Lighthouse in both modes (simulated = PageSpeed, devtools = real throttling),
   median of 5+ runs; the simulated mobile score sits around 0.90 because of a lab artifact
   (JS executes before first paint on fast hosts), real-throttled is ~0.97.
