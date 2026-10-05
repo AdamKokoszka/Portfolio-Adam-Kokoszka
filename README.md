@@ -1,16 +1,44 @@
-# IncoCode — Adam Kokoszka
+# IncoCode - Adam Kokoszka
 
-Personal portfolio of Adam Kokoszka, Senior Frontend Developer — [incocode.com](https://incocode.com).
+Personal portfolio of Adam Kokoszka, Senior Frontend Developer (Vue.js).
+Live at **[incocode.com](https://incocode.com)** (Polish) and [incocode.com/en](https://incocode.com/en) (English).
 
-Built with [Nuxt](https://nuxt.com) (static generation), Vue 3, TypeScript, Tailwind CSS v4 and
-`@nuxtjs/i18n` (Polish at `/`, English at `/en`).
+<p>
+  <img src="docs/screenshot-desktop.jpg" alt="Portfolio home page on desktop" width="72%">
+  <img src="docs/screenshot-mobile.jpg" alt="Portfolio home page on mobile" width="22%">
+</p>
 
-## Requirements
+## Stack
 
-- Node.js — version from [`.nvmrc`](./.nvmrc) (`nvm use`)
-- npm
+- **Nuxt 4** with static generation, **Vue 3** (`<script setup>`) and strict **TypeScript**
+- **Tailwind CSS v4** with a CSS-first config and design tokens, dark and light themes
+- **@nuxtjs/i18n** - Polish at `/`, English at `/en`
+- **@nuxt/image** on the Netlify Image CDN (AVIF / WebP, responsive `srcset`)
+- **@nuxtjs/sitemap**, **@nuxtjs/robots**, JSON-LD structured data
+- **Umami** - cookieless analytics, no consent banner needed
+- **ESLint**, **Prettier**, **commitlint** and **Husky**; CI on GitHub Actions with Lighthouse CI
+
+No animation library: scroll reveals, the hero intro, parallax and scroll-driven effects are plain
+CSS plus a few small composables, and all of them respect `prefers-reduced-motion`.
+
+## Quality
+
+Lighthouse on the production site at the time of writing:
+
+|         | Performance | Accessibility | Best practices | SEO |
+| ------- | ----------- | ------------- | -------------- | --- |
+| Desktop | 100         | 100           | 100            | 100 |
+| Mobile  | 94          | 100           | 100            | 100 |
+
+- **CI** (GitHub Actions): lint, format check, type-check and a static build on every pull request.
+- **Lighthouse CI**: audits `/` and `/en` on every PR - accessibility and SEO must score ≥ 95,
+  performance and best practices warn below 90. Reports are uploaded as a workflow artifact.
+- **SEO**: sitemap (`/sitemap_index.xml`), `robots.txt`, `hreflang` and canonical links are
+  generated at build time.
 
 ## Getting started
+
+Requires Node.js from [`.nvmrc`](./.nvmrc) and npm.
 
 ```bash
 nvm use
@@ -19,8 +47,6 @@ npm run dev
 ```
 
 The dev server runs at http://localhost:3000.
-
-## Scripts
 
 | Script                 | Description                               |
 | ---------------------- | ----------------------------------------- |
@@ -34,13 +60,21 @@ The dev server runs at http://localhost:3000.
 | `npm run typecheck`    | Type-check with vue-tsc                   |
 | `npm run check`        | Lint + format check + type-check          |
 
-## Quality gates
+## Project structure
 
-- **CI** (GitHub Actions): lint, format check, type-check, static build.
-- **Lighthouse CI**: audits `/` and `/en` on every PR — accessibility and SEO must score ≥ 95,
-  performance and best practices warn below 90. Reports are uploaded as a workflow artifact.
-- **SEO**: sitemap (`/sitemap_index.xml`), `robots.txt`, `hreflang` and canonical links are
-  generated at build time.
+```
+app/
+  components/   base primitives, layout, one folder per page section
+  composables/  motion, interaction and site logic
+  data/         typed static data (no copy)
+  pages/        home page and privacy policy
+  types/        all TypeScript types
+i18n/locales/   all user-facing text (pl.json, en.json)
+public/         images, favicons, redirects
+design/         scripts that generate icons, fonts and the OG image
+```
+
+Code conventions are documented in [`CLAUDE.md`](./CLAUDE.md).
 
 ## Analytics
 
@@ -66,12 +100,14 @@ gets its own deploy preview.
 
 **VS Code**: recommended extensions and settings are in [`.vscode/`](./.vscode).
 
-## Contributing
+## Workflow
 
 - One branch per task (`feat/…`, `fix/…`, `chore/…`), merged to `main` via pull request.
-- Commits follow [Conventional Commits](https://www.conventionalcommits.org/) — enforced by
+- Commits follow [Conventional Commits](https://www.conventionalcommits.org/) - enforced by
   commitlint on `commit-msg`.
 - Staged files are linted and formatted on `pre-commit` (Husky + lint-staged).
-- CI runs lint, format check, type-check and a static build on every pull request.
 
-Code conventions and project structure are documented in [`CLAUDE.md`](./CLAUDE.md).
+## License
+
+All rights reserved. The code is public to show how the site is built; the content, photos,
+illustrations and design may not be reused without permission.
