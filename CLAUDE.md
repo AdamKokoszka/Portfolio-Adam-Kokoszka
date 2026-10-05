@@ -278,7 +278,9 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 
 - Bundled assets (logos, fonts) are not prefetched: the `build:manifest` hook in `nuxt.config`
   clears `assets`, otherwise every logo is fetched before first paint and delays the LCP.
-- The hero portrait (LCP) is preloaded with `fetchPriority: 'high'`. Don't inline the CSS
+- The hero portrait (LCP) is a hand-built `<picture>` in `SectionHeroVisual` (via `useImage().getSizes`):
+  quality 80 on desktop, 70 below `lg` (LCP on slow phones), each with its own `media` preload and
+  `fetchpriority="high"`. Going above 80 adds bytes, not detail (the source is already compressed). Don't inline the CSS
   (`features.inlineStyles`): Nuxt puts the ~80 KB style block above the preload and the LCP gets
   slower for real users, even though the simulated PageSpeed score barely moves.
 - The hero visual is scaled with `zoom` (0.62 / 0.8 / 0.9): keep the portrait offsets multiples of
