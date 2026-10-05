@@ -24,8 +24,7 @@ Single-page site, statically generated, Polish by default with an English versio
 
 ## Design source
 
-The visual spec is the claude.ai Design canvas **"IncoCode Portfolio"**:
-https://claude.ai/artifact/7YUfCvBK1iKvq547QtdVns
+The visual spec is the author's private claude.ai Design canvas **"IncoCode Portfolio"**
 (artboards: desktop 1440 / mobile 390, dark / light). Match it, but heavy decorative animations
 may be simplified first and polished later. The "Systems" section uses the AI-generated images
 (never real client screenshots) with an "illustrative image" caption.
@@ -322,6 +321,5 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 
 ## Git auth (important)
 
-The author uses a company GitLab elsewhere. Never modify global git config. This repo has a
-repo-local identity (`adam.kokoszka.it@gmail.com`) and a repo-local credential helper
+Never modify global git config. This repo has a repo-local identity (`adam.kokoszka.it@gmail.com`) and a repo-local credential helper
 (`gh auth git-credential` scoped to `https://github.com`).
