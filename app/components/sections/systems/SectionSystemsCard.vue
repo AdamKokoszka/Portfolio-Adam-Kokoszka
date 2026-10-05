@@ -23,7 +23,7 @@ const VARIANTS = {
     shade: 'bg-linear-to-b from-ink-shade/0 from-35% via-ink-shade/72 via-68% to-ink-shade/96',
     body: 'inset-x-5 bottom-5.5 md:inset-x-8 md:bottom-7.5',
     title: 'text-[1.3125rem] md:text-[1.5625rem]',
-    description: 'text-ui md:text-base',
+    description: 'text-ui md:text-[1rem]',
   },
 } satisfies Record<SystemCardVariant, Record<string, string>>
 

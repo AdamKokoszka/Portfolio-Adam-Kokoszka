@@ -80,7 +80,7 @@ usePointerParallax(hero)
           keypath="hero.lead"
           tag="p"
           scope="global"
-          class="order-2 mt-11 max-w-115 animate-enter-blur text-base/[1.7] text-fg-muted [animation-delay:255ms] md:order-none md:mt-5.5 md:text-lg/[1.75]">
+          class="order-2 mt-11 max-w-115 animate-enter-blur text-[1rem]/[1.7] text-fg-muted [animation-delay:255ms] md:order-none md:mt-5.5 md:text-lg/[1.75]">
           <template #strong>
             <strong class="font-semibold text-fg">{{ t('hero.leadStrong') }}</strong>
           </template>

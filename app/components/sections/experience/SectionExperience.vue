@@ -94,7 +94,7 @@ const schools = computed(() =>
                     {{ company.period }}
                   </p>
                   <p
-                    class="mt-0.75 font-semibold text-base/[1.45] text-fg md:text-[1.09375rem]/[1.45]">
+                    class="mt-0.75 text-[1rem]/[1.45] font-semibold text-fg md:text-[1.09375rem]/[1.45]">
                     {{ company.title }}
                   </p>
                   <p class="mt-0.5 text-sm text-fg-soft">
@@ -144,7 +144,7 @@ const schools = computed(() =>
                     {{ school.period }}
                   </p>
                   <p
-                    class="mt-0.75 font-semibold text-base/[1.45] text-fg md:text-[1.09375rem]/[1.45]">
+                    class="mt-0.75 text-[1rem]/[1.45] font-semibold text-fg md:text-[1.09375rem]/[1.45]">
                     {{ school.degree }}
                   </p>
                   <p class="mt-0.5 text-sm text-fg-soft">

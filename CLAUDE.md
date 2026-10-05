@@ -180,6 +180,8 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   - accent: `bg-accent`, `text-accent-fg`, `text-on-accent`, `bg-accent-soft`, `border-accent-line`
   - warm accent: `text-warm`, `text-warm-fg`, `bg-warm-soft`
   - fixed dark "Systems" palette: `.theme-ink` + `bg-ink`, `bg-ink-surface`, `text-ink-*`, `bg-peach`
+  - never `text-base`: it collides with the `base` color and sets the color instead of 16px - use
+    `text-[1rem]` (also with a line height: `text-[1rem]/[1.7]`)
   - typography steps between Tailwind defaults: `text-micro` (11px), `text-caption` (13px),
     `text-ui` (15px); other one-off sizes may stay arbitrary (`text-[2.375rem]`)
   - shadows: `shadow-card`, `shadow-card-hover`, `shadow-panel`, `shadow-disc`, `shadow-editor`,

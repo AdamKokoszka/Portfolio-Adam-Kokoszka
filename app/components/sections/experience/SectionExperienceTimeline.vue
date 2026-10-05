@@ -47,7 +47,7 @@ const items = computed(() =>
         {{ item.period }}
       </p>
       <p
-        class="mt-0.75 font-semibold text-base/[1.45] text-fg in-[.is-revealed]:animate-timeline-text md:text-[1.09375rem]/[1.45]">
+        class="mt-0.75 text-[1rem]/[1.45] font-semibold text-fg in-[.is-revealed]:animate-timeline-text md:text-[1.09375rem]/[1.45]">
         {{ item.title }}
       </p>
     </li>
