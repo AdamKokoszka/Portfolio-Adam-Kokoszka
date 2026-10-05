@@ -38,7 +38,7 @@ useSeoMeta({
           class="mt-4 text-3xl font-semibold tracking-[-0.02em] text-fg md:text-[2.375rem]">
           {{ title }}
         </h1>
-        <p class="mx-auto mt-4 max-w-115 text-base/[1.7] text-fg-muted md:text-lg/[1.75]">
+        <p class="mx-auto mt-4 max-w-115 text-[1rem]/[1.7] text-fg-muted md:text-lg/[1.75]">
           {{ description }}
         </p>
         <BaseButton

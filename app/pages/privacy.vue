@@ -77,7 +77,7 @@ useSeoMeta({
           <li
             v-for="item in section.items"
             :key="item.labelKey"
-            class="text-base/[1.75] text-fg-muted">
+            class="text-[1rem]/[1.75] text-fg-muted">
             <strong class="font-semibold text-fg">{{ t(item.labelKey) }}</strong>
             {{ SEPARATOR }}{{ t(item.textKey) }}
           </li>
@@ -88,7 +88,7 @@ useSeoMeta({
           :keypath="paragraphKey"
           tag="p"
           scope="global"
-          class="mt-3.5 text-base/[1.75] text-fg-muted">
+          class="mt-3.5 text-[1rem]/[1.75] text-fg-muted">
           <template #email>
             <a
               :href="emailHref"

@@ -94,7 +94,7 @@ const flightStyle = {
             </h2>
             <p
               data-reveal
-              class="mt-4 max-w-107.5 text-base/[1.7] text-fg-muted md:mt-5 md:text-lg/[1.75]">
+              class="mt-4 max-w-107.5 text-[1rem]/[1.7] text-fg-muted md:mt-5 md:text-lg/[1.75]">
               {{ t('contact.lead') }}
             </p>
 

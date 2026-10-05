@@ -52,7 +52,7 @@ const paragraphs = computed(() => ABOUT_PARAGRAPHS.map((key) => t(`about.${key}`
         data-reveal="fade"
         aria-hidden="true" />
 
-      <div class="space-y-5.5 text-base/[1.75] text-fg-muted md:text-lg/[1.8]">
+      <div class="space-y-5.5 text-[1rem]/[1.75] text-fg-muted md:text-lg/[1.8]">
         <p
           v-for="paragraph in paragraphs"
           :key="paragraph"
