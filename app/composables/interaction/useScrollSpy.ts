@@ -15,11 +15,15 @@ export const useScrollSpy = <T extends string>(ids: readonly T[]) => {
     { rootMargin: '-45% 0px -50% 0px' },
   )
 
-  onMounted(() => {
+  const collectTargets = () => {
+    visibleIds.value = new Set()
     targets.value = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
-  })
+  }
+
+  onMounted(collectTargets)
+  onScopeDispose(useNuxtApp().hook('page:finish', collectTargets))
 
   const activeId = computed<T | null>(() => ids.find((id) => visibleIds.value.has(id)) ?? null)
 
