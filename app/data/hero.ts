@@ -1,10 +1,7 @@
 export const FOCUS_WORDS = [
-  'frontend',
-  'Vue.js',
-  'TypeScript',
-  'UI/UX',
-  'performance',
-  'accessibility',
+  'frontend lead',
+  'architecture',
   'AI-assisted dev',
-  'Claude Code',
+  'business needs',
+  'performance',
 ] as const

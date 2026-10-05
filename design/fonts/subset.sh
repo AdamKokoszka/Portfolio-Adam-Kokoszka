@@ -9,7 +9,7 @@ MONO_SRC=${MONO_SRC:?path to JetBrains Mono Regular font}
 OUT=app/assets/fonts
 
 CAVEAT_TEXT='Keep it simple… Dobre pomysły zaczynają się od rozmowy. Good ideas start with a conversation.'
-MONO_TEXT="const developer = { name: 'Adam Kokoszka', focus: ''}; profile.js 1234 frontend Vue.js TypeScript UI/UX performance accessibility AI-assisted dev Claude Code"
+MONO_TEXT="const developer = { name: 'Adam Kokoszka', focus: ''}; profile.js 1234 frontend lead architecture AI-assisted dev business needs performance"
 
 chars_in_range() {
   python3 -c "import sys; print(''.join(sorted({c for c in sys.argv[1] if $2})))" "$1"
