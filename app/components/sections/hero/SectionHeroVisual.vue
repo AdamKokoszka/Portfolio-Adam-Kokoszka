@@ -1,13 +1,59 @@
 <script setup lang="ts">
-const { t } = useI18n()
+import type { PortraitSource } from '~/types/hero'
 
-const portraitAttrs = computed(() => ({
-  alt: t('hero.photoAlt'),
-  loading: 'eager' as const,
-  fetchpriority: 'high' as const,
-  class:
-    'absolute -top-5 left-0 h-162.5 w-130 animate-portrait mask-portrait object-cover object-top [animation-delay:150ms]',
-}))
+const { t } = useI18n()
+const img = useImage()
+
+const PORTRAIT_SRC = '/images/adam-kokoszka.webp'
+const PORTRAIT_WIDTH = 520
+const PORTRAIT_HEIGHT = 650
+const PORTRAIT_FORMATS = ['avif', 'webp'] as const
+
+// Desktop gets a higher quality than phones, where the portrait is the LCP on slow networks.
+const PORTRAIT_VARIANTS = [
+  { media: DESKTOP_MEDIA_QUERY, sizes: '468px', quality: 80, densities: 'x1 x2' },
+  { media: MOBILE_MEDIA_QUERY, sizes: '322px md:416px', quality: 70, densities: 'x1 x2 x3' },
+] as const
+
+const portraitSizes = (sizes: string, densities: string, quality: number, format: string) =>
+  img.getSizes(PORTRAIT_SRC, {
+    sizes,
+    densities,
+    modifiers: { format, quality, width: PORTRAIT_WIDTH, height: PORTRAIT_HEIGHT },
+  })
+
+const portraitSources: PortraitSource[] = PORTRAIT_VARIANTS.flatMap(
+  ({ media, sizes, densities, quality }) =>
+    PORTRAIT_FORMATS.map((format) => ({
+      media,
+      type: `image/${format}`,
+      ...portraitSizes(sizes, densities, quality, format),
+    })),
+)
+
+const [, MOBILE_VARIANT] = PORTRAIT_VARIANTS
+const portraitFallback = portraitSizes(
+  MOBILE_VARIANT.sizes,
+  MOBILE_VARIANT.densities,
+  MOBILE_VARIANT.quality,
+  'webp',
+)
+
+const portraitAlt = computed(() => t('hero.photoAlt'))
+
+useHead({
+  link: portraitSources
+    .filter((source) => source.type === 'image/avif')
+    .map((source) => ({
+      rel: 'preload',
+      as: 'image',
+      type: source.type,
+      media: source.media,
+      imagesrcset: source.srcset,
+      imagesizes: source.sizes,
+      fetchpriority: 'high',
+    })),
+})
 
 const ORBIT_INNER_LENGTH = 1520
 const orbitDrawStyle = { '--draw-length': ORBIT_INNER_LENGTH }
@@ -82,14 +128,24 @@ const ORBIT_OUTER_PATH = "path('M 60 342 a 285 96 0 1 0 570 0 a 285 96 0 1 0 -57
       {{ t('hero.note') }}
     </p>
 
-    <NuxtPicture
-      src="/images/adam-kokoszka.webp"
-      :width="520"
-      :height="650"
-      sizes="322px md:416px lg:468px"
-      format="avif,webp"
-      :quality="60"
-      :preload="{ fetchPriority: 'high' }"
-      :img-attrs="portraitAttrs" />
+    <picture>
+      <source
+        v-for="source in portraitSources"
+        :key="source.srcset"
+        :media="source.media"
+        :type="source.type"
+        :srcset="source.srcset"
+        :sizes="source.sizes" />
+      <img
+        :src="portraitFallback.src"
+        :srcset="portraitFallback.srcset"
+        :sizes="portraitFallback.sizes"
+        :width="PORTRAIT_WIDTH"
+        :height="PORTRAIT_HEIGHT"
+        :alt="portraitAlt"
+        loading="eager"
+        fetchpriority="high"
+        class="absolute -top-5 left-0 h-162.5 w-130 animate-portrait mask-portrait object-cover object-top [animation-delay:150ms]" />
+    </picture>
   </div>
 </template>
