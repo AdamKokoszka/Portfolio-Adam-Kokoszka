@@ -166,7 +166,7 @@
     "metaTitle": "Privacy policy - Adam Kokoszka",
     "metaDescription": "What data incocode.com processes, why, and what rights you have.",
     "title": "Privacy policy",
-    "updated": "Last updated: 4 October 2026",
+    "updated": "Last updated: 6 October 2026",
     "backHome": "Back to the home page",
     "sections": [
       {
@@ -202,7 +202,7 @@
       {
         "title": "Data recipients",
         "paragraphs": [
-          "Data may be processed by the service providers the site relies on: Netlify, Inc. (hosting), Umami Software, Inc. (statistics) and Google (email). Some of them are based in the USA - transfers outside the European Economic Area rely on mechanisms provided for in the GDPR, such as the EU-US Data Privacy Framework or standard contractual clauses."
+          "Data may be processed by the service providers the site relies on: Netlify, Inc. (hosting), Umami Software, Inc. (statistics), OVH SAS (email forwarding) and Google (email). Some of them are based in the USA - transfers outside the European Economic Area rely on mechanisms provided for in the GDPR, such as the EU-US Data Privacy Framework or standard contractual clauses."
         ]
       },
       {

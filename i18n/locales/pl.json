@@ -166,7 +166,7 @@
     "metaTitle": "Polityka prywatności - Adam Kokoszka",
     "metaDescription": "Jakie dane przetwarza strona incocode.com, w jakim celu i jakie prawa Ci przysługują.",
     "title": "Polityka prywatności",
-    "updated": "Ostatnia aktualizacja: 4 października 2026",
+    "updated": "Ostatnia aktualizacja: 6 października 2026",
     "backHome": "Wróć na stronę główną",
     "sections": [
       {
@@ -202,7 +202,7 @@
       {
         "title": "Odbiorcy danych",
         "paragraphs": [
-          "Dane mogą być przetwarzane przez dostawców usług, z których korzysta strona: Netlify, Inc. (hosting), Umami Software, Inc. (statystyki) i Google (poczta e-mail). Część z nich ma siedzibę w USA - przekazywanie danych poza Europejski Obszar Gospodarczy odbywa się na podstawie mechanizmów przewidzianych w RODO, takich jak EU-US Data Privacy Framework lub standardowe klauzule umowne."
+          "Dane mogą być przetwarzane przez dostawców usług, z których korzysta strona: Netlify, Inc. (hosting), Umami Software, Inc. (statystyki), OVH SAS (przekierowanie poczty) i Google (poczta e-mail). Część z nich ma siedzibę w USA - przekazywanie danych poza Europejski Obszar Gospodarczy odbywa się na podstawie mechanizmów przewidzianych w RODO, takich jak EU-US Data Privacy Framework lub standardowe klauzule umowne."
         ]
       },
       {
