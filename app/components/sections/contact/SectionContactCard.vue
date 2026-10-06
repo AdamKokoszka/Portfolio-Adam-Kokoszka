@@ -11,7 +11,7 @@ const mailto = `mailto:${CONTACT_EMAIL}`
     as="div"
     class="rounded-[1.125rem] px-4 pt-5 pb-4 shadow-card [--card-bg:var(--color-panel-card)] md:rounded-[1.375rem] md:p-7.5">
     <div
-      class="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3.5 md:flex md:items-start md:gap-4">
+      class="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3.5 md:grid-cols-[3.125rem_minmax(0,1fr)_auto]">
       <span
         class="col-start-1 row-start-1 flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-fg md:size-12.5 md:rounded-[0.875rem]"
         aria-hidden="true">
@@ -20,24 +20,23 @@ const mailto = `mailto:${CONTACT_EMAIL}`
           class="size-5" />
       </span>
 
-      <div class="contents md:block md:min-w-0 md:flex-1">
+      <div class="contents md:col-start-2 md:row-start-1 md:block md:min-w-0">
         <p class="col-start-2 row-start-1 text-caption font-semibold text-fg-soft">
           {{ t('contact.emailLabel') }}
         </p>
-        <div class="contents md:flex md:flex-wrap md:items-center md:gap-1">
-          <a
-            :href="mailto"
-            data-umami-event="email-click"
-            class="col-span-3 row-start-2 text-[1rem]/[1.3] font-semibold whitespace-nowrap text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg md:text-[1.15625rem] md:wrap-anywhere md:whitespace-normal">
-            {{ CONTACT_EMAIL }}
-          </a>
-          <CopyButton
-            class="col-start-3 row-start-1"
-            :text="CONTACT_EMAIL"
-            :label="t('contact.copy')"
-            data-umami-event="email-copy" />
-        </div>
+        <a
+          :href="mailto"
+          data-umami-event="email-click"
+          class="col-span-3 row-start-2 text-[1rem]/[1.3] font-semibold whitespace-nowrap text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg md:mt-1 md:block md:text-[1.0625rem] md:wrap-anywhere md:whitespace-normal">
+          {{ CONTACT_EMAIL }}
+        </a>
       </div>
+
+      <CopyButton
+        class="col-start-3 row-start-1"
+        :text="CONTACT_EMAIL"
+        :label="t('contact.copy')"
+        data-umami-event="email-copy" />
     </div>
 
     <SocialLinks
