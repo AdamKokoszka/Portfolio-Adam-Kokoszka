@@ -1,31 +1,33 @@
+const ACTIVE_LINE_RATIO = 0.45
+const ACTIVE_LINE_MAX_PX = 480
+const BOTTOM_OFFSET_PX = 4
+
 export const useScrollSpy = <T extends string>(ids: readonly T[]) => {
-  const targets = shallowRef<HTMLElement[]>([])
-  const visibleIds = ref(new Set<string>())
+  const sections = shallowRef<{ id: T; el: HTMLElement }[]>([])
+  const { y, arrivedState } = useWindowScroll({ offset: { bottom: BOTTOM_OFFSET_PX } })
+  const { height } = useWindowSize()
 
-  useIntersectionObserver(
-    targets,
-    (entries) => {
-      const next = new Set(visibleIds.value)
-      entries.forEach(({ isIntersecting, target }) => {
-        if (isIntersecting) next.add(target.id)
-        else next.delete(target.id)
-      })
-      visibleIds.value = next
-    },
-    { rootMargin: '-45% 0px -50% 0px' },
-  )
-
-  const collectTargets = () => {
-    visibleIds.value = new Set()
-    targets.value = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null)
+  const collectSections = () => {
+    sections.value = ids.flatMap((id) => {
+      const el = document.getElementById(id)
+      return el ? [{ id, el }] : []
+    })
   }
 
-  onMounted(collectTargets)
-  onScopeDispose(useNuxtApp().hook('page:finish', collectTargets))
+  onMounted(collectSections)
+  onScopeDispose(useNuxtApp().hook('page:finish', collectSections))
 
-  const activeId = computed<T | null>(() => ids.find((id) => visibleIds.value.has(id)) ?? null)
+  // The line is capped so a tall window still marks the section scrolled to, and the page
+  // bottom activates the last section, which is too short to reach the line.
+  const activeId = computed<T | null>(() => {
+    if (!sections.value.length || !y.value) return null
+    if (arrivedState.bottom) return sections.value.at(-1)?.id ?? null
+    const line = Math.min(height.value * ACTIVE_LINE_RATIO, ACTIVE_LINE_MAX_PX)
+    const current = sections.value
+      .map(({ id, el }) => ({ id, rect: el.getBoundingClientRect() }))
+      .findLast(({ rect }) => rect.top <= line)
+    return current && current.rect.bottom > line ? current.id : null
+  })
 
   return { activeId }
 }
