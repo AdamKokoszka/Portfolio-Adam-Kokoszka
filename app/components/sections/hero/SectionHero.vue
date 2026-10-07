@@ -124,7 +124,7 @@ usePointerParallax(hero)
 
     <a
       href="#about"
-      class="absolute bottom-5.5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-micro font-bold tracking-[0.24em] text-fg-muted uppercase transition-colors duration-400 ease-smooth hover:text-fg md:flex">
+      class="absolute bottom-5.5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-micro font-bold tracking-[0.24em] text-fg-muted uppercase transition-colors duration-200 ease-smooth hover:text-fg md:flex">
       <span
         class="relative block h-14 w-[1.5px] overflow-hidden rounded-xs bg-line"
         aria-hidden="true">

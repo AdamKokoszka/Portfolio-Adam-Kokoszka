@@ -30,7 +30,7 @@ const languages = computed(() =>
         :hreflang="item.language"
         :lang="item.language"
         :aria-current="item.ariaCurrent"
-        class="inline-flex h-11 items-center px-1.5 text-fg-soft uppercase transition-colors duration-400 ease-smooth hover:text-fg aria-[current=true]:text-accent-fg lg:h-10">
+        class="inline-flex h-11 items-center px-1.5 text-fg-soft uppercase transition-colors duration-200 ease-smooth hover:text-fg aria-[current=true]:text-accent-fg lg:h-10">
         {{ item.code }}
         <span class="sr-only">{{ item.name }}</span>
       </NuxtLink>

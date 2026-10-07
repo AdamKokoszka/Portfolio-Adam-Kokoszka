@@ -64,7 +64,7 @@ const FOCUS_LINE_INDEX = 2
       <span>{{ t('hero.editor.file') }}</span>
       <button
         type="button"
-        class="ml-auto inline-flex size-7.5 cursor-pointer items-center justify-center rounded-lg text-code-punct transition-colors duration-400 ease-smooth hover:bg-white/6 hover:text-code-fg"
+        class="ml-auto inline-flex size-7.5 press cursor-pointer items-center justify-center rounded-lg text-code-punct duration-200 ease-smooth hover:bg-white/6 hover:text-code-fg"
         :aria-label="pauseLabel"
         :title="pauseLabel"
         @click="$emit('togglePause')">

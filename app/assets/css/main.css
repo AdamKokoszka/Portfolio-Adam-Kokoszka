@@ -334,6 +334,7 @@
   --animate-reveal-up: reveal-up 0.8s var(--ease-smooth) var(--reveal-delay, 0ms) backwards;
   --animate-reveal-scale: reveal-scale 0.9s var(--ease-smooth) var(--reveal-delay, 0ms) backwards;
   --animate-reveal-fade: reveal-fade 1s ease-out var(--reveal-delay, 0ms) backwards;
+  --animate-reveal-gentle: reveal-fade 0.4s ease-out backwards;
   --animate-reveal-draw: reveal-draw 1.1s var(--ease-smooth) var(--reveal-delay, 0ms) backwards;
   --animate-reveal-soft: reveal-soft 1.1s var(--ease-smooth) var(--reveal-delay, 0ms) backwards;
   --animate-tile-wave: reveal-wave 0.8s var(--ease-spring)
@@ -595,7 +596,7 @@
       scroll-behavior: auto;
     }
 
-    *,
+    *:not(.reveal-gentle),
     ::before,
     ::after {
       animation-duration: 0.01ms !important;
@@ -675,6 +676,16 @@
     100% 100%,
     100% 350px;
   mask-repeat: no-repeat;
+}
+
+@utility press {
+  transition-property: color, background-color, border-color, box-shadow, scale;
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:active {
+      scale: 0.97;
+    }
+  }
 }
 
 @utility animations-paused {

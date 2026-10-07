@@ -47,7 +47,7 @@ useSeoMeta({
     <article class="container max-w-190 py-14 md:py-22">
       <NuxtLink
         :to="homePath"
-        class="inline-flex items-center gap-1.5 text-ui font-medium text-fg-muted transition-colors duration-400 ease-smooth hover:text-accent-fg">
+        class="inline-flex items-center gap-1.5 text-ui font-medium text-fg-muted transition-colors duration-200 ease-smooth hover:text-accent-fg">
         <BaseIcon
           name="chevron-left"
           class="size-4.5"

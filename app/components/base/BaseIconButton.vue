@@ -16,7 +16,7 @@ const SIZE_CLASSES = {
     type="button"
     :aria-label="label"
     :title="label"
-    class="inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full border transition-colors duration-400 ease-smooth hover:border-accent-line disabled:cursor-default disabled:opacity-40"
+    class="inline-flex shrink-0 press cursor-pointer items-center justify-center rounded-full border duration-200 ease-smooth hover:border-accent-line disabled:cursor-default disabled:opacity-40"
     :class="SIZE_CLASSES[size]">
     <slot />
   </button>

@@ -27,7 +27,7 @@ const mailto = `mailto:${CONTACT_EMAIL}`
         <a
           :href="mailto"
           data-umami-event="email-click"
-          class="col-span-3 row-start-2 text-[1rem]/[1.3] font-semibold whitespace-nowrap text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg md:mt-1 md:block md:text-[1.0625rem] md:wrap-anywhere md:whitespace-normal">
+          class="col-span-3 row-start-2 text-[1rem]/[1.3] font-semibold whitespace-nowrap text-fg transition-colors duration-200 ease-smooth hover:text-accent-fg md:mt-1 md:block md:text-[1.0625rem] md:wrap-anywhere md:whitespace-normal">
           {{ CONTACT_EMAIL }}
         </a>
       </div>
