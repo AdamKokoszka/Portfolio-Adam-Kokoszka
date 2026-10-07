@@ -12,6 +12,7 @@ export type IconName =
   | 'graduation-cap'
   | 'link'
   | 'linkedin'
+  | 'logo'
   | 'mail'
   | 'menu'
   | 'moon'

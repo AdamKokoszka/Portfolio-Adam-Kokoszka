@@ -13,6 +13,8 @@ const { activeId } = useScrollSpy(SECTION_IDS)
 
 const topHref = computed(() => sectionHref('top'))
 
+const { logoClass, swap: playLogo, onAnimationEnd: onLogoAnimationEnd } = useLogoAnimation()
+
 const navList = useTemplateRef('navList')
 
 const { indicatorStyle, isVisible: isIndicatorVisible } = useSlidingIndicator(navList, activeId)
@@ -54,15 +56,15 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
       :class="headerClass">
       <a
         :href="topHref"
-        class="flex flex-col leading-tight text-fg">
-        <span class="block text-[1.1875rem] font-bold tracking-[-0.015em] md:text-[1.3125rem]">
-          {{ t('brand.name') }}
-        </span>
-        <span
-          v-if="!isScrolled"
-          class="mt-0.5 block text-xs font-medium text-fg-soft md:text-caption">
-          {{ t('brand.owner') }}
-        </span>
+        class="flex items-center text-fg"
+        @click="playLogo"
+        @animationend="onLogoAnimationEnd">
+        <BaseIcon
+          name="logo"
+          class="aspect-logo h-8.5 md:h-10"
+          :class="logoClass"
+          aria-hidden="true" />
+        <span class="sr-only">{{ t('brand.name') }}</span>
         <span class="sr-only">{{ t('header.backToTop') }}</span>
       </a>
 

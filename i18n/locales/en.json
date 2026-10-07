@@ -9,8 +9,7 @@
     "toDark": "Switch to dark theme"
   },
   "brand": {
-    "name": "IncoCode",
-    "owner": "Adam Kokoszka"
+    "name": "IncoCode"
   },
   "header": {
     "navLabel": "Main navigation",
