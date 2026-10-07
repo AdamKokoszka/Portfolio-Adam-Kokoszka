@@ -77,8 +77,8 @@ app/
 i18n/locales/          # pl.json, en.json — ALL user-facing text
 public/                # favicon set, site.webmanifest, og-image.jpg, _redirects
 public/images/         # raster images served through @nuxt/image (portrait, logos, systems)
-design/                # sources + scripts of generated assets: og-image/, favicon/, fonts/,
-                       #   icons/
+design/                # sources + scripts of generated assets: logo/, og-image/, favicon/,
+                       #   fonts/, icons/
 ```
 
 Create folders only when they get their first file.
@@ -203,6 +203,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   - scroll reveals: `v-reveal` + `data-reveal` (see Page sections), keyframes `reveal-*`
   - scroll-linked (CSS scroll-driven animations, progressive enhancement - Firefox shows the
     static state): `scroll-progress` (top bar), `scroll-drift` (ghost numbers)
+  - logo: `animate-logo-switch` intro after load, `animate-logo-swap-*` on click (see Logo)
   - hero intro: blurred mask rise of the name, `animate-enter-blur` copy, `animate-pop` disc,
     `animate-portrait` circle reveal, `animate-draw` orbit, `animate-slide-tilt` editor
   - pointer: `usePointerCssVars` (card spotlight), `usePointerParallax` + `parallax-<px>` (hero
@@ -241,10 +242,21 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   so they also apply to `error.vue` (custom 404 / error page, `noindex`).
 - The sitemap lists only meaningful images (portrait, OG image) via `routeRules` in
   `nuxt.config`; automatic image discovery is off so logos and icons stay out of it.
-- Icons and manifest are global in `nuxt.config` `app.head`: `favicon.svg` (source of truth),
-  `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `site.webmanifest`. The mark is
-  the "ic." monogram; after editing `favicon.svg` regenerate the raster files with
-  `node design/favicon/build-icons.mjs`.
+- Icons and manifest are global in `nuxt.config` `app.head`: `favicon.svg`, `favicon.ico`,
+  `apple-touch-icon.png`, `icon-192/512.png`, `site.webmanifest`. The favicon is "c" + a switch
+  on a dark tile (a transparent one follows the OS scheme, not the tab bar, and can vanish).
+
+### Logo
+
+- The logo is "inco / code" in Manrope 800 with two switches ("inc" off, blue knob; "c[o]de" on,
+  orange knob). All logo files are generated as plain SVG paths by
+  `python3 design/logo/build-logo.py` (fonttools): `design/logo/logo-{dark,light}.svg`,
+  `app/assets/icons/logo.svg` (currentColor + `--c-accent` / `--c-warm` knobs, used through
+  `<BaseIcon name="logo" class="aspect-logo h-…">`) and the favicon tile (`public/favicon.svg`,
+  `design/logo/favicon-tile.svg`); then `node design/favicon/build-icons.mjs` renders the rasters.
+  Keep `--aspect-logo` in `main.css` in sync with the viewBox the script prints.
+- Header logo motion (`useLogoAnimation`): the bottom switch turns on once after the window `load`
+  event (waits in the "off" state until then), clicking the logo swaps both switches and back.
 - `public/og-image.jpg` (1200×630) is rendered from `design/og-image/og-image.html`:
   `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1200,630 --screenshot=og.png design/og-image/og-image.html`,
   then converted to JPEG (~130 KB).

@@ -1,9 +1,9 @@
-// Renders the raster favicon set from public/favicon.svg.
-// Run with `node design/favicon/build-icons.mjs` after changing the SVG.
+// Renders the raster favicon set from design/logo/favicon-tile.svg (built by design/logo/build-logo.py).
+// Run with `node design/favicon/build-icons.mjs` after rebuilding the logo.
 import { readFileSync, writeFileSync } from 'node:fs'
 import sharp from 'sharp'
 
-const SOURCE = readFileSync('public/favicon.svg')
+const SOURCE = readFileSync('design/logo/favicon-tile.svg')
 const TILE_COLOR = '#1e252d'
 
 const renderPng = (size, { fullBleed = false } = {}) => {
