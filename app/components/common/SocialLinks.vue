@@ -20,7 +20,7 @@ const links = SOCIAL_LINKS.map((link) => ({ ...link, event: `social-${link.id}` 
         rel="noopener noreferrer"
         :data-umami-event="link.event"
         :data-umami-event-placement="placement"
-        class="inline-flex min-h-11 items-center gap-2.5 text-ui font-semibold text-fg transition-colors duration-400 ease-smooth hover:text-accent-fg">
+        class="inline-flex min-h-11 items-center gap-2.5 text-ui font-semibold text-fg transition-colors duration-200 ease-smooth hover:text-accent-fg">
         <BaseIcon
           :name="link.icon"
           class="size-5.5"

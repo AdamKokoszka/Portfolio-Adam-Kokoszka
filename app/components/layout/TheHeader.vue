@@ -80,7 +80,7 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
             <a
               :href="href"
               :aria-current="ariaCurrent"
-              class="relative block py-2 text-ui font-medium text-fg-muted transition-colors duration-400 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg">
+              class="relative block py-2 text-ui font-medium text-fg-muted transition-colors duration-200 ease-smooth after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-smooth hover:text-fg hover:after:scale-x-100 aria-[current=location]:text-fg">
               {{ t(`nav.${id}`) }}
             </a>
           </li>

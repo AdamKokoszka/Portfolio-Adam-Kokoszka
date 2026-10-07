@@ -213,6 +213,11 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   - nav: `useSlidingIndicator` (glowing line under the active section)
   - theme switch: `useThemeTransition` (View Transitions circle from the toggle)
   - loops: `animate-float`, `animate-orbit`, `animate-glide`, `animate-ping`, `beam-border`
+- Interaction timing (after Emil Kowalski's guidance): hover color changes `duration-200`; pressable
+  buttons use the `press` utility (transitions colors + `scale`, `scale: 0.97` on `:active`, off with
+  reduced motion). Only animate `transform` / `opacity` where possible.
+- Reduced motion keeps comprehension, not movement: `v-reveal` items only fade in (`reveal-gentle`,
+  exempt from the global kill switch), no translate, stagger or stroke drawing.
 - Animation tokens whose timing reads per-element variables (`--reveal-delay`, `--step`,
   `--char-index`) must live in `@theme inline`; in `@theme` they resolve on `:root` and every
   stagger collapses to 0.
