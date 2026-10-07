@@ -210,7 +210,10 @@ Every section follows the same pattern (see `SectionAbout.vue`):
     depth layers, eased, a few px only); fine pointers only; springy hovers with `ease-spring`
   - text: `<BaseSplitText>` (letters, screen readers get the plain text), `<BaseScrollHighlight>`
     (words light up with scroll, CSS view timeline)
-  - nav: `useSlidingIndicator` (glowing line under the active section)
+  - nav: `useSlidingIndicator` (glowing line under the active section); `useScrollSpy` marks the
+    section under a line at 45% of the viewport (max 480px), and the last one at the page bottom
+  - the sticky header must not get vertical margins: they collapse through its wrapper, grow the
+    page while scrolling and stop Chrome's smooth anchor scroll short of the bottom
   - theme switch: `useThemeTransition` (View Transitions circle from the toggle)
   - loops: `animate-float`, `animate-orbit`, `animate-glide`, `animate-ping`, `beam-border`
 - Interaction timing (after Emil Kowalski's guidance): hover color changes `duration-200`; pressable

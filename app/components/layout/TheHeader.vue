@@ -31,7 +31,7 @@ const navItems = computed(() =>
 
 const headerClass = computed(() =>
   isScrolled.value
-    ? 'mt-2 h-14 rounded-full border border-line bg-header/90 pr-1.5 pl-4.5 shadow-card backdrop-blur-md md:mt-3 md:h-15.5 md:pr-2.5 md:pl-6.5'
+    ? 'h-14 rounded-full border border-line bg-header/90 pr-1.5 pl-4.5 shadow-card backdrop-blur-md md:h-15.5 md:pr-2.5 md:pl-6.5'
     : 'h-16 border-b border-line md:h-21',
 )
 
@@ -52,7 +52,7 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
 <template>
   <div class="pointer-events-none sticky top-0 z-50 -mb-16 h-16 md:-mb-21 md:h-21">
     <header
-      class="pointer-events-auto relative z-10 container flex items-center justify-between gap-3 transition-[height,margin,padding,border-radius,background-color,box-shadow] duration-500 ease-smooth md:gap-8"
+      class="pointer-events-auto relative z-10 container flex items-center justify-between gap-3 transition-[height,padding,border-radius,background-color,box-shadow] duration-500 ease-smooth md:gap-8"
       :class="headerClass">
       <a
         :href="topHref"
