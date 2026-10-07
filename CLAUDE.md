@@ -259,7 +259,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   event (waits in the "off" state until then), clicking the logo swaps both switches and back.
 - `public/og-image.jpg` (1200×630) is rendered from `design/og-image/og-image.html`:
   `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1200,630 --screenshot=og.png design/og-image/og-image.html`,
-  then converted to JPEG (~130 KB).
+  then converted to JPEG (~60 KB). It shows `design/logo/logo-dark.svg`, so re-render it after a logo change.
 - Large images use `<NuxtPicture format="avif,webp">`; give every `<img>` explicit `width` and
   `height` (Lighthouse "unsized images").
 
