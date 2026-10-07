@@ -162,8 +162,12 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   translations are written by Claude.
 - Translation strings use vue-i18n message syntax: `{ } @ $ |` are special — write literal braces
   as `{'{'}` / `{'}'}`. Rich text (bold, highlight) goes through `<I18nT>` slots, never `v-html`.
-- In copy use a plain hyphen `-`, not an em dash.
-- Static data in `app/data/` holds structure only (ids, dates, logos, links); text comes from i18n.
+- In copy use a plain hyphen `-`, not an em dash. Write full, natural sentences (no colon lists or
+  shorthand); the current project in the present tense, finished ones in the past tense.
+- `p` and `li` get `text-wrap: pretty` globally (no lone last word); a short ending that still
+  breaks off on narrow phones is glued with a non-breaking space in the translation.
+- Static data in `app/data/` holds structure only (ids, dates, logos, links); text comes from i18n
+  (experience highlights: ids in `experience.ts`, text in `experience.companies.<id>.highlights`).
 
 ### Styling & theming
 

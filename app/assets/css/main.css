@@ -583,6 +583,11 @@
     @apply bg-sunken font-sans text-[1rem]/[1.7] text-fg antialiased md:text-[1.0625rem];
   }
 
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
   ::selection {
     @apply bg-accent text-on-accent;
   }

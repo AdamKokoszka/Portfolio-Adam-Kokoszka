@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Adam Kokoszka - Senior Frontend Developer",
-    "description": "Adam Kokoszka - Senior Frontend Developer specialising in Vue.js. I build thoughtful web application interfaces.",
+    "title": "Adam Kokoszka - Senior Frontend Developer (Vue.js, TypeScript)",
+    "description": "Adam Kokoszka - Senior Frontend Developer (Vue.js, TypeScript) and frontend lead. I build thoughtful web applications - from business requirements to release. Open to remote B2B contracts.",
     "ogImageAlt": "Adam Kokoszka - Senior Frontend Developer, IncoCode"
   },
   "theme": {
@@ -34,8 +34,8 @@
     "lastName": "Kokoszka",
     "role": "Senior {highlight} Developer",
     "roleHighlight": "Frontend",
-    "lead": "{strong} I combine clean code with care for the user experience.",
-    "leadStrong": "I build thoughtful web application interfaces.",
+    "lead": "{strong} I combine intuitive interfaces with real business needs.",
+    "leadStrong": "I build thoughtful web applications.",
     "ctaPrimary": "Let's talk",
     "ctaSecondary": "My experience",
     "note": "Keep it\nsimple…",
@@ -57,9 +57,9 @@
   },
   "about": {
     "title": "From first web pages to complex applications.",
-    "paragraph1": "I'm a Senior Frontend Developer specialising in Vue.js, with experience building and developing applications for the hospitality and insurance industries. I care about readable code, intuitive interfaces and solutions that are easy to maintain and extend.",
-    "paragraph2": "In my current project I act as the frontend lead. I work with the client on gathering requirements and propose solutions tailored to their needs. I turn them into concrete tasks and walk the team through their scope and business goal - so that technical decisions come from a clear understanding of what we want to achieve.",
-    "paragraph3": "I've been into programming since middle school, when I built my first HTML pages. Today I develop complex applications and keep sharpening my craft, using AI tools in my day-to-day work as well."
+    "paragraph1": "I'm a Senior Frontend Developer specialising in Vue.js. I've been into programming since middle school and have been building web applications professionally for more than six years. Today I develop complex systems for the hospitality and insurance industries, with a focus on clear interfaces and code that is easy to maintain and extend.",
+    "paragraph2": "For the past two years I've been the lead of the frontend team on a platform for an insurance multi-agency. I designed the application architecture, chose the technologies and set the rules we work by. I work closely with the client - I help refine requirements, propose solutions and turn them into concrete tasks, so that technical decisions support business goals.",
+    "paragraph3": "I treat AI as a working tool, not a fashionable extra. I use Claude Code by clearly defined rules, which lets me work faster without losing control over quality. That's also how this portfolio was built, and its code is publicly available. The same approach makes it easier to step into new areas - I'm currently growing towards backend development in Java and Spring."
   },
   "experience": {
     "eyebrow": "Experience and education",
@@ -71,21 +71,34 @@
         "name": "Antologic",
         "location": "Remote",
         "roles": {
-          "senior": "Senior Frontend Developer (Vue.js)",
-          "regular": "Frontend Developer (Vue.js)",
-          "junior": "Junior Frontend Developer (Vue.js)"
+          "senior": "Senior Frontend Developer (Vue.js)",
+          "regular": "Frontend Developer (Vue.js)",
+          "junior": "Junior Frontend Developer (Vue.js)"
+        },
+        "highlights": {
+          "lead": "I lead the frontend team on a project for an insurance multi-agency. I'm responsible for the application architecture, the choice of technologies (Vue 3, TypeScript, PrimeVue, Pinia, VeeValidate, Zod) and the team's working standards.",
+          "requirements": "I work with the client on requirements analysis, propose solutions and plan the team's work.",
+          "prorms": "In proRMS, a system that helps hotels manage pricing and revenue, I built a new dashboard from scratch and developed further modules of the application, including Price Optimizer with advanced charts.",
+          "backoffice": "I single-handedly delivered the frontend of the proRMS back office - a flexible panel where new pages with forms, tables and charts are built from configuration, without writing additional code."
         }
       },
       "i4s": {
         "name": "I4S Innovation Solutions",
         "roles": {
           "frontend": "Frontend Developer"
+        },
+        "highlights": {
+          "projects": "I delivered dozens of projects for the company's clients - from landing pages and online stores to websites for property developments where buyers could reserve a unit before purchase.",
+          "delivery": "I was responsible for the whole frontend - from faithful implementation of designs and mobile versions to interactive elements and integration with an in-house CMS."
         }
       },
       "emediator": {
         "name": "eMediator.pl sp. z o.o.",
         "roles": {
           "frontend": "Frontend Developer"
+        },
+        "highlights": {
+          "landing": "My first commercial experience. I built responsive landing pages that faithfully reproduced graphic designs and prepared them for PHP backend integration."
         }
       }
     },
@@ -125,22 +138,22 @@
     "items": {
       "insurance": {
         "title": "Insurance multi-agency platform",
-        "description": "Developing an application for the insurance industry."
+        "description": "A complex platform for the insurance industry, where I'm responsible for the frontend architecture and lead the frontend team."
       },
       "prorms": {
         "title": "proRMS",
-        "description": "Automated hotel pricing and revenue management."
+        "description": "A system that helps hotels set prices and grow revenue. I developed the interface of many of its modules - from the dashboard to data analysis and charts."
       },
       "proRmsBackoffice": {
         "title": "proRMS back office",
-        "description": "Administration back office for the proRMS system."
+        "description": "The proRMS admin back office, where new screens are created through configuration, without writing code."
       }
     },
     "imageAlt": "Illustrative image: {title}"
   },
   "contact": {
     "title": "Let's talk\nabout working together.",
-    "lead": "Got a project idea, a question, or just want to say hi? Drop me a line - I'm happy to talk.",
+    "lead": "Looking for an experienced frontend developer for your project? I'm open to remote B2B contracts. Get in touch - I'm happy to talk.",
     "note": "Good ideas start\nwith a conversation.",
     "emailLabel": "Email",
     "copy": "Copy email address"
