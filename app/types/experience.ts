@@ -13,6 +13,7 @@ export interface ExperienceItem {
   logoHeight?: number
   isFeatured?: boolean
   roles: readonly ExperienceRole[]
+  highlights: readonly string[]
 }
 
 export interface EducationItem {

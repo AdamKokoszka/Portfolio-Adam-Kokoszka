@@ -11,6 +11,7 @@ export const EXPERIENCE: readonly ExperienceItem[] = [
       { id: 'regular', from: '2023-02', to: '2025-07' },
       { id: 'junior', from: '2022-03', to: '2023-01' },
     ],
+    highlights: ['lead', 'requirements', 'prorms', 'backoffice'],
   },
   {
     id: 'i4s',
@@ -18,6 +19,7 @@ export const EXPERIENCE: readonly ExperienceItem[] = [
     logoFit: 'tight',
     logoHeight: 39,
     roles: [{ id: 'frontend', from: '2020-02', to: '2022-03' }],
+    highlights: ['projects', 'delivery'],
   },
   {
     id: 'emediator',
@@ -25,6 +27,7 @@ export const EXPERIENCE: readonly ExperienceItem[] = [
     logoFit: 'tight',
     logoHeight: 60,
     roles: [{ id: 'frontend', from: '2017-07', to: '2017-08' }],
+    highlights: ['landing'],
   },
 ]
 

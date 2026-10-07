@@ -14,6 +14,10 @@ const companies = computed(() =>
       location: company.isFeatured ? t(`experience.companies.${company.id}.location`) : '',
       period: firstRole ? formatPeriod(firstRole.from, firstRole.to, t('experience.present')) : '',
       title: firstRole ? t(`experience.companies.${company.id}.roles.${firstRole.id}`) : '',
+      highlights: company.highlights.map((id) => ({
+        id,
+        text: t(`experience.companies.${company.id}.highlights.${id}`),
+      })),
     }
   }),
 )
@@ -106,6 +110,16 @@ const schools = computed(() =>
                 v-if="company.isFeatured"
                 :company-id="company.id"
                 :roles="company.roles" />
+              <ul
+                v-if="company.highlights.length"
+                class="mt-4.5 flex flex-col gap-2 border-t border-line pt-4.5 text-sm/[1.6] text-fg-muted md:mt-5.5 md:gap-2.5 md:pt-5.5 md:text-ui/[1.65]">
+                <li
+                  v-for="highlight in company.highlights"
+                  :key="highlight.id"
+                  class="relative pl-4.5 before:absolute before:top-[0.6em] before:left-0.5 before:size-1.5 before:rounded-full before:bg-warm">
+                  {{ highlight.text }}
+                </li>
+              </ul>
             </BaseCard>
           </div>
         </div>
@@ -115,7 +129,7 @@ const schools = computed(() =>
           data-reveal="fade"
           aria-hidden="true" />
 
-        <div>
+        <div class="lg:sticky lg:top-28 lg:self-start">
           <h3
             data-reveal="soft"
             class="mb-4.5 flex items-center gap-3 text-[1.375rem] font-semibold tracking-[-0.01em] text-fg md:mb-6.5 md:text-[1.625rem]">
