@@ -6,8 +6,7 @@ const sectionHref = useSectionHref()
 
 const SCROLLED_OFFSET = 24
 
-const { y } = useWindowScroll()
-const isScrolled = computed(() => y.value > SCROLLED_OFFSET)
+const isScrolled = useIsScrolled(SCROLLED_OFFSET)
 
 const { activeId } = useScrollSpy(SECTION_IDS)
 
@@ -31,7 +30,7 @@ const navItems = computed(() =>
 
 const headerClass = computed(() =>
   isScrolled.value
-    ? 'h-14 rounded-full border border-line bg-header/90 pr-1.5 pl-4.5 shadow-card backdrop-blur-md md:h-15.5 md:pr-2.5 md:pl-6.5'
+    ? 'h-14 rounded-full border border-line bg-header/95 pr-1.5 pl-4.5 shadow-card md:h-15.5 md:bg-header/90 md:pr-2.5 md:pl-6.5 md:backdrop-blur-md'
     : 'h-16 border-b border-line md:h-21',
 )
 

@@ -10,7 +10,7 @@ export const usePageSeo = () => {
 
   const title = computed(() => t('meta.title'))
   const description = computed(() => t('meta.description'))
-  const imageUrl = absoluteUrl(OG_IMAGE.path)
+  const imageUrl = `${absoluteUrl(OG_IMAGE.path)}?v=${OG_IMAGE.version}`
   const imageAlt = computed(() => t('meta.ogImageAlt'))
 
   const pageUrl = computed(() => absoluteUrl(route.path))

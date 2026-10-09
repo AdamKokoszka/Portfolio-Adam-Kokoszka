@@ -1,5 +1,7 @@
+// Bump `version` after re-rendering the image: link previews cache it by URL.
 export const OG_IMAGE = {
   path: '/og-image.jpg',
+  version: 2,
   width: 1200,
   height: 630,
 } as const
