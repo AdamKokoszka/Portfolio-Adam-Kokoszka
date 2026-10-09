@@ -34,7 +34,7 @@ const styles = computed(() => VARIANTS[props.variant])
 const imageAttrs = computed(() => ({
   alt: t('systems.imageAlt', { title: t(`systems.items.${props.system.id}.title`) }),
   loading: 'lazy' as const,
-  class: `absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${styles.value.image}`,
+  class: `absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${props.system.imagePosition ?? styles.value.image}`,
 }))
 </script>
 

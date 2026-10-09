@@ -7,6 +7,10 @@ export const FEATURED_SYSTEM: SystemItem = {
 }
 
 export const PRORMS_SYSTEMS: readonly SystemItem[] = [
-  { id: 'prorms', image: '/images/systems/prorms.webp' },
-  { id: 'proRmsBackoffice', image: '/images/systems/backoffice-prorms.webp' },
+  { id: 'prorms', image: '/images/systems/prorms.webp', imagePosition: 'object-[90%_50%]' },
+  {
+    id: 'proRmsBackoffice',
+    image: '/images/systems/backoffice-prorms.webp',
+    imagePosition: 'object-[60%_50%]',
+  },
 ]
