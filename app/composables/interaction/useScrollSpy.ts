@@ -1,44 +1,51 @@
 const ACTIVE_LINE_RATIO = 0.45
 const ACTIVE_LINE_MAX_PX = 480
-const BOTTOM_OFFSET_PX = 4
 
+// Observers only, no scroll listeners: reading the scroll position in scroll events forced style
+// recalcs mid-scroll and made scrolling stutter on slower phones.
 export const useScrollSpy = <T extends string>(ids: readonly T[]) => {
-  const sections = shallowRef<{ id: T; el: HTMLElement }[]>([])
-  const activeId = ref<T | null>(null)
+  const sections = shallowRef<HTMLElement[]>([])
+  const footer = shallowRef<HTMLElement | null>(null)
+  const crossingIds = ref(new Set<string>())
 
-  // The line is capped so a tall window still marks the section scrolled to, and the page
-  // bottom activates the last section, which is too short to reach the line.
-  const update = () => {
-    const { scrollY, innerHeight } = window
-    if (!sections.value.length || !scrollY) {
-      activeId.value = null
-      return
-    }
-    const isAtBottom =
-      scrollY + innerHeight >= document.documentElement.scrollHeight - BOTTOM_OFFSET_PX
-    if (isAtBottom) {
-      activeId.value = sections.value.at(-1)?.id ?? null
-      return
-    }
-    const line = Math.min(innerHeight * ACTIVE_LINE_RATIO, ACTIVE_LINE_MAX_PX)
-    const current = sections.value
-      .map(({ id, el }) => ({ id, rect: el.getBoundingClientRect() }))
-      .findLast(({ rect }) => rect.top <= line)
-    activeId.value = current && current.rect.bottom > line ? current.id : null
+  // A 1px band on the activation line; capped so a tall window still marks the section scrolled to.
+  const { height } = useWindowSize()
+  const bandMargin = computed(() => {
+    const line = Math.round(Math.min(height.value * ACTIVE_LINE_RATIO, ACTIVE_LINE_MAX_PX))
+    return `-${line}px 0px -${Math.max(height.value - line - 1, 0)}px 0px`
+  })
+
+  useIntersectionObserver(
+    sections,
+    (entries) => {
+      const next = new Set(crossingIds.value)
+      entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) next.add(target.id)
+        else next.delete(target.id)
+      })
+      crossingIds.value = next
+    },
+    { rootMargin: bandMargin },
+  )
+
+  // The last section is too short to reach the line, so the visible footer activates it.
+  const isFooterVisible = useElementVisibility(footer)
+
+  const collectTargets = () => {
+    crossingIds.value = new Set()
+    sections.value = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+    footer.value = document.querySelector('footer')
   }
 
-  const collectSections = () => {
-    sections.value = ids.flatMap((id) => {
-      const el = document.getElementById(id)
-      return el ? [{ id, el }] : []
-    })
-    update()
-  }
+  onMounted(collectTargets)
+  onScopeDispose(useNuxtApp().hook('page:finish', collectTargets))
 
-  onMounted(collectSections)
-  onScopeDispose(useNuxtApp().hook('page:finish', collectSections))
-
-  useScrollFrame(update)
+  const activeId = computed<T | null>(() => {
+    if (isFooterVisible.value && sections.value.length) return ids.at(-1) ?? null
+    return ids.find((id) => crossingIds.value.has(id)) ?? null
+  })
 
   return { activeId }
 }
