@@ -229,12 +229,13 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   `--char-index`) must live in `@theme inline`; in `@theme` they resolve on `:root` and every
   stagger collapses to 0.
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
-- Scroll performance on phones: endless loops (`animate-float/orbit/ping/cue/blink/glide`) are paused
-  off screen with `useLoopsPaused(el)` (`loops-paused` class); per-word scroll highlights run on fine
+- Scroll performance on phones: endless loops (`animate-float/orbit/ping/cue/blink`) are paused off
+  screen with `useCanAnimate(el)` + the `loops-paused` class (it lists those loops, so add new ones
+  there; pausing everything would freeze entrance animations mid-way); per-word scroll highlights run on fine
   pointers only; no `backdrop-blur` below `md` (solid header background). No scroll listeners (and no
   `useWindowScroll`, which calls `getComputedStyle` on every scroll event): position-dependent UI uses
-  IntersectionObserver - the scroll spy watches a 1px band on its activation line plus the footer, the
-  header watches a sentinel at the top of the page.
+  IntersectionObserver - the scroll spy watches a 1px band on its activation line plus the whole footer,
+  the layout watches a sentinel at the top of the page and passes `isScrolled` to the header.
 
 ### Images
 

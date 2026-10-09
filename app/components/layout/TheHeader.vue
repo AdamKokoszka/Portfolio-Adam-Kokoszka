@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { SECTION_IDS } from '~/data/navigation'
+import type { TheHeaderProps } from '~/types/layout'
+
+const props = defineProps<TheHeaderProps>()
 
 const { t } = useI18n()
 const sectionHref = useSectionHref()
-
-// The header turns into a pill once a sentinel at the top of the page scrolls out of view.
-const topSentinel = useTemplateRef('topSentinel')
-const isAtTop = useElementVisibility(topSentinel, { initialValue: true })
-const isScrolled = computed(() => !isAtTop.value)
 
 const { activeId } = useScrollSpy(SECTION_IDS)
 
@@ -30,7 +28,7 @@ const navItems = computed(() =>
 )
 
 const headerClass = computed(() =>
-  isScrolled.value
+  props.isScrolled
     ? 'h-14 rounded-full border border-line bg-header/95 pr-1.5 pl-4.5 shadow-card md:h-15.5 md:bg-header/90 md:pr-2.5 md:pl-6.5 md:backdrop-blur-md'
     : 'h-16 border-b border-line md:h-21',
 )
@@ -50,10 +48,6 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
 </script>
 
 <template>
-  <div
-    ref="topSentinel"
-    class="pointer-events-none absolute inset-x-0 top-0 h-6"
-    aria-hidden="true" />
   <div class="pointer-events-none sticky top-0 z-50 -mb-16 h-16 md:-mb-21 md:h-21">
     <header
       class="pointer-events-auto relative z-10 container flex items-center justify-between gap-3 transition-[height,padding,border-radius,background-color,box-shadow] duration-500 ease-smooth md:gap-8"

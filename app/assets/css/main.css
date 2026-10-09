@@ -701,15 +701,7 @@
 }
 
 @utility loops-paused {
-  &
-    :is(
-      .animate-float,
-      .animate-orbit,
-      .animate-ping,
-      .animate-cue,
-      .animate-blink,
-      .animate-glide
-    ) {
+  & :is(.animate-float, .animate-orbit, .animate-ping, .animate-cue, .animate-blink) {
     animation-play-state: paused;
   }
 }

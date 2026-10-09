@@ -17,7 +17,8 @@ const items = computed(() =>
 )
 
 const timeline = useTemplateRef('timeline')
-const loopsClass = useLoopsPaused(timeline)
+const canAnimate = useCanAnimate(timeline)
+const loopsClass = computed(() => (canAnimate.value ? '' : 'loops-paused'))
 </script>
 
 <template>

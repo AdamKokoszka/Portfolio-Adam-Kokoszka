@@ -14,9 +14,12 @@ const hero = useTemplateRef('hero')
 usePointerCssVars(hero)
 usePointerParallax(hero)
 
-const loopsClass = useLoopsPaused(hero)
+const canAnimate = useCanAnimate(hero)
 
-const heroClass = computed(() => [loopsClass.value, isPaused.value ? 'animations-paused' : ''])
+const heroClass = computed(() => [
+  canAnimate.value ? '' : 'loops-paused',
+  isPaused.value ? 'animations-paused' : '',
+])
 </script>
 
 <template>
