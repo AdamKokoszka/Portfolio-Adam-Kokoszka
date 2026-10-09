@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<SectionSystemsCardProps>(), {
 const VARIANTS = {
   featured: {
     root: 'h-105 md:h-110',
-    image: 'object-[62%_50%] md:object-[60%_50%]',
+    imagePosition: 'object-[62%_50%] md:object-[60%_50%]',
     sizes: 'xs:1260px sm:1260px md:1320px lg:1320px',
     shade:
       'bg-linear-to-b from-ink-shade/0 from-25% via-ink-shade/78 via-58% to-ink-shade/97 md:bg-linear-to-r md:from-ink-shade/96 md:from-0% md:via-ink-shade/86 md:via-30% md:to-ink-shade/0 md:to-80%',
@@ -20,7 +20,7 @@ const VARIANTS = {
   },
   compact: {
     root: 'h-75 md:h-100',
-    image: 'object-center',
+    imagePosition: 'object-center',
     sizes: 'xs:675px sm:720px md:900px lg:900px',
     shade: 'bg-linear-to-b from-ink-shade/0 from-35% via-ink-shade/72 via-68% to-ink-shade/96',
     body: 'inset-x-5 bottom-5.5 md:inset-x-8 md:bottom-7.5',
@@ -36,7 +36,7 @@ const styles = computed(() => VARIANTS[props.variant])
 const imageAttrs = computed(() => ({
   alt: t('systems.imageAlt', { title: t(`systems.items.${props.system.id}.title`) }),
   loading: 'lazy' as const,
-  class: `absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${props.system.imagePosition ?? styles.value.image}`,
+  class: `absolute inset-0 size-full object-cover transition-transform duration-1200 ease-smooth group-hover/system:scale-[1.025] ${props.system.imagePosition ?? styles.value.imagePosition}`,
 }))
 </script>
 
