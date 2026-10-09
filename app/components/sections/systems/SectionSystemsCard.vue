@@ -5,11 +5,13 @@ const props = withDefaults(defineProps<SectionSystemsCardProps>(), {
   variant: 'compact',
 })
 
+// `sizes` is the width the wide image is drawn at with object-cover (card height x image ratio),
+// not the card width - otherwise the browser picks a file that gets upscaled and looks soft.
 const VARIANTS = {
   featured: {
     root: 'h-105 md:h-110',
     image: 'object-[62%_50%] md:object-[60%_50%]',
-    sizes: 'xs:100vw sm:100vw md:100vw lg:1160px',
+    sizes: 'xs:1260px sm:1260px md:1320px lg:1320px',
     shade:
       'bg-linear-to-b from-ink-shade/0 from-25% via-ink-shade/78 via-58% to-ink-shade/97 md:bg-linear-to-r md:from-ink-shade/96 md:from-0% md:via-ink-shade/86 md:via-30% md:to-ink-shade/0 md:to-80%',
     body: 'inset-x-5.5 bottom-6 md:inset-y-0 md:right-auto md:left-13 md:flex md:w-105 md:flex-col md:justify-center',
@@ -19,7 +21,7 @@ const VARIANTS = {
   compact: {
     root: 'h-75 md:h-100',
     image: 'object-center',
-    sizes: 'xs:100vw sm:100vw md:50vw lg:570px',
+    sizes: 'xs:675px sm:720px md:900px lg:900px',
     shade: 'bg-linear-to-b from-ink-shade/0 from-35% via-ink-shade/72 via-68% to-ink-shade/96',
     body: 'inset-x-5 bottom-5.5 md:inset-x-8 md:bottom-7.5',
     title: 'text-[1.3125rem] md:text-[1.5625rem]',
