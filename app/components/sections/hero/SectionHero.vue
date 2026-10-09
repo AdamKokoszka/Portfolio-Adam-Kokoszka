@@ -13,13 +13,17 @@ const hero = useTemplateRef('hero')
 
 usePointerCssVars(hero)
 usePointerParallax(hero)
+
+const loopsClass = useLoopsPaused(hero)
+
+const heroClass = computed(() => [loopsClass.value, isPaused.value ? 'animations-paused' : ''])
 </script>
 
 <template>
   <section
     ref="hero"
     class="group/hero relative overflow-x-clip pt-16 bg-hero md:pt-21 lg:flex lg:min-h-svh lg:flex-col"
-    :class="{ 'animations-paused': isPaused }"
+    :class="heroClass"
     aria-labelledby="hero-name">
     <div
       class="pointer-events-none absolute inset-0 overflow-hidden"

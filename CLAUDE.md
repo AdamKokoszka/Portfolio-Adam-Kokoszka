@@ -229,6 +229,9 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   `--char-index`) must live in `@theme inline`; in `@theme` they resolve on `:root` and every
   stagger collapses to 0.
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
+- Scroll performance on phones: endless loops (`animate-float/orbit/ping/cue/blink/glide`) are paused
+  off screen with `useLoopsPaused(el)` (`loops-paused` class); per-word scroll highlights run on fine
+  pointers only; no `backdrop-blur` below `md` (solid header background); scroll handlers are throttled.
 
 ### Images
 
@@ -272,6 +275,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - `public/og-image.jpg` (1200×630) is rendered from `design/og-image/og-image.html`:
   `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1200,630 --screenshot=og.png design/og-image/og-image.html`,
   then converted to JPEG (~60 KB). It shows `design/logo/logo-dark.svg`, so re-render it after a logo change.
+  After every re-render bump `OG_IMAGE.version` in `app/data/seo.ts` (`?v=` busts link-preview caches).
 - Large images use `<NuxtPicture format="avif,webp">`; give every `<img>` explicit `width` and
   `height` (Lighthouse "unsized images").
 

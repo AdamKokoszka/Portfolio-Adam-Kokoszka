@@ -700,6 +700,20 @@
   }
 }
 
+@utility loops-paused {
+  &
+    :is(
+      .animate-float,
+      .animate-orbit,
+      .animate-ping,
+      .animate-cue,
+      .animate-blink,
+      .animate-glide
+    ) {
+    animation-play-state: paused;
+  }
+}
+
 @utility bg-dots-spotlight {
   background-image: radial-gradient(var(--c-accent) 1.5px, transparent 1.8px);
   background-size: 20px 20px;
@@ -821,8 +835,9 @@
   view-timeline-name: --highlight;
 }
 
+/* Fine pointers only: on phones hundreds of word animations made scrolling stutter. */
 @utility scroll-highlight-word {
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (pointer: fine) {
     @supports (animation-timeline: view()) {
       animation: scroll-word linear both;
       animation-timeline: --highlight;

@@ -4,30 +4,41 @@ const BOTTOM_OFFSET_PX = 4
 
 export const useScrollSpy = <T extends string>(ids: readonly T[]) => {
   const sections = shallowRef<{ id: T; el: HTMLElement }[]>([])
-  const { y, arrivedState } = useWindowScroll({ offset: { bottom: BOTTOM_OFFSET_PX } })
-  const { height } = useWindowSize()
+  const activeId = ref<T | null>(null)
+
+  // The line is capped so a tall window still marks the section scrolled to, and the page
+  // bottom activates the last section, which is too short to reach the line.
+  const update = () => {
+    const { scrollY, innerHeight } = window
+    if (!sections.value.length || !scrollY) {
+      activeId.value = null
+      return
+    }
+    const isAtBottom =
+      scrollY + innerHeight >= document.documentElement.scrollHeight - BOTTOM_OFFSET_PX
+    if (isAtBottom) {
+      activeId.value = sections.value.at(-1)?.id ?? null
+      return
+    }
+    const line = Math.min(innerHeight * ACTIVE_LINE_RATIO, ACTIVE_LINE_MAX_PX)
+    const current = sections.value
+      .map(({ id, el }) => ({ id, rect: el.getBoundingClientRect() }))
+      .findLast(({ rect }) => rect.top <= line)
+    activeId.value = current && current.rect.bottom > line ? current.id : null
+  }
 
   const collectSections = () => {
     sections.value = ids.flatMap((id) => {
       const el = document.getElementById(id)
       return el ? [{ id, el }] : []
     })
+    update()
   }
 
   onMounted(collectSections)
   onScopeDispose(useNuxtApp().hook('page:finish', collectSections))
 
-  // The line is capped so a tall window still marks the section scrolled to, and the page
-  // bottom activates the last section, which is too short to reach the line.
-  const activeId = computed<T | null>(() => {
-    if (!sections.value.length || !y.value) return null
-    if (arrivedState.bottom) return sections.value.at(-1)?.id ?? null
-    const line = Math.min(height.value * ACTIVE_LINE_RATIO, ACTIVE_LINE_MAX_PX)
-    const current = sections.value
-      .map(({ id, el }) => ({ id, rect: el.getBoundingClientRect() }))
-      .findLast(({ rect }) => rect.top <= line)
-    return current && current.rect.bottom > line ? current.id : null
-  })
+  useScrollFrame(update)
 
   return { activeId }
 }

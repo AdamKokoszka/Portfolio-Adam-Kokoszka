@@ -15,12 +15,17 @@ const items = computed(() =>
     style: { '--step': index },
   })),
 )
+
+const timeline = useTemplateRef('timeline')
+const loopsClass = useLoopsPaused(timeline)
 </script>
 
 <template>
   <ul
+    ref="timeline"
     data-reveal="group"
-    class="mt-5 pl-17.5 md:mt-6 md:pl-23">
+    class="mt-5 pl-17.5 md:mt-6 md:pl-23"
+    :class="loopsClass">
     <li
       v-for="item in items"
       :key="item.id"
