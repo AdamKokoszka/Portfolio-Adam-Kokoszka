@@ -4,9 +4,10 @@ import { SECTION_IDS } from '~/data/navigation'
 const { t } = useI18n()
 const sectionHref = useSectionHref()
 
-const SCROLLED_OFFSET = 24
-
-const isScrolled = useIsScrolled(SCROLLED_OFFSET)
+// The header turns into a pill once a sentinel at the top of the page scrolls out of view.
+const topSentinel = useTemplateRef('topSentinel')
+const isAtTop = useElementVisibility(topSentinel, { initialValue: true })
+const isScrolled = computed(() => !isAtTop.value)
 
 const { activeId } = useScrollSpy(SECTION_IDS)
 
@@ -49,6 +50,10 @@ const menuLabel = computed(() => (isMenuOpen.value ? t('header.closeMenu') : t('
 </script>
 
 <template>
+  <div
+    ref="topSentinel"
+    class="pointer-events-none absolute inset-x-0 top-0 h-6"
+    aria-hidden="true" />
   <div class="pointer-events-none sticky top-0 z-50 -mb-16 h-16 md:-mb-21 md:h-21">
     <header
       class="pointer-events-auto relative z-10 container flex items-center justify-between gap-3 transition-[height,padding,border-radius,background-color,box-shadow] duration-500 ease-smooth md:gap-8"

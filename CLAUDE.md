@@ -215,7 +215,7 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   - text: `<BaseSplitText>` (letters, screen readers get the plain text), `<BaseScrollHighlight>`
     (words light up with scroll, CSS view timeline)
   - nav: `useSlidingIndicator` (glowing line under the active section); `useScrollSpy` marks the
-    section under a line at 45% of the viewport (max 480px), and the last one at the page bottom
+    section under a line at 45% of the viewport (max 480px), and the last one once the footer shows
   - the sticky header must not get vertical margins: they collapse through its wrapper, grow the
     page while scrolling and stop Chrome's smooth anchor scroll short of the bottom
   - theme switch: `useThemeTransition` (View Transitions circle from the toggle)
@@ -231,7 +231,10 @@ Every section follows the same pattern (see `SectionAbout.vue`):
 - Respect `prefers-reduced-motion` (globally reduced in `main.css`; JS-driven motion must check it).
 - Scroll performance on phones: endless loops (`animate-float/orbit/ping/cue/blink/glide`) are paused
   off screen with `useLoopsPaused(el)` (`loops-paused` class); per-word scroll highlights run on fine
-  pointers only; no `backdrop-blur` below `md` (solid header background); scroll handlers are throttled.
+  pointers only; no `backdrop-blur` below `md` (solid header background). No scroll listeners (and no
+  `useWindowScroll`, which calls `getComputedStyle` on every scroll event): position-dependent UI uses
+  IntersectionObserver - the scroll spy watches a 1px band on its activation line plus the footer, the
+  header watches a sentinel at the top of the page.
 
 ### Images
 
