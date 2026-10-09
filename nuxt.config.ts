@@ -1,8 +1,9 @@
 import tailwindcss from '@tailwindcss/vite'
+import { OG_IMAGE } from './app/data/seo'
 
 const SITE_URL = 'https://incocode.com'
 
-const SITEMAP_IMAGES = { images: [{ loc: '/images/adam-kokoszka.webp' }, { loc: '/og-image.jpg' }] }
+const SITEMAP_IMAGES = { images: [{ loc: '/images/adam-kokoszka.webp' }, { loc: OG_IMAGE.path }] }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
