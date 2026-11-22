@@ -31,7 +31,7 @@ const phoneAttrs = computed(() => ({
   <article
     class="relative flex flex-col overflow-hidden rounded-[1.375rem] border border-white/8 transition-colors duration-600 ease-smooth bg-felt-glow hover:border-felt-fg/35 lg:block lg:h-110">
     <div
-      class="relative aspect-[10/7] flex-none overflow-hidden md:aspect-[2/1] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[62%] lg:overflow-visible">
+      class="relative aspect-[10/7] flex-none md:aspect-[2/1] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[62%]">
       <div
         class="absolute top-[7%] left-[4%] w-[76%] md:top-[8%] md:left-[10%] md:w-[56%] lg:top-7.5 lg:left-[7%] lg:w-135">
         <div
@@ -61,7 +61,7 @@ const phoneAttrs = computed(() => ({
       </div>
     </div>
     <div
-      class="pointer-events-none absolute inset-x-0 top-0 aspect-[10/7] bg-linear-to-b from-felt/0 from-88% to-felt md:aspect-[2/1] lg:inset-0 lg:aspect-auto lg:bg-felt-fade"
+      class="pointer-events-none absolute inset-0 bg-linear-to-b from-felt-shade/0 from-40% via-felt-shade/72 via-68% to-felt-shade/96 lg:bg-felt-fade"
       aria-hidden="true" />
 
     <div
