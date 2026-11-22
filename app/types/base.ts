@@ -1,6 +1,7 @@
 export type IconName =
   | 'arrow-right'
   | 'arrow-up'
+  | 'arrow-up-right'
   | 'briefcase'
   | 'check'
   | 'chevron-left'
@@ -19,6 +20,7 @@ export type IconName =
   | 'pause'
   | 'play'
   | 'sun'
+  | 'target'
 
 export interface BaseIconProps {
   name: IconName
