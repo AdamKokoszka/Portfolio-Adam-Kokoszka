@@ -1,23 +1,32 @@
 <script setup lang="ts">
-import type { BaseButtonProps, ButtonSize, ButtonVariant } from '~/types/base'
+import type { BaseButtonProps, ButtonSize, ButtonTone, ButtonVariant } from '~/types/base'
 
 const props = withDefaults(defineProps<BaseButtonProps>(), {
   variant: 'primary',
+  tone: 'accent',
   size: 'md',
 })
 
 const VARIANT_CLASSES = {
-  primary: 'bg-accent text-on-accent hover:bg-accent-hover',
-  ghost: 'border-[1.5px] border-accent-line text-fg hover:border-accent hover:bg-accent-soft',
-  peach: 'bg-peach text-on-peach hover:bg-peach-hover',
-} satisfies Record<ButtonVariant, string>
+  primary: {
+    accent: 'bg-accent text-on-accent hover:bg-accent-hover',
+    peach: 'bg-peach text-on-peach hover:bg-peach-hover',
+  },
+  ghost: {
+    accent: 'border-[1.5px] border-accent-line text-fg hover:border-accent hover:bg-accent-soft',
+    peach: 'border-[1.5px] border-peach-fg/50 text-ink-fg hover:border-peach hover:bg-peach/12',
+  },
+} satisfies Record<ButtonVariant, Record<ButtonTone, string>>
 
 const SIZE_CLASSES = {
   md: 'h-13 px-6.5 text-ui',
   sm: 'h-11.5 px-6 text-sm',
 } satisfies Record<ButtonSize, string>
 
-const classes = computed(() => [VARIANT_CLASSES[props.variant], SIZE_CLASSES[props.size]])
+const classes = computed(() => [
+  VARIANT_CLASSES[props.variant][props.tone],
+  SIZE_CLASSES[props.size],
+])
 
 const tag = computed(() => (props.href ? 'a' : 'button'))
 const type = computed(() => (props.href ? undefined : 'button'))

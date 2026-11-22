@@ -28,7 +28,9 @@ export interface BaseIconProps {
 
 export type LogoFit = 'tight' | 'padded'
 
-export type ButtonVariant = 'primary' | 'ghost' | 'peach'
+export type ButtonVariant = 'primary' | 'ghost'
+
+export type ButtonTone = 'accent' | 'peach'
 
 export type ButtonSize = 'md' | 'sm'
 
@@ -38,6 +40,7 @@ export type EyebrowTag = 'p' | 'h2'
 
 export interface BaseButtonProps {
   variant?: ButtonVariant
+  tone?: ButtonTone
   size?: ButtonSize
   href?: string
 }
