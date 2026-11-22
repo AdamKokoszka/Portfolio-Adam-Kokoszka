@@ -83,7 +83,8 @@ const phoneAttrs = computed(() => ({
       </p>
       <BaseButton
         :href="href"
-        variant="peach"
+        variant="ghost"
+        tone="peach"
         target="_blank"
         rel="noopener"
         data-umami-event="side-project-open"
