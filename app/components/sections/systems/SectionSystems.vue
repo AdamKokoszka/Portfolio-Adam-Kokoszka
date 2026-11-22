@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FEATURED_SYSTEM, PRORMS_SYSTEMS } from '~/data/systems'
+import { FEATURED_SYSTEM, PRORMS_SYSTEMS, SIDE_PROJECT } from '~/data/systems'
 
 const { t } = useI18n()
 
@@ -48,15 +48,12 @@ const number = sectionNumber('systems')
           variant="featured"
           data-reveal="sharpen" />
 
-        <p
+        <SectionSystemsDivider
           data-reveal="fade"
-          class="mt-2 flex items-center gap-2.5 text-[0.78rem] font-semibold tracking-[0.02em] text-ink-soft before:h-px before:flex-1 before:bg-white/10 after:h-px after:flex-1 after:bg-white/10 md:mt-4 md:gap-3 md:text-sm">
-          <BaseIcon
-            name="link"
-            class="size-4 text-peach-fg"
-            aria-hidden="true" />
+          icon="link"
+          icon-class="text-peach-fg">
           {{ t('systems.ecosystem') }}
-        </p>
+        </SectionSystemsDivider>
 
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5.5">
           <SectionSystemsCard
@@ -65,13 +62,24 @@ const number = sectionNumber('systems')
             :system="system"
             data-reveal="sharpen" />
         </div>
-      </div>
 
-      <p
-        data-reveal="fade"
-        class="mt-4 text-right text-xs text-ink-soft">
-        {{ t('systems.illustrative') }}
-      </p>
+        <p
+          data-reveal="fade"
+          class="-mt-1.5 text-right text-xs text-ink-soft">
+          {{ t('systems.illustrative') }}
+        </p>
+
+        <SectionSystemsDivider
+          data-reveal="fade"
+          icon="target"
+          icon-class="text-felt-fg">
+          {{ t('systems.sideProject.label') }}
+        </SectionSystemsDivider>
+
+        <SectionSystemsSideProject
+          :project="SIDE_PROJECT"
+          data-reveal="sharpen" />
+      </div>
     </div>
   </section>
 </template>

@@ -149,6 +149,16 @@
         "description": "Zaplecze administracyjne proRMS, w którym nowe ekrany tworzy się przez konfigurację, bez pisania kodu."
       }
     },
+    "sideProject": {
+      "label": "Projekt własny · aplikacja dostępna online",
+      "dartsbull": {
+        "title": "DartsBull",
+        "description": "Darmowy licznik do darta w przeglądarce. Telefon przy tarczy rozpoznaje lotki z kamery, a wynik widać na drugim telefonie, laptopie albo telewizorze. Całość zaprojektowałem i zbudowałem sam - od analizy obrazu po wdrożenie.",
+        "link": "Otwórz dartsbull.com",
+        "laptopAlt": "Ekran startowy DartsBull na laptopie z grą w toku: Adam ma 261 punktów, a Ola 236",
+        "phoneAlt": "Ta sama gra w DartsBull na telefonie: Adam rzucił T20 i T19"
+      }
+    },
     "imageAlt": "Ilustracja poglądowa: {title}"
   },
   "contact": {

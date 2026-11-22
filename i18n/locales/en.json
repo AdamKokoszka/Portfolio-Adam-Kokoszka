@@ -149,6 +149,16 @@
         "description": "The proRMS admin back office, where new screens are created through configuration, without writing code."
       }
     },
+    "sideProject": {
+      "label": "Side project · live app",
+      "dartsbull": {
+        "title": "DartsBull",
+        "description": "A free darts scorer in the browser. A phone at the board reads the darts from its camera, and the score shows on a second phone, a laptop or a TV. I designed and built it on my own - from image analysis to deployment.",
+        "link": "Open dartsbull.com",
+        "laptopAlt": "DartsBull start screen on a laptop with a game in progress: Adam has 261 points and Ola 236",
+        "phoneAlt": "The same DartsBull game on a phone: Adam has thrown T20 and T19"
+      }
+    },
     "imageAlt": "Illustrative image: {title}"
   },
   "contact": {
