@@ -28,7 +28,7 @@ export interface BaseIconProps {
 
 export type LogoFit = 'tight' | 'padded'
 
-export type ButtonVariant = 'primary' | 'ghost'
+export type ButtonVariant = 'primary' | 'ghost' | 'peach'
 
 export type ButtonSize = 'md' | 'sm'
 
