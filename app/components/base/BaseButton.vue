@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
 const VARIANT_CLASSES = {
   primary: 'bg-accent text-on-accent hover:bg-accent-hover',
   ghost: 'border-[1.5px] border-accent-line text-fg hover:border-accent hover:bg-accent-soft',
+  peach: 'bg-peach text-on-peach hover:bg-peach-hover',
 } satisfies Record<ButtonVariant, string>
 
 const SIZE_CLASSES = {

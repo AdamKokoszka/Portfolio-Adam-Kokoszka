@@ -81,20 +81,21 @@ const phoneAttrs = computed(() => ({
       <p class="mt-2.5 text-ui leading-[1.6] text-ink-text lg:mt-3.5 lg:text-[1.0625rem]">
         {{ t(`${key}.description`) }}
       </p>
-      <a
+      <BaseButton
         :href="href"
+        variant="peach"
         target="_blank"
         rel="noopener"
         data-umami-event="side-project-open"
         :data-umami-event-project="project.id"
-        class="mt-5 inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-peach px-5.5 text-ui font-bold text-on-peach transition-colors duration-200 ease-smooth hover:bg-peach-hover md:self-start lg:mt-6.5">
+        class="mt-5 md:self-start lg:mt-6.5">
         {{ t(`${key}.link`) }}
         <BaseIcon
           name="arrow-up-right"
           class="size-4.5"
           aria-hidden="true" />
         <span class="sr-only">{{ t('common.newTab') }}</span>
-      </a>
+      </BaseButton>
     </div>
   </article>
 </template>

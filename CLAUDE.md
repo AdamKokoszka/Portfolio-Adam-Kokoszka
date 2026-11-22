@@ -28,6 +28,8 @@ The visual spec is the author's private claude.ai Design canvas **"IncoCode Port
 (artboards: desktop 1440 / mobile 390, dark / light). Match it, but heavy decorative animations
 may be simplified first and polished later. The "Systems" section uses the AI-generated images
 (never real client screenshots) with an "illustrative image" caption.
+The DartsBull side project card at its end shows real screenshots of the author's own app
+(PL and EN versions in `public/images/dartsbull/`), so the caption sits under the client systems only.
 
 ## Commands
 
@@ -305,8 +307,8 @@ Every section follows the same pattern (see `SectionAbout.vue`):
   `NUXT_PUBLIC_UMAMI_*`); only incocode.com is counted (not localhost or deploy previews).
 - Clicks worth knowing about are tracked declaratively with `data-umami-event="<kebab-name>"`
   (+ `data-umami-event-<key>` for details) - no JS calls. Current events: `cta-contact`,
-  `cta-experience`, `email-click`, `email-copy`, `social-github` / `social-linkedin`
-  (`placement`), `stack-toggle`, `theme-toggle` (`to`).
+  `cta-experience`, `email-click`, `email-copy`, `side-project-open` (`project`),
+  `social-github` / `social-linkedin` (`placement`), `stack-toggle`, `theme-toggle` (`to`).
 - Hash changes (`/#top`, `/#stack`) are not counted as page views (`data-exclude-hash`).
 
 ### Performance notes
